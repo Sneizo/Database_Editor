@@ -10,7 +10,7 @@ public class Test1 {
 		
 	}
 
-	//LOL
+	
 	
 	/**
 	 * the methode save
