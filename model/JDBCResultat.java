@@ -1,6 +1,8 @@
 package model;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -10,33 +12,37 @@ import java.sql.*;
 public class JDBCResultat {
 	
 	private JDBCOperation jdbcOperation;
-	private String resultat;
-	private JDBCConnexion connexion;
+	private ResultSet resultat;
+	private JDBCConnexion con;
 	
 	/**
 	 * the constructor of the class
 	 * set the variable jdbcOperation
 	 */
 	public JDBCResultat(JDBCOperation operation, JDBCConnexion con) {
-		if(opration != null) {
+		if(operation != null) {
 			this.jdbcOperation = operation;
 		}
 		if(con != null) {
-			this.connexion = con;
+			this.con = con;
 		}
 		getResultat();
 	}
 	
 	private void getResultat() {
 		try {
-			Statement stmt = connexion.createStatement();
+			Statement stmt = con.getConn().createStatement();
 			resultat = stmt.executeQuery(jdbcOperation.getOperation());
+			//while (stmt.next ()){
+			//	System.out.println(stmt.getString (1));
+			//}
 		} catch (SQLException e) {
-			resultat = e.printStackTrace();
+			e.printStackTrace();
 		}
+		
 	}
 	
-	public String Display() {
+	public ResultSet Display() {
 		return this.resultat;
 	}
 }

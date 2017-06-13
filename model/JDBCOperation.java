@@ -31,7 +31,8 @@ public class JDBCOperation {
 	 */
 	public void operation() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrez votre requete");
+		System.out.println("Saisir votre requête: ");
+		System.out.println(">");
 		setOperation(sc.nextLine());
 		
 		sc.close();
@@ -39,9 +40,10 @@ public class JDBCOperation {
 	
 	/**
 	 * this methode get the operation
+	 * @return 
 	 * @return the operation
 	 */
-	 public void getOperation() {
+	 public String getOperation() {
 		return this.operation;
 	}
 	

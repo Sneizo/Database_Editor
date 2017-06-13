@@ -6,7 +6,7 @@ public class User {
 	private String passwd;
 	
 	public User(String login, String passwd) {
-		if(login != null && passws != null) {
+		if(login != null && passwd != null) {
 			this.login = login;
 			this.passwd = passwd;
 		}
