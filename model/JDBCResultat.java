@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ public class JDBCResultat {
 	
 	private JDBCOperation jdbcOperation;
 	private ResultSet resultat;
+	private PreparedStatement rep;
 	private JDBCConnexion con;
 	
 	/**
@@ -38,12 +40,10 @@ public class JDBCResultat {
 			
 			Statement stmt = con.getConn().createStatement();
 			
-			String str = stmt.toString();
-			System.out.println(str);
+			String str = jdbcOperation.getOperation();
 			String[] tab = str.split(" ");
 			String premier;
 			premier = tab[0];
-			System.out.println(premier);
 			if(premier.toUpperCase().equals("SELECT")){
 				stmt.setFetchSize(0);
 				resultat = stmt.executeQuery(jdbcOperation.getOperation());
@@ -62,12 +62,22 @@ public class JDBCResultat {
 				}
 				resultat.close();
 				stmt.close();
+			} else if((premier.toUpperCase().equals("UPDATE")) || (premier.toUpperCase().equals("INSERT")) || (premier.toUpperCase().equals("DELETE")) || (premier.toUpperCase().equals("CREATE")) || (premier.toUpperCase().equals("DROP"))){
+				stmt.executeUpdate(jdbcOperation.getOperation());
+				if((premier.toUpperCase().equals("DROP"))){
+					System.out.println("[user] Table supprimé.");
+				} else if((premier.toUpperCase().equals("INSERT"))){
+					System.out.println("[user] Insertion de ligne effectué.");
+				} else if((premier.toUpperCase().equals("CREATE"))){
+					System.out.println("[user] Table créée.");
+				}
 			}
 			
 			//System.out.println(resultat);
 		} catch (SQLException e) {
 			//e.printStackTrace();
-			System.out.println("> Erreur dans la requête SQL.");			
+			System.out.println("> Erreur dans la requête SQL.");	
+			e.printStackTrace();
 		}
 		
 	}
