@@ -35,9 +35,6 @@ public class JDBCResultat {
 	private void getResultat() {
 		try {
 				
-			//Statement str = con.getConn().createStatement();
-
-			
 			Statement stmt = con.getConn().createStatement();
 			
 			String str = jdbcOperation.getOperation();
