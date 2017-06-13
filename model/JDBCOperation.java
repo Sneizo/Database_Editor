@@ -25,14 +25,16 @@ public class JDBCOperation {
 	
 	/**
 	 * this methode get the sql script you write and set it in operation
+	 * @throws InterruptedException 
 	 */
 	/*Creer un boucle qui entre les opÃ©rations Ã  la suite tant 
 	 * que le caratere ';' n'est pas rencontrÃ©, enregistre tout dans operation
 	 */
-	public void operation() {
+	public void operation() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Saisir votre requête: ");
-		System.out.println(">");
+		Thread.sleep(500);
+		System.out.println("[user] Saisir votre requête: ");
+		System.out.print("[user] ");
 		setOperation(sc.nextLine());
 		
 		sc.close();

@@ -32,7 +32,7 @@ public class JDBCConnexion {
 	public void connexion() throws InterruptedException {
 		if (connect == false) {
 			
-			
+			/*
 			//New scanner for input
 			Scanner in = new Scanner(System.in);
 			
@@ -46,7 +46,7 @@ public class JDBCConnexion {
 			System.out.println(">");
 			String pass = in.nextLine();
 			
-			
+			*/
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 			} catch (ClassNotFoundException e) {
@@ -55,13 +55,13 @@ public class JDBCConnexion {
 			
 			//Connexion initialisation
 			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", user, pass);
-				System.out.println("Connection...");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "24u4kvkH-p05m9");
+				System.out.println("[user] Connection...");
 				Thread.sleep(1000);
-				System.out.println("Please wait...\n");
+				System.out.println("[user] Please wait...");
 				Thread.sleep(1000);
 				Statement stmt = conn.createStatement();
-				System.out.println("Connexion établie\n");
+				System.out.println("[user] Connexion établie.");
 				//Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
