@@ -84,7 +84,7 @@ public class JDBCConnexion {
 		conn.close();
 		if(conn.isClosed()){ 
 			   //We try to reset the connection 
-			   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "24u4kvkH-p05m9"); 
+			   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "L4kjR3Xzo"); 
 			   System.out.println("[user] Déconnexion effectué.");
 		}
 
