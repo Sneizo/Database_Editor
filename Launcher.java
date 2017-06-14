@@ -22,13 +22,26 @@ public class Launcher {
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
-
-
-		JDBCConnexion co = new JDBCConnexion();
-
-		co.connexion();
 		
-		JDBCResultat res = new JDBCResultat(co);
+		boolean exit = false;
+		Scanner in = new Scanner(System.in);
+		System.out.print("[user] ");
+		String choose = in.nextLine();
+		while(!choose.equals("close")){			
+			if(choose.equals("connect") && !exit){
+				JDBCConnexion co = new JDBCConnexion();
+				co.connexion();				
+				JDBCResultat res = new JDBCResultat(co);
+				if(res.Display().equals("exit")){
+					exit = true;
+					co.deconnexion();
+				}
+			}
+			System.out.println("[user] ");
+			choose = in.nextLine();
+		}
+		
+		
 		
 		/*
 		 * 
