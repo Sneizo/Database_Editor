@@ -31,10 +31,18 @@ public class Launcher {
 
 		
 		co.connexion();
-		// String exit = in.nextLine();
-
-		op.operation();
-		JDBCResultat res = new JDBCResultat(op, co);
+		//System.out.print("[user] ");
+		//String next = in.nextLine();
+		
+		//while(next.equals("")){
+			
+			op.operation();
+			JDBCResultat res = new JDBCResultat(op, co);
+		//	System.out.print("[user] ");
+		//	next = in.nextLine();
+		//}
+		
+		
 		
 		/*
 		 * 

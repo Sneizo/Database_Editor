@@ -33,10 +33,10 @@ public class JDBCOperation {
 	public void operation() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		Thread.sleep(500);
-		System.out.println("[user] Saisir votre requête: ");
+		System.out.println("[user] Enter your query: ");
 		System.out.print("[user] ");
 		setOperation(sc.nextLine());
-		
+		//String query = getOperation();
 		sc.close();
 	}
 	

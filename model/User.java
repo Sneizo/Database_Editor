@@ -1,5 +1,11 @@
 package model;
 
+
+/**
+ * 
+ * @author Mael and Damien
+ *
+ */
 public class User {
 	
 	private String login;
@@ -19,4 +25,13 @@ public class User {
 	public String getPasswd() {
 		return this.passwd;
 	}
+
+	/**
+	 * @param passwd the passwd to set
+	 */
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	
+	
 }

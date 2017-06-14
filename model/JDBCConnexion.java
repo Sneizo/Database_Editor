@@ -61,11 +61,11 @@ public class JDBCConnexion {
 				System.out.println("[user] Please wait...");
 				Thread.sleep(1000);
 				Statement stmt = conn.createStatement();
-				System.out.println("[user] Connexion établie.");
+				System.out.println("[user] Connection established.");
 				//Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
-				System.out.println("Nom d'utilisateur ou mot de passe incorrect.");
+				System.out.println("User login or password incorrect.");
 			}
 		}
 	}
