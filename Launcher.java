@@ -25,16 +25,7 @@ public class Launcher {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		
-		initConsole();
-		
-		
-		
-		
-		
-		
-	
-		
-		
+		initConsole();	
 		
 		/*
 		 * 
@@ -59,17 +50,19 @@ public class Launcher {
 				if(res.getExit().equals("exit")){
 					exit = true;
 					co.deconnexion();
-					initConsole();
-				}
+					choose = " ";
+					}
 			}
 			
 			if(choose.equals("createUser")) {
 				String login = null;
 				String passwd = null;
 				while(login == null || passwd == null) {
-					System.out.println("Entrez le login du nouvel utilisateur");
+					System.out.println("[user] Entrez le login du nouvel utilisateur");
+					System.out.print("[user] ");
 					login = in.nextLine();
-					System.out.println("Entrez le mot de passe du nouvel utilisateur");
+					System.out.println("[user] Entrez le mot de passe du nouvel utilisateur");
+					System.out.print("[user] ");
 					passwd = in.nextLine();
 				}
 				CreateUser create = new CreateUser(login,passwd);
@@ -80,7 +73,8 @@ public class Launcher {
 			if(choose.equals("deleteUser")) {
 				String login = null;
 				while(login == null) {
-					System.out.println("Entrez le login de l'utilisateur à suprimer");
+					System.out.println("[user] Entrez le login de l'utilisateur à suprimer");
+					System.out.print("[user] ");
 					login = in.nextLine();
 				}
 				DeleteUser delete = new DeleteUser(login);

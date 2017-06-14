@@ -17,6 +17,9 @@ public class JDBCConnexion {
 
 	private Connection conn;
 	private boolean connect;
+	private String database;
+	private String user;
+	private String pass;
 	
 	/**
 	 * 
@@ -39,17 +42,17 @@ public class JDBCConnexion {
 			//Choose DataBase
 			System.out.println("[user] Database name:");
 			System.out.print("[user] ");
-			String database = in.nextLine();
+			database = in.nextLine();
 			
 			//User input
 			System.out.println("[user] User:");
 			System.out.print("[user] ");
-			String user = in.nextLine();
+			user = in.nextLine();
 			
 			//Pass input
 			System.out.println("[user] Password:");
 			System.out.print("[user] ");
-			String pass = in.nextLine();
+			pass = in.nextLine();
 			
 			//*/
 			try {
@@ -60,17 +63,17 @@ public class JDBCConnexion {
 			
 			//Connexion initialisation
 			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:"+database, user /*"SYSTEM"*/, pass/*"24u4kvkH-p05m9"*/);
-				System.out.println("[user] Connection...");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:"+database, user, pass);
+				System.out.println("["+user+"]  Connection...");
 				Thread.sleep(1000);
-				System.out.println("[user] Please wait...");
+				System.out.println("["+user+"]  Please wait...");
 				Thread.sleep(1000);
 				Statement stmt = conn.createStatement();
-				System.out.println("[user] Connection established.");
+				System.out.println("["+user+"]  Connection established.");
 				//Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
-				System.out.println("[user] User login or password incorrect.");
+				System.out.println("["+user+"]  User login or password incorrect.");
 				connexion();
 			}
 		}
@@ -84,8 +87,8 @@ public class JDBCConnexion {
 		conn.close();
 		if(conn.isClosed()){ 
 			   //We try to reset the connection 
-			   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "L4kjR3Xzo"); 
-			   System.out.println("[user] Déconnexion effectué.");
+			   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + database, user, pass); 
+			   System.out.println("["+user+"]  Déconnexion effectué.");
 		}
 
 	}
@@ -97,6 +100,16 @@ public class JDBCConnexion {
 	public Connection getConn() {
 		return this.conn;
 	}
+
+	/**
+	 * @return the user
+	 */
+	public String getUser() {
+		return user;
+	}
+	
+	
+	
 	
 	
 

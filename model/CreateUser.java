@@ -22,7 +22,7 @@ public class CreateUser {
 
 	private void connexion() {
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM","L4kjR3Xzo");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM","24u4kvkH-p05m9");
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
 			System.out.println("[user] User login or password incorrect.");

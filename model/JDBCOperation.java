@@ -11,7 +11,16 @@ import java.util.Scanner;
 public class JDBCOperation {
 	
 	private String operation;
+	private JDBCConnexion co;
 	
+	
+
+	/**
+	 * @param co
+	 */
+	public JDBCOperation(JDBCConnexion co) {
+		if(co != null){this.co = co;}
+	}
 
 	/**
 	 * This class set the operation 
@@ -20,7 +29,7 @@ public class JDBCOperation {
 	public void setOperation(String str) {
 		if(str != null) {
 			this.operation = str;
-		}
+		}			
 	}
 	
 	/**
@@ -33,8 +42,8 @@ public class JDBCOperation {
 	public void operation() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		Thread.sleep(500);
-		System.out.println("[user] Enter your query: ");
-		System.out.print("[user] ");
+		System.out.println("["+co.getUser()+"]  Enter your query: ");
+		System.out.print("["+co.getUser()+"] ");
 		setOperation(sc.nextLine());
 		
 	}
