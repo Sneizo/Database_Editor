@@ -42,19 +42,19 @@ public class Launcher {
 		Scanner in = new Scanner(System.in);
 		System.out.print("[user] ");
 		String choose = in.nextLine();
-		while(!choose.equals("close")){			
-			if(choose.equals("connect") && !exit){
+		while(!choose.toUpperCase().equals("CLOSE")){			
+			if(choose.toUpperCase().equals("CONNECT") && !exit){
 				JDBCConnexion co = new JDBCConnexion();
 				co.connexion();
 				JDBCResultat res = new JDBCResultat(co);
-				if(res.getExit().equals("exit")){
+				if(res.getExit().toUpperCase().equals("EXIT")){
 					exit = true;
 					co.deconnexion();
 					choose = " ";
 					}
 			}
 			
-			if(choose.equals("createUser")) {
+			if(choose.toUpperCase().equals("CREATEUSER")) {
 				String login = null;
 				String passwd = null;
 				while(login == null || passwd == null) {
@@ -70,7 +70,7 @@ public class Launcher {
 			}
 			
 			
-			if(choose.equals("deleteUser")) {
+			if(choose.toUpperCase().equals("DELETEUSER")) {
 				String login = null;
 				while(login == null) {
 					System.out.println("[user] Entrez le login de l'utilisateur à suprimer");
