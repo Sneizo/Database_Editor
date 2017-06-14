@@ -36,8 +36,7 @@ public class JDBCOperation {
 		System.out.println("[user] Enter your query: ");
 		System.out.print("[user] ");
 		setOperation(sc.nextLine());
-		//String query = getOperation();
-		sc.close();
+		
 	}
 	
 	/**
