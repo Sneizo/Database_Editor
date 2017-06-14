@@ -16,6 +16,7 @@ public class JDBCResultat {
 	private ResultSet resultat;
 	private PreparedStatement rep;
 	private JDBCConnexion con;
+	private String exit;
 
 	/**
 	 * the constructor of the class set the variable jdbcOperation
@@ -50,20 +51,19 @@ public class JDBCResultat {
 					resultat = stmt.executeQuery(jdbcOperation.getOperation());
 					ResultSetMetaData metadata = resultat.getMetaData();
 					System.out.println("[user] Result of execution:");
-					int i = 0;
 					while (resultat.next()) {
-						for (int j = 0; j < metadata.getColumnCount(); j++) {
-							System.out.print("[user] ");
-							System.out.println(resultat.getObject(j + 1));
+                        System.out.print("[user] ");
+                        for (int j = 0; j < metadata.getColumnCount(); j++) {
+                            System.out.print(resultat.getObject(j + 1) + "\t");
 
-						}
-						i++;
+                        }
 					}
-					System.out.println("[user] End of the request.");
+					System.out.println("\n[user] End of the request.");
+					System.out.println("[user] ");
 
 				} else if ((premier.toUpperCase().equals("UPDATE")) || (premier.toUpperCase().equals("INSERT"))
 						|| (premier.toUpperCase().equals("DELETE")) || (premier.toUpperCase().equals("CREATE"))
-						|| (premier.toUpperCase().equals("DROP"))) {
+						|| (premier.toUpperCase().equals("DROP")) || (premier.toUpperCase().equals("GRANT"))) {
 					stmt.executeUpdate(jdbcOperation.getOperation());
 					if ((premier.toUpperCase().equals("DROP"))) {
 						System.out.println("[user] Table supprimé.");
@@ -72,15 +72,20 @@ public class JDBCResultat {
 					} else if ((premier.toUpperCase().equals("CREATE"))) {
 						System.out.println("[user] Table créée.");
 					}
-				}
+				} else {
+                    System.out.print("[user] Erreur présente dans la derniere requête\n");
+                }
 
 			}
+			String rtr = jdbcOperation.getOperation();
+			String[] tab2 = rtr.split(" ");
+			exit = tab2[0];
 
 			// System.out.println(resultat);
 		} catch (SQLException e) {
 			// e.printStackTrace();
-			System.out.println("> Erreur dans la requête SQL.");
-			e.printStackTrace();
+			System.out.println("[user] Erreur dans la requête SQL.");
+			getResultat();
 		}
 
 	}
@@ -88,4 +93,13 @@ public class JDBCResultat {
 	public ResultSet Display() {
 		return this.resultat;
 	}
+
+	/**
+	 * @return the exit
+	 */
+	public String getExit() {
+		return exit;
+	}
+	
+	
 }

@@ -32,21 +32,26 @@ public class JDBCConnexion {
 	public void connexion() throws InterruptedException {
 		if (connect == false) {
 			
-			/*
+			///*
 			//New scanner for input
 			Scanner in = new Scanner(System.in);
 			
+			//Choose DataBase
+			System.out.println("[user] Database name:");
+			System.out.print("[user] ");
+			String database = in.nextLine();
+			
 			//User input
-			System.out.println("User:");
-			System.out.println(">");
+			System.out.println("[user] User:");
+			System.out.print("[user] ");
 			String user = in.nextLine();
 			
 			//Pass input
-			System.out.println("Password:");
-			System.out.println(">");
+			System.out.println("[user] Password:");
+			System.out.print("[user] ");
 			String pass = in.nextLine();
 			
-			*/
+			//*/
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 			} catch (ClassNotFoundException e) {
@@ -55,7 +60,7 @@ public class JDBCConnexion {
 			
 			//Connexion initialisation
 			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "24u4kvkH-p05m9");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:"+database, user /*"SYSTEM"*/, pass/*"24u4kvkH-p05m9"*/);
 				System.out.println("[user] Connection...");
 				Thread.sleep(1000);
 				System.out.println("[user] Please wait...");
@@ -65,7 +70,8 @@ public class JDBCConnexion {
 				//Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
-				System.out.println("User login or password incorrect.");
+				System.out.println("[user] User login or password incorrect.");
+				connexion();
 			}
 		}
 	}
@@ -79,7 +85,7 @@ public class JDBCConnexion {
 		if(conn.isClosed()){ 
 			   //We try to reset the connection 
 			   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database", "SYSTEM", "24u4kvkH-p05m9"); 
-			   System.out.println("Déconnexion effectué.");
+			   System.out.println("[user] Déconnexion effectué.");
 		}
 
 	}
