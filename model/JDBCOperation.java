@@ -29,10 +29,8 @@ public class JDBCOperation {
 	 * This class set the operation 
 	 * @param str the string to set
 	 */
-	public void setOperation(String str) {
-		if(str != null) {
-			this.operation = str;
-		}			
+	public void setOperation() {
+		this.operation = "";		
 	}
 	
 	/**
@@ -44,10 +42,19 @@ public class JDBCOperation {
 	 */
 	public void operation() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
+		String end = "";
+		String tmp = "";
 		Thread.sleep(500);
+		setOperation();
 		System.out.println("["+co.getUser()+"]  Enter your query: ");
-		System.out.print("["+co.getUser()+"] ");
-		setOperation(sc.nextLine());
+		while(!end.equals(";") && (!end.toUpperCase().equals("DISCONNECT"))){
+			System.out.print("["+co.getUser()+"] ");
+			tmp = sc.nextLine();
+			end = tmp;
+			if(!end.equals(";")){
+				this.operation = this.operation + tmp;
+			}			
+		}
 		
 	}
 	

@@ -28,6 +28,7 @@ public class Launcher {
 		
 		System.out.println("Welcome to the MDSql monitor. Commands end with : close.");
 		initConsole();	
+		System.out.println("Thank you for using the MDSql monitor.");
 
 	}
 	
