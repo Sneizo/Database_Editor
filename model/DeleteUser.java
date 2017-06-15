@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class DeleteUser {
 	
@@ -21,7 +22,11 @@ public class DeleteUser {
 
 	private void connexion() {
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM","24u4kvkH-p05m9");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("[user] Admin password: ");
+			System.out.print("[user] ");
+			String passAdmin = sc.nextLine();
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM",passAdmin);
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
 			System.out.println("[user] User login or password incorrect.");
