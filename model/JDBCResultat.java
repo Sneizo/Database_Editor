@@ -44,6 +44,7 @@ public class JDBCResultat {
 			String premier = "next";
 			while (!premier.toUpperCase().equals("DISCONNECT")) {
 				jdbcOperation.operation();
+				
 				String str = jdbcOperation.getOperation();
 				String[] tab = str.split(" ");
 				premier = tab[0];
@@ -81,9 +82,10 @@ public class JDBCResultat {
                 }
 
 			}
-			String rtr = jdbcOperation.getOperation();
-			String[] tab2 = rtr.split(" ");
-			exit = tab2[0];
+			//String rtr = jdbcOperation.getOperation();
+//			String[] tab2 = rtr.split(" ");
+//			exit = tab2[0];
+			exit = premier;
 
 			// System.out.println(resultat);
 		} catch (SQLException e) {

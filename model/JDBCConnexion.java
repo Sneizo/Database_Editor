@@ -67,16 +67,16 @@ public class JDBCConnexion {
 			//Connexion initialisation
 			try {
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:"+database, user, pass);
-				System.out.println("["+user+"]  Connection...");
+				System.out.println("["+user+"] Connection...");
 				Thread.sleep(1000);
-				System.out.println("["+user+"]  Please wait...");
+				System.out.println("["+user+"] Please wait...");
 				Thread.sleep(1000);
 				Statement stmt = conn.createStatement();
-				System.out.println("["+user+"]  Connection established.");
+				System.out.println("["+user+"] Connection established.");
 				//Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
-				System.out.println("["+user+"]  User login or password incorrect.");
+				System.out.println("["+user+"] User login or password incorrect.");
 				connexion();
 			}
 		}
