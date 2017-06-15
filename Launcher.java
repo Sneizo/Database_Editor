@@ -12,12 +12,13 @@ import model.CreateUser;
 import model.DeleteUser;
 
 /**
- * @author Damien
- *
+ * @author Damien & Mael
+ * This class launch the different class and run the dataBase editor
  */
 public class Launcher {
 
 	/**
+	 * The main 
 	 * @param args
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -37,6 +38,11 @@ public class Launcher {
 		// System.out.println(co.getConn());
 	}
 	
+	/**
+	 * This class initialize the program
+	 * @throws SQLException
+	 * @throws InterruptedException
+	 */
 	public static void initConsole () throws SQLException, InterruptedException{
 		boolean exit = false;
 		Scanner in = new Scanner(System.in);
