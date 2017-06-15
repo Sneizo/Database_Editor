@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 /**
+ * This class connect to the database
  * @author Damien
  *
  */
@@ -22,13 +23,15 @@ public class JDBCConnexion {
 	private String pass;
 	
 	/**
-	 * 
+	 * The constructor of the class
+	 * set connect
 	 */
 	public JDBCConnexion() {
 		this.connect = false;
 	}
 
 	/**
+	 * crate a connection from the database
 	 * @throws InterruptedException 
 	 * 
 	 */
@@ -80,7 +83,7 @@ public class JDBCConnexion {
 	}
 
 	/**
-	 * 
+	 * Disconnect from the database
 	 * @throws SQLException
 	 */
 	public void deconnexion() throws SQLException {
@@ -93,15 +96,24 @@ public class JDBCConnexion {
 
 	}
 
+	/**
+	 * return connect
+	 * @return connect
+	 */
 	public Boolean getConnect() {
 		return this.connect;
 	}
 
+	/**
+	 * return conn
+	 * @return conn
+	 */
 	public Connection getConn() {
 		return this.conn;
 	}
 
 	/**
+	 * return user
 	 * @return the user
 	 */
 	public String getUser() {

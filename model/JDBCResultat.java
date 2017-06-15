@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * This class get the SQL request and execute it for display the sesult
+ * This class get the SQL request and execute it for display the result
+ * @author Mael & &Damien
  */
 
 public class JDBCResultat {
@@ -20,7 +21,7 @@ public class JDBCResultat {
 
 	/**
 	 * the constructor of the class set the variable jdbcOperation
-	 * 
+	 * @param con the connection to the database
 	 * @throws InterruptedException
 	 */
 	public JDBCResultat(JDBCConnexion con) throws InterruptedException {
@@ -93,11 +94,16 @@ public class JDBCResultat {
 
 	}
 
+	/**
+	 * return resultat
+	 * @return resultat
+	 */
 	public ResultSet Display() {
 		return this.resultat;
 	}
 
 	/**
+	 * return exit
 	 * @return the exit
 	 */
 	public String getExit() {

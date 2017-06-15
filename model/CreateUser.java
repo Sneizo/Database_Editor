@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * This class create a user
+ * Create a connection, create the user with the parameter and disconnect
+ * @author Mael & Damien
+ */
 public class CreateUser {
 
 	private Connection conn;
@@ -19,7 +24,11 @@ public class CreateUser {
 		disconect();
 		
 	}
-
+	
+	
+	/**
+	 * This method create a connection with the data base
+	 */
 	private void connexion() {
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM","24u4kvkH-p05m9");
@@ -29,6 +38,11 @@ public class CreateUser {
 		}
 	}
 
+	/**
+	 * This method create the new user with the sql script and the parameter
+	 * @param login the login od the new user
+	 * @param mdp the password of the new user
+	 */
 	private void create(String login, String mdp) {
 		try {
 			String sql = "CREATE USER " + login + " IDENTIFIED BY " + mdp;
@@ -42,6 +56,9 @@ public class CreateUser {
 		}
 	}
 
+	/**
+	 * This method disconnect the user of the dataBase
+	 */
 	private void disconect() {
 		try {
 			conn.close();

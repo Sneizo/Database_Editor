@@ -6,11 +6,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+/**
+ * This class delete an user
+ * @author Mael & Damien
+ */
 public class DeleteUser {
 	
 	private Connection conn;
 	private Statement stmt;
 
+	/**
+	 * The constructor of the class
+	 * connect to the database, delete the user and disconnect to the database
+	 * @param login the login of the user 
+	 */
 	public DeleteUser(String login) {
 
 		connexion();
@@ -20,6 +29,9 @@ public class DeleteUser {
 		disconect();
 	}
 
+	/**
+	 * This method create a connection with the database
+	 */
 	private void connexion() {
 		try {
 			Scanner sc = new Scanner(System.in);
@@ -33,6 +45,10 @@ public class DeleteUser {
 		}
 	}
 
+	/**
+	 * This method delete the user of the database
+	 * @param login the login of the user to delete
+	 */
 	private void delete(String login) {
 		try {
 			String sql = "DROP USER " + login;
@@ -44,6 +60,9 @@ public class DeleteUser {
 		}
 	}
 
+	/**
+	 * This methode disconnect from the database
+	 */
 	private void disconect() {
 		try {
 			conn.close();

@@ -7,6 +7,7 @@ import java.util.Scanner;
 /**
  * This class create an object JDBCOperation who get the SQL script.
  * This class can also set a default SQL script like SELECT(*).
+ * @author Mael & Damien
  */
 public class JDBCOperation {
 	
@@ -16,7 +17,9 @@ public class JDBCOperation {
 	
 
 	/**
-	 * @param co
+	 * The constructor of the class 
+	 * set the connection
+	 * @param co the connection to the database
 	 */
 	public JDBCOperation(JDBCConnexion co) {
 		if(co != null){this.co = co;}
@@ -49,8 +52,7 @@ public class JDBCOperation {
 	}
 	
 	/**
-	 * this methode get the operation
-	 * @return 
+	 * this method get the operation
 	 * @return the operation
 	 */
 	 public String getOperation() {
