@@ -38,17 +38,16 @@ public class Launcher {
 	 * @throws InterruptedException
 	 */
 	public static void initConsole () throws SQLException, InterruptedException{
-		boolean exit = false;
+		JDBCConnexion co;
 		Scanner in = new Scanner(System.in);
 		System.out.print("[user] ");
 		String choose = in.nextLine();
 		while(!choose.toUpperCase().equals("CLOSE")){			
-			if(choose.toUpperCase().equals("CONNECT") && !exit){
-				JDBCConnexion co = new JDBCConnexion();
+			if(choose.toUpperCase().equals("CONNECT")){
+				co = new JDBCConnexion();
 				co.connexion();
 				JDBCResultat res = new JDBCResultat(co);
 				if(res.getExit().toUpperCase().equals("DISCONNECT")){
-					exit = true;
 					co.deconnexion();
 					choose = " ";
 					}
