@@ -26,16 +26,9 @@ public class Launcher {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		
+		System.out.println("Welcome to the MDSql monitor. Commands end with : close.");
 		initConsole();	
-		
-		/*
-		 * 
-		 * System.out.println(">"); String s = in.nextLine();
-		 * 
-		 * if(s.equals("exit")){ co.deconnexion(); }
-		 */
 
-		// System.out.println(co.getConn());
 	}
 	
 	/**
@@ -53,7 +46,7 @@ public class Launcher {
 				JDBCConnexion co = new JDBCConnexion();
 				co.connexion();
 				JDBCResultat res = new JDBCResultat(co);
-				if(res.getExit().toUpperCase().equals("EXIT")){
+				if(res.getExit().toUpperCase().equals("DISCONNECT")){
 					exit = true;
 					co.deconnexion();
 					choose = " ";

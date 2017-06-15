@@ -52,7 +52,8 @@ public class JDBCOperation {
 	}
 	
 	/**
-	 * this method get the operation
+	 * this methode get the operation
+	 * @return 
 	 * @return the operation
 	 */
 	 public String getOperation() {

@@ -10,7 +10,6 @@ import java.sql.Statement;
  * This class get the SQL request and execute it for display the result
  * @author Mael & &Damien
  */
-
 public class JDBCResultat {
 
 	// private JDBCOperation jdbcOperation;
@@ -32,6 +31,7 @@ public class JDBCResultat {
 		getResultat();
 	}
 
+	
 	private void getResultat() throws InterruptedException {
 
 		JDBCOperation jdbcOperation = new JDBCOperation(con);
@@ -42,7 +42,7 @@ public class JDBCResultat {
 			Statement stmt = con.getConn().createStatement();
 
 			String premier = "next";
-			while (!premier.toUpperCase().equals("EXIT")) {
+			while (!premier.toUpperCase().equals("DISCONNECT")) {
 				jdbcOperation.operation();
 				String str = jdbcOperation.getOperation();
 				String[] tab = str.split(" ");
@@ -74,7 +74,7 @@ public class JDBCResultat {
 						System.out.println("["+con.getUser()+"] Table créée.");
 					}
 				
-				} else if((premier.toUpperCase().equals("EXIT"))){
+				} else if((premier.toUpperCase().equals("DISCONNECT"))){
 				
 			 	} else {
                     System.out.print("["+con.getUser()+"] Erreur présente dans la derniere requête\n");
@@ -109,6 +109,5 @@ public class JDBCResultat {
 	public String getExit() {
 		return exit;
 	}
-	
 	
 }

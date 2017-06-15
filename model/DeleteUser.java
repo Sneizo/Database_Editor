@@ -15,11 +15,12 @@ public class DeleteUser {
 	private Connection conn;
 	private Statement stmt;
 
+	
 	/**
 	 * The constructor of the class
 	 * connect to the database, delete the user and disconnect to the database
 	 * @param login the login of the user 
-	 */
+	 */	
 	public DeleteUser(String login) {
 
 		connexion();
