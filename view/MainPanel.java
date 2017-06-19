@@ -38,8 +38,7 @@ public class MainPanel extends JPanel{
 	private JButton consol;
 	private Interface ihm;
 	
-	private int posX = 0;   //Position X de la souris au clic
-    private int posY = 0;   //Position Y de la souris au clic
+	
 	
 	
 	public MainPanel(Interface ihm) throws IOException{
@@ -142,24 +141,9 @@ public class MainPanel extends JPanel{
 		setLayout(border);
 		add(toolBar, BorderLayout.NORTH);
 		
-		addMouseListener(new MouseAdapter() {
-            @Override
-            //on recupere les coordonnées de la souris
-            public void mousePressed(MouseEvent e) {
-                posX = e.getX();    //Position X de la souris au clic
-                posY = e.getY();    //Position Y de la souris au clic
-            }
-        });
+		
          
-        addMouseMotionListener(new MouseMotionAdapter() {
-            // A chaque deplacement on recalcul le positionnement de la fenetre
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                int depX = e.getX() - posX;
-                int depY = e.getY() - posY;
-                setLocation(getX()+depX, getY()+depY);
-            }
-        });	
+        
 		
 		create.addActionListener(new MainPanelControler(this, ihm));
 	}
@@ -221,6 +205,7 @@ public class MainPanel extends JPanel{
 		return consol;
 	}
 
+	
 	
 	
 }

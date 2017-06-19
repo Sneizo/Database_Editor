@@ -13,13 +13,17 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controler.MouseListenerJFrame;
+import controler.MouseMotionListenner;
+
 /**
  * @author Damien
  *
  */
 public class Interface extends JFrame {
 	
-	
+	private int posX = 0;   //Position X de la souris au clic
+    private int posY = 0;   //Position Y de la souris au clic
 	
 	public Interface() throws IOException{
 	
@@ -43,11 +47,40 @@ public class Interface extends JFrame {
 		add(new MainPanel(this), BorderLayout.NORTH);
 		add(new PanelQuery(), BorderLayout.CENTER);
 		
+		addMouseListener(new MouseListenerJFrame(this, posX, posX));
+		addMouseMotionListener(new MouseMotionListenner(this));
 		
 		
 	}
-	
-	
+		
+	/**
+	 * @param posX the posX to set
+	 */
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	/**
+	 * @param posY the posY to set
+	 */
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	/**
+	 * @return the posX
+	 */
+	public int getPosX() {
+		return posX;
+	}
+
+	/**
+	 * @return the posY
+	 */
+	public int getPosY() {
+		return posY;
+	}
+
 	public static void main(String args[]) {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
