@@ -7,10 +7,10 @@ import javax.swing.border.CompoundBorder;
 
 public class Rename extends JPanel{
 	
-	private JTextField newTableName1;
-	private JTextField newTableName2;
-	private JTextField newTableName3;
+	private JTextField oldTableName;
+	private JTextField newTableName;
 	
+	private JLabel oldName;
 	private JLabel newName;
 	
 	private JPanel pane;
@@ -18,8 +18,6 @@ public class Rename extends JPanel{
 	private JPanel paneButtonAnnuler;
 	private JPanel paneButtonConfirmer;
 	
-	private JLabel vide1;
-	private JLabel vide2;
 	
 	private JButton confirmer;
 	private JButton annuler;
@@ -30,24 +28,24 @@ public class Rename extends JPanel{
 	
 	public void init() {
 		this.pane = new JPanel();
-		this.pane.setLayout(new GridLayout(3,2,0,50));
+		this.pane.setLayout(new GridLayout(2,2,0,50));
 		
 		Font font = new Font("arimo",Font.BOLD,20);
+		Font fontJT = new Font("arimo",Font.PLAIN,20);
 		
-		this.newName = new JLabel("Enter the new name of the table : ");
+		this.oldName = new JLabel("Enter the old name of table : ");
+		this.oldName.setFont(font);
+		this.oldTableName = new JTextField();
+		this.oldTableName.setFont(fontJT);
+		this.newTableName = new JTextField();
+		this.newTableName.setFont(fontJT);
+		this.newName = new JLabel("Enter the new name of table : ");
 		this.newName.setFont(font);
-		this.newTableName1 = new JTextField();
-		this.newTableName2 = new JTextField();
-		this.newTableName3 = new JTextField();
-		this.vide1 = new JLabel();
-		this.vide2 = new JLabel();
 		
+		this.pane.add(this.oldName);
+		this.pane.add(this.oldTableName);
 		this.pane.add(this.newName);
-		this.pane.add(this.newTableName1);
-		this.pane.add(this.vide1);
-		this.pane.add(this.newTableName2);
-		this.pane.add(this.vide2);
-		this.pane.add(this.newTableName3);
+		this.pane.add(this.newTableName);
 		
 		this.pane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(200,100,200,200))));
 		
@@ -82,16 +80,13 @@ public class Rename extends JPanel{
 		
 	}
 
-	public JTextField getNewTableName1() {
-		return newTableName1;
+
+	public JTextField getOldTableName() {
+		return oldTableName;
 	}
 
-	public JTextField getNewTableName2() {
-		return newTableName2;
-	}
-
-	public JTextField getNewTableName3() {
-		return newTableName3;
+	public JTextField getNewTableName() {
+		return newTableName;
 	}
 
 	public JButton getConfirmer() {

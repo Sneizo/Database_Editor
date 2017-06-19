@@ -7,9 +7,7 @@ import javax.swing.border.CompoundBorder;
 
 public class Create extends JPanel{
 	
-	private JTextField tableName1;
-	private JTextField tableName2;
-	private JTextField tableName3;
+	private JTextField newTableName;
 	
 	private JLabel newName;
 	
@@ -17,9 +15,6 @@ public class Create extends JPanel{
 	private JPanel paneButton;
 	private JPanel paneButtonAnnuler;
 	private JPanel paneButtonConfirmer;
-	
-	private JLabel vide1;
-	private JLabel vide2;
 	
 	private JButton confirmer;
 	private JButton annuler;
@@ -30,24 +25,20 @@ public class Create extends JPanel{
 	
 	public void init() {
 		this.pane = new JPanel();
-		this.pane.setLayout(new GridLayout(3,2,0,50));
+		//4 colonnes pour éviter que le JTextField soit trop grand
+		this.pane.setLayout(new GridLayout(4,1,0,0));
 		
 		Font font = new Font("arimo",Font.BOLD,20);
+		Font fontJT = new Font("arimo",Font.PLAIN,20);
 		
-		this.newName = new JLabel("Enter the name of the table : ");
+		this.newName = new JLabel("Enter the name of new table : ");
 		this.newName.setFont(font);
-		this.tableName1 = new JTextField();
-		this.tableName2 = new JTextField();
-		this.tableName3 = new JTextField();
-		this.vide1 = new JLabel();
-		this.vide2 = new JLabel();
+		this.newName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		this.newTableName = new JTextField();
+		this.newTableName.setFont(fontJT);
 		
 		this.pane.add(this.newName);
-		this.pane.add(this.tableName1);
-		this.pane.add(this.vide1);
-		this.pane.add(this.tableName2);
-		this.pane.add(this.vide2);
-		this.pane.add(this.tableName3);
+		this.pane.add(this.newTableName);
 		
 		this.pane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(200,100,200,200))));
 		
@@ -81,18 +72,7 @@ public class Create extends JPanel{
 		this.add(paneButton, BorderLayout.SOUTH);
 		
 	}
-
-	public JTextField getNewTableName1() {
-		return tableName1;
-	}
-
-	public JTextField getNewTableName2() {
-		return tableName2;
-	}
-
-	public JTextField getNewTableName3() {
-		return tableName3;
-	}
+	
 
 	public JButton getConfirmer() {
 		return confirmer;
@@ -100,5 +80,9 @@ public class Create extends JPanel{
 
 	public JButton getAnnuler() {
 		return annuler;
+	}
+	
+	public JTextField getNewTableName() {
+		return newTableName;
 	}
 }
