@@ -3,6 +3,9 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +17,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
+
+import controler.MainPanelControler;
 
 public class MainPanel extends JPanel{
 	
@@ -29,41 +33,29 @@ public class MainPanel extends JPanel{
 	private JButton save;
 	private JButton saveAs;
 	private JButton rename;
-	private JButton disconnect;
+	private JButton disconnect;	
+	
+	private JButton consol;
+	private Interface ihm;
+	
+	private int posX = 0;   //Position X de la souris au clic
+    private int posY = 0;   //Position Y de la souris au clic
 	
 	
-	//MainPanel
-	private JPanel mainPanelText;
-	
-	//PanelTextInPut
-	private JPanel panelInputText;
-	private JTextArea queryWrite;
-	private JButton execute;
-	private JLabel nameDataBase;
-	private JScrollPane scrollPane1;
-	
-	//PanelResult
-	private JPanel panelResult;
-	private JTextArea queryResult;
-	private JScrollPane scrollPane2;
-	private JLabel resultQuery;
-	
-	private JPanel titlePanel;
-	private JPanel executePanel;
-	
-	private JTable table;
-	private JScrollPane scrollPane3;
-	
-	
-	
-	public MainPanel() throws IOException{
-		
+	public MainPanel(Interface ihm) throws IOException{
+		this.ihm = ihm;
 		initComponent();
 	}
 	
 	private void initComponent() throws IOException{
 		
-		
+		//Buton consol
+		consol = new JButton("   |");
+		consol.setForeground(Color.WHITE);
+		consol.setIcon(new ImageIcon(ImageIO.read(new File("data/images/create.png")).getScaledInstance(20,20,BufferedImage.TYPE_INT_ARGB)));
+		consol.setBorderPainted(false);
+		consol.setBorder(null);
+		consol.setContentAreaFilled(false);
 		
 		//Button create
 		create = new JButton("Create    |");
@@ -120,6 +112,8 @@ public class MainPanel extends JPanel{
 		east.add(rename);
 		
 		
+		
+		
 		JPanel west = new JPanel();
 		west.setBackground(new Color(0,76,153));
 		west.add(disconnect);
@@ -142,92 +136,91 @@ public class MainPanel extends JPanel{
 		toolBar.add(new TitleBar(), BorderLayout.NORTH);
 		toolBar.add(o, BorderLayout.SOUTH);
 		
-		
-		
-		//Creation of JTextArea
-		queryWrite = new JTextArea(8,20);
-		queryWrite.setLineWrap(true);
-        queryWrite.setWrapStyleWord(true);
-        queryWrite.setOpaque(true);	
-		//Creation of JButton execute
-		execute = new JButton("Execute query");
-		execute.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),(BorderFactory.createEmptyBorder(5,5,5,5))));
-		
-		executePanel = new JPanel();
-		GridLayout grid = new GridLayout(1,1);
-		executePanel.setLayout(grid);
-		executePanel.add(execute);
-		executePanel.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(10,40,10,40))));
-		
-		
-		
-		//Creation of DatabaseName label
-		nameDataBase = new JLabel("Database_Name");
-		//Creation of ScrollBar
-		scrollPane1 = new JScrollPane(queryWrite);
-		
-		titlePanel = new JPanel();
-		GridLayout grd = new GridLayout(1,2);
-		titlePanel.setLayout(grd);
-		titlePanel.add(nameDataBase);
-		titlePanel.add(executePanel);
-		titlePanel.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),(BorderFactory.createEmptyBorder(10,10,10,10))));
-        
-		//Creation panelInputText and addButton
-		panelInputText = new JPanel();
-		BorderLayout br = new BorderLayout();
-		panelInputText.setLayout(br);
-		//panelInputText.add(scrollPane1, BorderLayout.CENTER);
-		panelInputText.add(scrollPane1, BorderLayout.CENTER);
-		panelInputText.add(titlePanel, BorderLayout.NORTH);
-		panelInputText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(16,16,16,16))));
-				
-		//Creation of queryResult textArea
-		queryResult = new JTextArea(8,20);
-		queryResult.setEditable(false);
-		//Creation of scrollPane2
-		scrollPane2 = new JScrollPane(queryResult);
-		//Creation of label Result
-		resultQuery = new JLabel("Result");
-		resultQuery.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		//Creation of resultQuery Panel
-		panelResult = new JPanel();
-		GridLayout gp = new GridLayout(2,1);
-		panelResult.setLayout(gp);
-		panelResult.add(resultQuery);
-		panelResult.add(scrollPane2);
-		panelResult.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(16,16,16,16))));
-		
-		//Creation of mainPanelText
-		mainPanelText = new JPanel();
-		GridLayout gr = new GridLayout(2,1);
-		mainPanelText.setLayout(gr);
-		mainPanelText.add(panelInputText);
-		mainPanelText.add(panelResult);
-		mainPanelText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),(BorderFactory.createEmptyBorder(16,16,16,16))));
-		
-		//Les données du tableau
-	    Object[][] data = {
-	      {"Agent"},
-	      {"Client"},
-	      {"Opération"},
-	      {"Agence"}
-	    };
 
-	    //Les titres des colonnes
-	    String  title[] = {"Name of table"};
-		
-		table = new JTable(data, title);
-		scrollPane3 = new JScrollPane(table);
-		
-		JPanel tablePan = new JPanel();
-		tablePan.add(scrollPane3);
 		
 		BorderLayout border = new BorderLayout();
 		setLayout(border);
 		add(toolBar, BorderLayout.NORTH);
-		add(mainPanelText, BorderLayout.CENTER);
-		add(tablePan, BorderLayout.WEST);
+		
+		addMouseListener(new MouseAdapter() {
+            @Override
+            //on recupere les coordonnées de la souris
+            public void mousePressed(MouseEvent e) {
+                posX = e.getX();    //Position X de la souris au clic
+                posY = e.getY();    //Position Y de la souris au clic
+            }
+        });
+         
+        addMouseMotionListener(new MouseMotionAdapter() {
+            // A chaque deplacement on recalcul le positionnement de la fenetre
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int depX = e.getX() - posX;
+                int depY = e.getY() - posY;
+                setLocation(getX()+depX, getY()+depY);
+            }
+        });	
+		
+		create.addActionListener(new MainPanelControler(this, ihm));
 	}
+
+	/**
+	 * @return the toolBar
+	 */
+	public JToolBar getToolBar() {
+		return toolBar;
+	}
+
+	/**
+	 * @return the create
+	 */
+	public JButton getCreate() {
+		return create;
+	}
+
+	/**
+	 * @return the open
+	 */
+	public JButton getOpen() {
+		return open;
+	}
+
+	/**
+	 * @return the save
+	 */
+	public JButton getSave() {
+		return save;
+	}
+
+	/**
+	 * @return the saveAs
+	 */
+	public JButton getSaveAs() {
+		return saveAs;
+	}
+
+	/**
+	 * @return the rename
+	 */
+	public JButton getRename() {
+		return rename;
+	}
+
+	/**
+	 * @return the disconnect
+	 */
+	public JButton getDisconnect() {
+		return disconnect;
+	}
+
+
+	/**
+	 * @return the consol
+	 */
+	public JButton getConsol() {
+		return consol;
+	}
+
+	
+	
 }

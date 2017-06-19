@@ -3,6 +3,9 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +26,7 @@ import controler.TitleBarControler;
 
 public class TitleBar extends JPanel {
 
+	
 	private JButton exit;
 	private JButton extend;
 	private JButton reduce;
@@ -33,6 +37,10 @@ public class TitleBar extends JPanel {
 	}
 	
 	private void initComponent() throws IOException{
+		
+		
+		
+		  
 		
 		setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE),(BorderFactory.createEmptyBorder(5,5,5,5))));
 		

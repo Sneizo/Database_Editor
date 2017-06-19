@@ -5,6 +5,9 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -15,6 +18,7 @@ import javax.swing.JPanel;
  *
  */
 public class Interface extends JFrame {
+	
 	
 	
 	public Interface() throws IOException{
@@ -33,12 +37,13 @@ public class Interface extends JFrame {
 		setResizable(false);
 		setBackground(Color.WHITE);
 		
-		
-		
 		BorderLayout border = new BorderLayout();
 		setLayout(border);
 		//add(new TitleBar(), BorderLayout.NORTH);
-		add(new MainPanel(), BorderLayout.CENTER);
+		add(new MainPanel(this), BorderLayout.NORTH);
+		add(new PanelQuery(), BorderLayout.CENTER);
+		
+		
 		
 	}
 	
