@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import view.Create;
 import view.Interface;
 import view.MainPanel;
+import view.Profil;
 import view.Rename;
 import view.TitleBar;
 
@@ -19,13 +20,15 @@ public class ControllerMainPanel implements ActionListener {
 	private Create create;
 	private TitleBar titleBar;
 	private Rename rename;
+	private Profil profil;
 
-	public ControllerMainPanel(MainPanel mainPanel, Interface interf,Create create, TitleBar titleBar, Rename rename) {
+	public ControllerMainPanel(MainPanel mainPanel, Interface interf,Create create, TitleBar titleBar, Rename rename, Profil profil) {
 		this.mainPanel = mainPanel;
 		this.interf = interf;
 		this.create = create;
 		this.titleBar = titleBar;
 		this.rename = rename;
+		this.profil = profil;
 	}
 
 	public void actionPerformed(ActionEvent ae) {
@@ -58,7 +61,11 @@ public class ControllerMainPanel implements ActionListener {
 		}
 		
 		if (ae.getSource() == (mainPanel.getDisconnect())) {
-
+			JPanel pane = new JPanel();
+			pane.setLayout(new BorderLayout());
+			pane.add(titleBar, BorderLayout.NORTH);
+			pane.add(profil, BorderLayout.CENTER);
+			this.interf.setPanel(pane);
 		}
 
 
