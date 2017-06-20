@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import controler.CloseButtonListener;
+import controller.CloseButtonListener;
 
 
 /**

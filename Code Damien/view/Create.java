@@ -40,7 +40,7 @@ public class Create extends JPanel{
 		this.newName.setForeground(Color.WHITE);
 		this.newTableName = new JTextField();
 		this.newTableName.setFont(fontJT);
-		this.newTableName.setPreferredSize(new Dimension(400,400));
+	//	this.newTableName.setPreferredSize(new Dimension(400,400));
 		this.newTableName.setBackground(new Color(80,80,80));
 		this.newTableName.setForeground(Color.WHITE);
 		this.newTableName.setHorizontalAlignment(JTextField.CENTER);

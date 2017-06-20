@@ -57,6 +57,7 @@ public class InformationBar extends JPanel{
 		hours.setText(String.valueOf(h)+"h"+String.valueOf(min)); 
 		hours.setFont(f);
 		hours.setForeground(Color.WHITE);
+		hours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		
 		BorderLayout br = new BorderLayout();
 		setLayout(br);
@@ -64,10 +65,34 @@ public class InformationBar extends JPanel{
 		add(user, BorderLayout.WEST);
 		add(date, BorderLayout.EAST);
 		
-		setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(10,10,10,10))));
+		setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(16,10,10,10))));
+		setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.WHITE));
 		
 		
 		
 	}
 
+	/**
+	 * @return the date
+	 */
+	public JLabel getDate() {
+		return date;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public JLabel getUser() {
+		return user;
+	}
+
+	/**
+	 * @return the hours
+	 */
+	public JLabel getHours() {
+		return hours;
+	}
+
+	
+	
 }

@@ -98,7 +98,7 @@ public class MainPanel extends JPanel{
 		
 		//Creation of toolbar and add Button		
 		JPanel east = new JPanel();
-		east.setBackground(new Color(0,76,153));
+		east.setBackground(new Color(80,80,80));
 		GridLayout a = new GridLayout(1,6);
 		east.setLayout(a);		
 		east.add(create);	
@@ -111,15 +111,15 @@ public class MainPanel extends JPanel{
 		
 		
 		JPanel west = new JPanel();
-		west.setBackground(new Color(0,76,153));
+		west.setBackground(new Color(80,80,80));
 		west.add(disconnect);
 		west.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(5,5,5,5))));
 		
 		JPanel cen = new JPanel();
-		cen.setBackground(new Color(0,76,153));
+		cen.setBackground(new Color(80,80,80));
 		
 		toolBar = new JToolBar();
-		toolBar.setBackground(new Color(0,76,153));
+		toolBar.setBackground(new Color(80,80,80));
 		toolBar.setFloatable(false);
 		
 		JPanel o = new JPanel();
@@ -128,8 +128,7 @@ public class MainPanel extends JPanel{
 		o.add(east, BorderLayout.WEST);
 		o.add(cen, BorderLayout.CENTER);
 		
-		toolBar.setLayout(new BorderLayout());
-		toolBar.add(new TitleBar(), BorderLayout.NORTH);
+		toolBar.setLayout(new BorderLayout());		
 		toolBar.add(o, BorderLayout.SOUTH);
 		
 
