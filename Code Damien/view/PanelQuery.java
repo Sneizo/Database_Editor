@@ -189,11 +189,9 @@ public class PanelQuery extends JPanel {
 		// }
 		// });
 
-		GridLayout g = new GridLayout(1, 2);
-		setLayout(g);
-		add(scrollPane3);
-		add(mainPanelText);
-
+		this.setLayout(new BorderLayout());
+		add(scrollPane3,BorderLayout.WEST);
+		add(mainPanelText,BorderLayout.CENTER);
 	}
 
 	/**
