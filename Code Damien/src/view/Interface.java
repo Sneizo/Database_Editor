@@ -27,6 +27,7 @@ public class Interface extends JFrame {
 	private MainPanel mainPanel;
 	private TitleBar titleBar;
 	private InformationBar informationBar;
+	private Profil profil;
 
 	private MainController mainController;
 
@@ -39,8 +40,9 @@ public class Interface extends JFrame {
 		mainPanel = new MainPanel();
 		titleBar = new TitleBar();
 		informationBar = new InformationBar();
+		profil = new Profil();
 
-		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar);
+		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar, profil);
 		
 		this.setSize(1080, 720);
 		// Recupere la taille de l'ecran et fait en fonction

@@ -8,6 +8,7 @@ import view.InformationBar;
 import view.Interface;
 import view.MainPanel;
 import view.PanelQuery;
+import view.Profil;
 import view.Rename;
 import view.TitleBar;
 
@@ -32,9 +33,11 @@ public class MainController {
 	private ControllerMainPanel controllerMainPanel;
 	private ControllerTitleBar controllerTitleBar;
 	private ControllerPanelQuery controllerPanelQuery;
+	private ControllerProfil controllerProfil;
+	private Profil profil;
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
-			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar) {
+			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
 		
 		this.connexion = connexion;
 		this.create = create;
@@ -44,6 +47,7 @@ public class MainController {
 		this.panelQuery = panelQuery;
 		this.interf = interf;
 		this.informationBar = informationBar;
+		this.profil = profil;
 		
 		this.mouseListenerJFrame = new MouseListenerJFrame(interf, interf.getPosX(), interf.getPosX());
 		this.mouseMotionListenner = new MouseMotionListenner(interf);
@@ -51,16 +55,20 @@ public class MainController {
 		
 		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar);
 		initConnexion();
-		this.controllerCreate = new ControllerCreate(create,interf);
+		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initCreate();
 		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initRename();
-		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename);
+		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil);
 		initMainPanel();
 		this.controllerTitleBar = new ControllerTitleBar(titleBar,interf);
 		initTitleBar();
 		this.controllerPanelQuery = new ControllerPanelQuery(panelQuery,interf);
 		initPanelQuery();
+		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion);
+		initControllerProfil();
+		
+		
 	}
 	
 	public void initConnexion() {
@@ -116,5 +124,14 @@ public class MainController {
 		this.titleBar.addMouseListener(mouseListenerJFrame);
 		this.titleBar.addMouseMotionListener(mouseMotionListenner);
 	}
-
+	
+	public void initControllerProfil(){
+		this.profil.getHome().addActionListener(controllerProfil);
+		this.profil.getHome().addMouseListener(controllerProfil);
+		this.profil.getSetting().addMouseListener(controllerProfil);
+		this.profil.getDisconnect().addMouseListener(controllerProfil);
+		this.profil.getDisconnect().addActionListener(controllerProfil);
+	}
+	
+	
 }
