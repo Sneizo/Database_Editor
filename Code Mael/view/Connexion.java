@@ -1,4 +1,4 @@
-package vue;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -79,6 +79,7 @@ public class Connexion extends JPanel {
 		//this.userLog.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.userLog.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.userLog.setHorizontalAlignment(JTextField.CENTER);
+		this.userLog.setCaretColor(Color.WHITE);
 		
 		
 		
@@ -89,14 +90,16 @@ public class Connexion extends JPanel {
 		this.passLog.setForeground(Color.WHITE);
 		this.passLog.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.passLog.setHorizontalAlignment(JTextField.CENTER);
+		this.passLog.setCaretColor(Color.WHITE);
 		
 		this.dataNameLog = new JTextField();
 		this.dataNameLog.setFont(font);
-		this.dataNameLog.setText("Name of the data base");
+		this.dataNameLog.setText("URL of the data base");
 		this.dataNameLog.setBackground(new Color(80,80,80));
 		this.dataNameLog.setForeground(Color.WHITE);
 		this.dataNameLog.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.dataNameLog.setHorizontalAlignment(JTextField.CENTER);
+		this.dataNameLog.setCaretColor(Color.WHITE);
 		
 		
 		
@@ -135,6 +138,7 @@ public class Connexion extends JPanel {
 		this.userSub.setForeground(Color.WHITE);
 		this.userSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.userSub.setHorizontalAlignment(JTextField.CENTER);
+		this.userSub.setCaretColor(Color.WHITE);
 		
 		//this.userSub.setBorder(null);
 		
@@ -145,6 +149,7 @@ public class Connexion extends JPanel {
 		this.passSub.setForeground(Color.WHITE);
 		this.passSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.passSub.setHorizontalAlignment(JTextField.CENTER);
+		this.passSub.setCaretColor(Color.WHITE);
 		
 		this.confirmPassSub = new JPasswordField("");
 		this.confirmPassSub.setFont(font);
@@ -153,20 +158,23 @@ public class Connexion extends JPanel {
 		this.confirmPassSub.setForeground(Color.WHITE);
 		this.confirmPassSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.confirmPassSub.setHorizontalAlignment(JTextField.CENTER);
+		this.confirmPassSub.setCaretColor(Color.WHITE);
 		
 		this.dataNameLogSub = new JTextField();
 		this.dataNameLogSub.setFont(font);
-		this.dataNameLogSub.setText("Name of the data base");
+		this.dataNameLogSub.setText("URL of the data base");
 		this.dataNameLogSub.setBackground(new Color(80,80,80));
 		this.dataNameLogSub.setForeground(Color.WHITE);
 		this.dataNameLogSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.dataNameLogSub.setHorizontalAlignment(JTextField.CENTER);
+		this.dataNameLogSub.setCaretColor(Color.WHITE);
 		
 		this.subscribe = new JButton();
 		this.subscribe.setText("SUBSCRIBE");
 		this.subscribe.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		this.subscribe.setBackground(new Color(80,80,80));
 		this.subscribe.setForeground(Color.WHITE);
+	
 
 		this.subPane.add(this.user2);
 		this.subPane.add(this.userSub);

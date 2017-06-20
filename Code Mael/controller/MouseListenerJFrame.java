@@ -6,7 +6,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import vue.Interface;
+import view.Interface;
 
 /**
  * @author Damien
@@ -48,6 +48,8 @@ public class MouseListenerJFrame implements MouseListener {
 	public void mousePressed(MouseEvent e) {
         posX = e.getX();    //Position X de la souris au clic
         posY = e.getY();    //Position Y de la souris au clic
+        ihm.setPosX(posX);
+        ihm.setPosY(posY);
     }
 
 	@Override

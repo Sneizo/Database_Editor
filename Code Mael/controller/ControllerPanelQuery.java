@@ -3,8 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vue.Interface;
-import vue.PanelQuery;
+import view.Interface;
+import view.PanelQuery;
 
 public class ControllerPanelQuery implements ActionListener {
 	

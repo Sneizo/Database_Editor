@@ -1,11 +1,19 @@
 package controller;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JPanel;
 
-import vue.*;
+import view.Connexion;
+import view.InformationBar;
+import view.Interface;
+import view.MainPanel;
+import view.PanelQuery;
+import view.TitleBar;
 
 public class ControllerConnexion implements FocusListener, ActionListener{
 	
@@ -14,14 +22,16 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 	private TitleBar titleBar;
 	private MainPanel mainPanel;
 	private PanelQuery panelQuery;
+	private InformationBar ib;
 	
-	public ControllerConnexion(Connexion connexion, Interface interf, TitleBar titleBar, MainPanel mainPanel, PanelQuery panelQuery) {
+	public ControllerConnexion(Connexion connexion, Interface interf, TitleBar titleBar, MainPanel mainPanel, PanelQuery panelQuery, InformationBar ib) {
 		
 		this.connexion = connexion;
 		this.interf = interf;
 		this.titleBar = titleBar;
 		this.mainPanel = mainPanel;
 		this.panelQuery = panelQuery;
+		this.ib = ib;
 		
 	}
 	
@@ -39,7 +49,7 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 		
 		if(fe.getSource() == this.connexion.getDataNameLog()) {
 			if(this.connexion.getDataNameLog().getText().equals(""))
-				this.connexion.setDataNameLog("Name of the data base");
+				this.connexion.setDataNameLog("URL of the data base");
 		}
 		
 		if(fe.getSource() == this.connexion.getUserSub()) {
@@ -59,7 +69,7 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 		
 		if(fe.getSource() == this.connexion.getDataNameLogSub()) {
 			if(this.connexion.getDataNameLogSub().getText().equals(""))
-				this.connexion.setDataNameLogSub("Name of the data base");
+				this.connexion.setDataNameLogSub("URL of the data base");
 		}
 		
 	}
@@ -78,7 +88,7 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 		}
 		
 		if(fe.getSource() == this.connexion.getDataNameLog()) {
-			if(this.connexion.getDataNameLog().getText().equals("Name of the data base"))
+			if(this.connexion.getDataNameLog().getText().equals("URL of the data base"))
 				this.connexion.setDataNameLog("");
 		}
 		
@@ -98,7 +108,7 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 		}
 		
 		if(fe.getSource() == this.connexion.getDataNameLogSub()) {
-			if(this.connexion.getDataNameLogSub().getText().equals("Name of the data base"))
+			if(this.connexion.getDataNameLogSub().getText().equals("URL of the data base"))
 				this.connexion.setDataNameLogSub("");
 		}
 	}
@@ -106,19 +116,42 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == this.connexion.getConnect()) {
-			JPanel pane = new JPanel();
-			JPanel main = new JPanel();
-			pane.setLayout(new BorderLayout());
-			main.setLayout(new BorderLayout());
-			pane.add(titleBar,BorderLayout.NORTH);
-			pane.add(mainPanel, BorderLayout.CENTER);
-			main.add(pane, BorderLayout.NORTH);
-			main.add(panelQuery, BorderLayout.CENTER);
 			
-			this.interf.setPanel(main);
+			if (!this.connexion.getUserLog().getText().equals("Login") && !this.connexion.getUserLog().getText().equals("")) {
+				if (!this.connexion.getPassLog().getText().equals("Password") && !this.connexion.getPassLog().getText().equals("")) {
+					if (!this.connexion.getDataNameLog().getText().equals("URL of the data base") && !this.connexion.getDataNameLog().getText().equals("")) {
+						ConnexionJDBC connexionJDBC = new ConnexionJDBC(this.connexion.getUserLog().getText(),this.connexion.getPassLog().getText(),this.connexion.getDataNameLog().getText());
+						connexionJDBC.connexion();
+						if(connexionJDBC.getConnect()) {
+							
+							JPanel pane = new JPanel();
+							JPanel main = new JPanel();
+							ib.getUser().setText(connexion.getUserLog().getText());
+							pane.setLayout(new BorderLayout());
+							main.setLayout(new BorderLayout());
+							pane.add(titleBar,BorderLayout.NORTH);
+							pane.add(mainPanel, BorderLayout.CENTER);
+							main.add(pane, BorderLayout.NORTH);
+							main.add(panelQuery, BorderLayout.CENTER);
+							main.add(ib, BorderLayout.SOUTH);
+							
+							this.interf.setPanel(main);
+						}
+					}else {
+						System.out.println("Incorrect Data Base");
+					}
+				}else {
+					System.out.println("Incorrect Password");
+				}
+			}else  {
+				System.out.println("Incorrect login");
+			}
+
+			
 		}
 		
 		if(ae.getSource() == this.connexion.getSubscribe()) {
+			CreateUserJDBC create = new CreateUserJDBC(null, null, null, null);
 			
 		}
 	}

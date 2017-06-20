@@ -1,21 +1,15 @@
 /**
  * 
  */
-package vue;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.MainController;
-import controller.MouseListenerJFrame;
-import controller.MouseMotionListenner;
 
 /**
  * @author Damien
@@ -32,6 +26,8 @@ public class Interface extends JFrame {
 	private PanelQuery panelQuery;
 	private MainPanel mainPanel;
 	private TitleBar titleBar;
+	private InformationBar informationBar;
+	private Profil profil;
 
 	private MainController mainController;
 
@@ -43,9 +39,11 @@ public class Interface extends JFrame {
 		panelQuery = new PanelQuery();
 		mainPanel = new MainPanel();
 		titleBar = new TitleBar();
+		informationBar = new InformationBar();
+		profil = new Profil();
 
-		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this);
-
+		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar, profil);
+		
 		this.setSize(1080, 720);
 		// Recupere la taille de l'ecran et fait en fonction
 		// Dimension dimension =
@@ -55,7 +53,7 @@ public class Interface extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.add(titleBar, BorderLayout.NORTH);
 		this.add(connexion, BorderLayout.CENTER);
-
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}

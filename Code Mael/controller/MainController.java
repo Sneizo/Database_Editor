@@ -1,10 +1,16 @@
 package controller;
 
-import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 
-import vue.*;
+import view.Connexion;
+import view.Create;
+import view.InformationBar;
+import view.Interface;
+import view.MainPanel;
+import view.PanelQuery;
+import view.Profil;
+import view.Rename;
+import view.TitleBar;
 
 public class MainController {
 	
@@ -16,6 +22,7 @@ public class MainController {
 	private PanelQuery panelQuery;
 	private JFrame frame;
 	private Interface interf;
+	private InformationBar informationBar;
 	
 	private MouseListenerJFrame mouseListenerJFrame;
 	private MouseMotionListenner mouseMotionListenner;
@@ -26,9 +33,11 @@ public class MainController {
 	private ControllerMainPanel controllerMainPanel;
 	private ControllerTitleBar controllerTitleBar;
 	private ControllerPanelQuery controllerPanelQuery;
+	private ControllerProfil controllerProfil;
+	private Profil profil;
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
-			TitleBar titleBar, PanelQuery panelQuery, Interface interf) {
+			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
 		
 		this.connexion = connexion;
 		this.create = create;
@@ -37,22 +46,29 @@ public class MainController {
 		this.titleBar = titleBar;
 		this.panelQuery = panelQuery;
 		this.interf = interf;
+		this.informationBar = informationBar;
+		this.profil = profil;
 		
 		this.mouseListenerJFrame = new MouseListenerJFrame(interf, interf.getPosX(), interf.getPosX());
 		this.mouseMotionListenner = new MouseMotionListenner(interf);
+		iniJFrame();
 		
-		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery);
+		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar);
 		initConnexion();
-		this.controllerCreate = new ControllerCreate(create,interf);
+		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initCreate();
-		this.controllerRename = new ControllerRename(rename,interf);
+		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initRename();
-		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename);
+		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil);
 		initMainPanel();
 		this.controllerTitleBar = new ControllerTitleBar(titleBar,interf);
 		initTitleBar();
 		this.controllerPanelQuery = new ControllerPanelQuery(panelQuery,interf);
 		initPanelQuery();
+		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion);
+		initControllerProfil();
+		
+		
 	}
 	
 	public void initConnexion() {
@@ -77,9 +93,9 @@ public class MainController {
 	
 	public void initRename() {
 		this.rename.getOldTableName().addFocusListener(controllerRename);
-		this.create.getNewTableName().addFocusListener(controllerRename);
-		this.create.getConfirmer().addActionListener(controllerRename);
-		this.create.getAnnuler().addActionListener(controllerRename);
+		this.rename.getNewTableName().addFocusListener(controllerRename);
+		this.rename.getConfirmer().addActionListener(controllerRename);
+		this.rename.getAnnuler().addActionListener(controllerRename);
 	}
 	
 	public void initMainPanel() {
@@ -105,8 +121,17 @@ public class MainController {
 	}
 	
 	public void iniJFrame() {
-		this.frame.addMouseListener(mouseListenerJFrame);
-		this.frame.addMouseMotionListener(mouseMotionListenner);
+		this.titleBar.addMouseListener(mouseListenerJFrame);
+		this.titleBar.addMouseMotionListener(mouseMotionListenner);
 	}
-
+	
+	public void initControllerProfil(){
+		this.profil.getHome().addActionListener(controllerProfil);
+		this.profil.getHome().addMouseListener(controllerProfil);
+		this.profil.getSetting().addMouseListener(controllerProfil);
+		this.profil.getDisconnect().addMouseListener(controllerProfil);
+		this.profil.getDisconnect().addActionListener(controllerProfil);
+	}
+	
+	
 }

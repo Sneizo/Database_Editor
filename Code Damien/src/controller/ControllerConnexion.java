@@ -116,21 +116,42 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == this.connexion.getConnect()) {
-			JPanel pane = new JPanel();
-			JPanel main = new JPanel();
-			ib.getUser().setText(connexion.getUserLog().getText());
-			pane.setLayout(new BorderLayout());
-			main.setLayout(new BorderLayout());
-			pane.add(titleBar,BorderLayout.NORTH);
-			pane.add(mainPanel, BorderLayout.CENTER);
-			main.add(pane, BorderLayout.NORTH);
-			main.add(panelQuery, BorderLayout.CENTER);
-			main.add(ib, BorderLayout.SOUTH);
 			
-			this.interf.setPanel(main);
+			if (!this.connexion.getUserLog().getText().equals("Login") && !this.connexion.getUserLog().getText().equals("")) {
+				if (!this.connexion.getPassLog().getText().equals("Password") && !this.connexion.getPassLog().getText().equals("")) {
+					if (!this.connexion.getDataNameLog().getText().equals("URL of the data base") && !this.connexion.getDataNameLog().getText().equals("")) {
+						ConnexionJDBC connexionJDBC = new ConnexionJDBC(this.connexion.getUserLog().getText(),this.connexion.getPassLog().getText(),this.connexion.getDataNameLog().getText());
+						connexionJDBC.connexion();
+						if(connexionJDBC.getConnect()) {
+							
+							JPanel pane = new JPanel();
+							JPanel main = new JPanel();
+							ib.getUser().setText(connexion.getUserLog().getText());
+							pane.setLayout(new BorderLayout());
+							main.setLayout(new BorderLayout());
+							pane.add(titleBar,BorderLayout.NORTH);
+							pane.add(mainPanel, BorderLayout.CENTER);
+							main.add(pane, BorderLayout.NORTH);
+							main.add(panelQuery, BorderLayout.CENTER);
+							main.add(ib, BorderLayout.SOUTH);
+							
+							this.interf.setPanel(main);
+						}
+					}else {
+						System.out.println("Incorrect Data Base");
+					}
+				}else {
+					System.out.println("Incorrect Password");
+				}
+			}else  {
+				System.out.println("Incorrect login");
+			}
+
+			
 		}
 		
 		if(ae.getSource() == this.connexion.getSubscribe()) {
+			CreateUserJDBC create = new CreateUserJDBC(null, null, null, null);
 			
 		}
 	}

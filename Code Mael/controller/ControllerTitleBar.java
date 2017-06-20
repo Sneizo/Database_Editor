@@ -11,8 +11,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import vue.Interface;
-import vue.TitleBar;
+import view.Interface;
+import view.TitleBar;
 
 public class ControllerTitleBar implements ActionListener, MouseListener {
 

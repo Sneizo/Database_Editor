@@ -3,9 +3,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JFrame;
-
-import vue.Interface;
+import view.Interface;
 
 public class MouseMotionListenner implements MouseMotionListener{
 
