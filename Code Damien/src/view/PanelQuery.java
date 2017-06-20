@@ -5,6 +5,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -133,7 +134,7 @@ public class PanelQuery extends JPanel {
 				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
 
 		// Creation of queryResult textArea
-		queryResult = new JTextArea(8, 20);
+		queryResult = new JTextArea(16, 20);
 		queryResult.setEditable(false);
 		// Creation of scrollPane2
 		scrollPane2 = new JScrollPane(queryResult);
@@ -167,27 +168,10 @@ public class PanelQuery extends JPanel {
 
 		table = new JTable(data, title);
 		scrollPane3 = new JScrollPane(table);
+		scrollPane3.setPreferredSize(new Dimension(200,0));
 
 		JPanel tablePan = new JPanel();
 		tablePan.add(scrollPane3);
-
-		// JTabbedPane tp = new JTabbedPane();
-		// tp.addTab("tab1", this);
-		// tp.addTab("+", new JLabel());
-		// tp.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mouseClicked(MouseEvent e) {
-		// if (tp.getSelectedComponent() instanceof JLabel) {
-		// int count = tp.getTabCount();
-		// JLabel newTabLabel = new JLabel("tab" + count);
-		// PanelQuery newTab = new PanelQuery();
-		// newTab.add(newTabLabel);
-		// tp.add(newTab, count - 1);
-		// tp.setTitleAt(count - 1, "tab" + count);
-		// tp.setSelectedComponent(newTab);
-		// }
-		// }
-		// });
 
 		this.setLayout(new BorderLayout());
 		add(scrollPane3,BorderLayout.WEST);

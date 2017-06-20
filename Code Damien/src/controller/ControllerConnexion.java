@@ -8,6 +8,8 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JPanel;
 
+import model.ConnexionJDBC;
+import model.CreateUserJDBC;
 import view.Connexion;
 import view.InformationBar;
 import view.Interface;
@@ -23,8 +25,9 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 	private MainPanel mainPanel;
 	private PanelQuery panelQuery;
 	private InformationBar ib;
+	private ConnexionJDBC con;
 	
-	public ControllerConnexion(Connexion connexion, Interface interf, TitleBar titleBar, MainPanel mainPanel, PanelQuery panelQuery, InformationBar ib) {
+	public ControllerConnexion(Connexion connexion, Interface interf, TitleBar titleBar, MainPanel mainPanel, PanelQuery panelQuery, InformationBar ib, ConnexionJDBC con) {
 		
 		this.connexion = connexion;
 		this.interf = interf;
@@ -32,6 +35,7 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 		this.mainPanel = mainPanel;
 		this.panelQuery = panelQuery;
 		this.ib = ib;
+		this.con = con;
 		
 	}
 	
@@ -120,9 +124,9 @@ public class ControllerConnexion implements FocusListener, ActionListener{
 			if (!this.connexion.getUserLog().getText().equals("Login") && !this.connexion.getUserLog().getText().equals("")) {
 				if (!this.connexion.getPassLog().getText().equals("Password") && !this.connexion.getPassLog().getText().equals("")) {
 					if (!this.connexion.getDataNameLog().getText().equals("URL of the data base") && !this.connexion.getDataNameLog().getText().equals("")) {
-						ConnexionJDBC connexionJDBC = new ConnexionJDBC(this.connexion.getUserLog().getText(),this.connexion.getPassLog().getText(),this.connexion.getDataNameLog().getText());
-						connexionJDBC.connexion();
-						if(connexionJDBC.getConnect()) {
+					
+						con.connexion(this.connexion.getUserLog().getText(),this.connexion.getPassLog().getText(),this.connexion.getDataNameLog().getText());
+						if(con.getConnect()) {
 							
 							JPanel pane = new JPanel();
 							JPanel main = new JPanel();
