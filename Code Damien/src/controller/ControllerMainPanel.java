@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import model.JDBCOperation;
 import view.Create;
 import view.Interface;
 import view.MainPanel;
@@ -29,6 +30,7 @@ public class ControllerMainPanel implements ActionListener {
 		this.titleBar = titleBar;
 		this.rename = rename;
 		this.profil = profil;
+		
 	}
 
 	public void actionPerformed(ActionEvent ae) {

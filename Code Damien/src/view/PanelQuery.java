@@ -269,4 +269,62 @@ public class PanelQuery extends JPanel {
 		return executePanel;
 	}
 
+	/**
+	 * @return the table
+	 */
+	public JTable getTable() {
+		return table;
+	}
+
+	/**
+	 * @param table the table to set
+	 */
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	/**
+	 * @param mainPanelText the mainPanelText to set
+	 */
+	public void setMainPanelText(JPanel mainPanelText) {
+		this.mainPanelText = mainPanelText;
+	}
+
+	/**
+	 * @param nameDataBase the nameDataBase to set
+	 */
+	public void setNameDataBase(JLabel nameDataBase) {
+		this.nameDataBase = nameDataBase;
+	}
+
+	/**
+	 * @param queryResult the queryResult to set
+	 */
+	public void setQueryResult(JTextArea queryResult) {
+		this.queryResult = queryResult;
+	}
+
+	/**
+	 * @param resultQuery the resultQuery to set
+	 */
+	public void setResultQuery(JLabel resultQuery) {
+		this.resultQuery = resultQuery;
+	}
+
+	/**
+	 * @param titlePanel the titlePanel to set
+	 */
+	public void setTitlePanel(JPanel titlePanel) {
+		this.titlePanel = titlePanel;
+	}
+
+	/**
+	 * @param executePanel the executePanel to set
+	 */
+	public void setExecutePanel(JPanel executePanel) {
+		this.executePanel = executePanel;
+	}
+	
+	
+
 }

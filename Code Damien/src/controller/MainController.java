@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JFrame;
 
 import model.ConnexionJDBC;
+import model.JDBCResultat;
 import view.Connexion;
 import view.Create;
 import view.InformationBar;
@@ -52,6 +53,8 @@ public class MainController {
 		this.informationBar = informationBar;
 		this.profil = profil;
 		this.con = new ConnexionJDBC();
+		
+		
 		
 		this.mouseListenerJFrame = new MouseListenerJFrame(interf, interf.getPosX(), interf.getPosX());
 		this.mouseMotionListenner = new MouseMotionListenner(interf);
