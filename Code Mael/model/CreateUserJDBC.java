@@ -13,54 +13,79 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * This class create a user
- * Create a connection, create the user with the parameter and disconnect
+ * This class create a user Create a connection, create the user with the
+ * parameter and disconnect
+ * 
  * @author Mael & Damien
  */
 public class CreateUserJDBC extends JOptionPane {
 
 	private Connection conn;
 	private Statement stmt;
-	
+
 	private JLabel lab1, lab2;
 	private JTextField field1, field2;
+
+	private String dataBase;
 
 	public CreateUserJDBC(String login, String pass, String confirm, String database) {
 
 		JPanel pane = new JPanel();
 		lab1 = new JLabel("Login");
 		lab2 = new JLabel("Password");
-		
+
 		field1 = new JTextField();
 		field2 = new JTextField();
-		pane.setLayout(new GridLayout(2,2));
+		pane.setLayout(new GridLayout(2, 2));
 		pane.add(lab1);
 		pane.add(field1);
 		pane.add(lab2);
 		pane.add(field2);
-		
+
 		JOptionPane option = new JOptionPane();
+
+		option.showMessageDialog(null, pane);
 		
-		option.showInputDialog(pane);
-		
-//		connexion();
-//		
-//		create(login, pass);
-//
-//		disconect();
-		
+		if (login != null) {
+			if (pass != null) {
+				if (confirm != null) {
+					if (database != null) {
+						this.dataBase = database;
+						if (this.field1.getText() != null && !(this.field1.getText().equals(""))) {
+							if (this.field2.getText() != null && !this.field2.getText().equals("")) {
+
+								connexion(this.field1.getText(), this.field2.getText());
+
+								create(login, pass);
+
+								disconect();
+
+							}else {
+								System.out.println("ERREUR : password Admin incorrect");
+							}
+						}else {
+							System.out.println("ERREUR : login Admin incorrect");
+						}
+					}else {
+						System.out.println("ERREUR : DataBase incorrect");
+					}
+				}else {
+					System.out.println("ERREUR : ConfirmPassword incorrect");
+				}
+			}else {
+				System.out.println("ERREUR : Password incorrect");
+			}
+		}else {
+			System.out.println("ERREUR : login incorrect");
+		}
 	}
 
 	/**
 	 * This method create a connection with the data base
 	 */
-	private void connexion() {
+	private void connexion(String log, String pass) {
 		try {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("[user] Admin password: ");
-			System.out.print("[user] ");
-			String passAdmin = sc.nextLine();
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Database","SYSTEM",passAdmin);
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + dataBase,log,pass);
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
 			System.out.println("[user] User login or password incorrect.");
@@ -69,8 +94,11 @@ public class CreateUserJDBC extends JOptionPane {
 
 	/**
 	 * This method create the new user with the sql script and the parameter
-	 * @param login the login od the new user
-	 * @param mdp the password of the new user
+	 * 
+	 * @param login
+	 *            the login old the new user
+	 * @param mdp
+	 *            the password of the new user
 	 */
 	private void create(String login, String mdp) {
 		try {
@@ -80,7 +108,7 @@ public class CreateUserJDBC extends JOptionPane {
 			stmt.executeUpdate(grant);
 			System.out.println("[user] Utilisateur créé");
 		} catch (SQLException e) {
-			 e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("[user] Erreur dans la requête SQL.");
 		}
 	}

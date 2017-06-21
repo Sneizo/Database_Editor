@@ -31,7 +31,7 @@ public class Interface extends JFrame {
 
 	private MainController mainController;
 
-	public Interface() {
+	public Interface() throws InterruptedException {
 		init();
 		connexion = new Connexion();
 		rename = new Rename();
@@ -55,7 +55,7 @@ public class Interface extends JFrame {
 		this.add(connexion, BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
 	}
 
 	public void init() {

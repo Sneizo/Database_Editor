@@ -74,6 +74,13 @@ public class ControllerProfil implements ActionListener, MouseListener{
 			frame.add(titleBar, BorderLayout.NORTH);
 			frame.add(connexion, BorderLayout.SOUTH);
 			interf.setPanel(frame);
+			this.connexion.setUserLog("Login");
+			this.connexion.setPassLog("Password");
+			this.connexion.setDataNameLog("URL of the data base");
+			this.connexion.setUserSub("Name of the new user");
+			this.connexion.setPassSub("Password");
+			this.connexion.setConfirmPassSub("Password");
+			this.connexion.setDataNameSub("URL of the data base");
 		
 		}
 		

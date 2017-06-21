@@ -26,16 +26,8 @@ public class ConnexionJDBC {
 	/**
 	 * The constructor of the class set connect
 	 */
-	public ConnexionJDBC(String user, String password, String dataBase) {
-		if (user != null) {
-			this.user = user;
-		}
-		if (password != null) {
-			this.pass = password;
-		}
-		if (dataBase != null) {
-			this.database = dataBase;
-		}
+	public ConnexionJDBC() {
+	
 		this.connect = false;
 	}
 
@@ -45,9 +37,17 @@ public class ConnexionJDBC {
 	 * @throws InterruptedException
 	 * 
 	 */
-	public void connexion() {
+	public void connexion(String user, String password, String dataBase) {
 		if (connect == false) {		
-
+			if (user != null) {
+				this.user = user;
+			}
+			if (password != null) {
+				this.pass = password;
+			}
+			if (dataBase != null) {
+				this.database = dataBase;
+			}
 
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");

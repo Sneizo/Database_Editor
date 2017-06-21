@@ -70,9 +70,9 @@ public class TitleBar extends JPanel {
 		logo.setIcon(new ImageIcon(ImageIO.read(new File("data/images/logo.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
 		
 		JPanel panFinal = new JPanel();
-		panFinal.setLayout(new GridLayout(1,3));
+		panFinal.setLayout(new GridLayout(1,2));
 		panFinal.add(reduce);
-		panFinal.add(extend);
+		//panFinal.add(extend);
 		panFinal.add(exit);
 		
 		JPanel panFinal2 = new JPanel();

@@ -2,6 +2,8 @@ package controller;
 
 import javax.swing.JFrame;
 
+import model.ConnexionJDBC;
+import model.JDBCResultat;
 import view.Connexion;
 import view.Create;
 import view.InformationBar;
@@ -34,7 +36,9 @@ public class MainController {
 	private ControllerTitleBar controllerTitleBar;
 	private ControllerPanelQuery controllerPanelQuery;
 	private ControllerProfil controllerProfil;
+	private ControllerQuery controllerQuery;
 	private Profil profil;
+	private ConnexionJDBC con;
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
 			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
@@ -48,12 +52,15 @@ public class MainController {
 		this.interf = interf;
 		this.informationBar = informationBar;
 		this.profil = profil;
+		this.con = new ConnexionJDBC();
+		
+		
 		
 		this.mouseListenerJFrame = new MouseListenerJFrame(interf, interf.getPosX(), interf.getPosX());
 		this.mouseMotionListenner = new MouseMotionListenner(interf);
 		iniJFrame();
 		
-		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar);
+		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar, con);
 		initConnexion();
 		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initCreate();
@@ -67,6 +74,8 @@ public class MainController {
 		initPanelQuery();
 		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion);
 		initControllerProfil();
+		this.controllerQuery = new ControllerQuery(connexion, interf, titleBar, panelQuery, con);
+		initControllerQuery();
 		
 		
 	}
@@ -80,7 +89,7 @@ public class MainController {
 		this.connexion.getUserSub().addFocusListener(controllerConnexion);
 		this.connexion.getPassSub().addFocusListener(controllerConnexion);
 		this.connexion.getConfirmPassSub().addFocusListener(controllerConnexion);
-		this.connexion.getDataNameLogSub().addFocusListener(controllerConnexion);
+		this.connexion.getDataNameSub().addFocusListener(controllerConnexion);
 		this.connexion.getSubscribe().addActionListener(controllerConnexion);
 		
 	}
@@ -131,6 +140,10 @@ public class MainController {
 		this.profil.getSetting().addMouseListener(controllerProfil);
 		this.profil.getDisconnect().addMouseListener(controllerProfil);
 		this.profil.getDisconnect().addActionListener(controllerProfil);
+	}
+	
+	public void initControllerQuery(){
+		this.panelQuery.getExecute().addActionListener(controllerQuery);
 	}
 	
 	
