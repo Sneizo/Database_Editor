@@ -54,7 +54,12 @@ public class InformationBar extends JPanel{
 		int h = cal.get(Calendar.HOUR_OF_DAY); 
 		int min = cal.get(Calendar.MINUTE); 
 		hours = new JLabel();
-		hours.setText(String.valueOf(h)+"h"+String.valueOf(min)); 
+		
+		String str = String.valueOf(min);
+		if(str.length() == 1) {
+			str = "0"+str;
+		}
+		hours.setText(String.valueOf(h)+"h"+str); 
 		hours.setFont(f);
 		hours.setForeground(Color.WHITE);
 		hours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
