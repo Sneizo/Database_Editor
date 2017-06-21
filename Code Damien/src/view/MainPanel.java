@@ -26,6 +26,7 @@ public class MainPanel extends JPanel{
 	private JButton saveAs;
 	private JButton rename;
 	private JButton disconnect;	
+	private JButton refresh;
 	
 	private JButton consol;
 	
@@ -88,17 +89,20 @@ public class MainPanel extends JPanel{
 		disconnect.setBorderPainted(false);
 		disconnect.setBorder(null);
 		disconnect.setContentAreaFilled(false);
+		//Button refresh
+		refresh = new JButton("Refresh");
 		
 		//Creation of toolbar and add Button		
 		JPanel east = new JPanel();
 		east.setBackground(new Color(80,80,80));
-		GridLayout a = new GridLayout(1,6);
+		GridLayout a = new GridLayout(1,7);
 		east.setLayout(a);		
 		east.add(create);	
 		east.add(open);		
 		east.add(save);		
 		east.add(saveAs);		
 		east.add(rename);
+		east.add(refresh);
 		
 		
 		
@@ -193,7 +197,9 @@ public class MainPanel extends JPanel{
 		return consol;
 	}
 
-	
+	public JButton getRefresh() {
+		return refresh;
+	}
 	
 	
 }

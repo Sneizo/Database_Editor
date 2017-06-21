@@ -28,7 +28,7 @@ public class Connexion extends JPanel {
 	private JTextField userSub;
 	private JPasswordField passSub;
 	private JPasswordField confirmPassSub;
-	private JTextField dataNameLogSub;
+	private JTextField dataNameSub;
 	private JButton subscribe;
 
 	private ImageIcon image;
@@ -160,14 +160,14 @@ public class Connexion extends JPanel {
 		this.confirmPassSub.setHorizontalAlignment(JTextField.CENTER);
 		this.confirmPassSub.setCaretColor(Color.WHITE);
 		
-		this.dataNameLogSub = new JTextField();
-		this.dataNameLogSub.setFont(font);
-		this.dataNameLogSub.setText("URL of the data base");
-		this.dataNameLogSub.setBackground(new Color(80,80,80));
-		this.dataNameLogSub.setForeground(Color.WHITE);
-		this.dataNameLogSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
-		this.dataNameLogSub.setHorizontalAlignment(JTextField.CENTER);
-		this.dataNameLogSub.setCaretColor(Color.WHITE);
+		this.dataNameSub = new JTextField();
+		this.dataNameSub.setFont(font);
+		this.dataNameSub.setText("URL of the data base");
+		this.dataNameSub.setBackground(new Color(80,80,80));
+		this.dataNameSub.setForeground(Color.WHITE);
+		this.dataNameSub.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		this.dataNameSub.setHorizontalAlignment(JTextField.CENTER);
+		this.dataNameSub.setCaretColor(Color.WHITE);
 		
 		this.subscribe = new JButton();
 		this.subscribe.setText("SUBSCRIBE");
@@ -180,7 +180,7 @@ public class Connexion extends JPanel {
 		this.subPane.add(this.userSub);
 		this.subPane.add(this.passSub);
 		this.subPane.add(this.confirmPassSub);
-		this.subPane.add(this.dataNameLogSub);
+		this.subPane.add(this.dataNameSub);
 		this.subPane.add(this.subscribe);
 	}
 
@@ -213,8 +213,8 @@ public class Connexion extends JPanel {
 		return confirmPassSub;
 	}
 
-	public JTextField getDataNameLogSub() {
-		return dataNameLogSub;
+	public JTextField getDataNameSub() {
+		return dataNameSub;
 	}
 
 	public JButton getSubscribe() {
@@ -249,8 +249,8 @@ public class Connexion extends JPanel {
 		this.confirmPassSub.setText(confirmPassSub);
 	}
 
-	public void setDataNameLogSub(String dataNameLogSub) {
-		this.dataNameLogSub.setText(dataNameLogSub);
+	public void setDataNameSub(String dataNameSub) {
+		this.dataNameSub.setText(dataNameSub);
 	}
 
 }

@@ -80,7 +80,7 @@ public class ControllerProfil implements ActionListener, MouseListener{
 			this.connexion.setUserSub("Name of the new user");
 			this.connexion.setPassSub("Password");
 			this.connexion.setConfirmPassSub("Password");
-			this.connexion.setDataNameLogSub("URL of the data base");
+			this.connexion.setDataNameSub("URL of the data base");
 		
 		}
 		

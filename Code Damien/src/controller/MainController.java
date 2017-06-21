@@ -3,7 +3,8 @@ package controller;
 import javax.swing.JFrame;
 
 import model.ConnexionJDBC;
-import model.JDBCResultat;
+import model.ResultatJDBC;
+import model.SaveFileJDBC;
 import view.Connexion;
 import view.Create;
 import view.InformationBar;
@@ -38,7 +39,9 @@ public class MainController {
 	private ControllerProfil controllerProfil;
 	private ControllerQuery controllerQuery;
 	private Profil profil;
+	private SaveFileJDBC saveFile;
 	private ConnexionJDBC con;
+	
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
 			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
@@ -53,6 +56,7 @@ public class MainController {
 		this.informationBar = informationBar;
 		this.profil = profil;
 		this.con = new ConnexionJDBC();
+		this.saveFile = new SaveFileJDBC(panelQuery);
 		
 		
 		
@@ -66,7 +70,7 @@ public class MainController {
 		initCreate();
 		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initRename();
-		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil);
+		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil, saveFile, con, panelQuery);
 		initMainPanel();
 		this.controllerTitleBar = new ControllerTitleBar(titleBar,interf);
 		initTitleBar();
@@ -89,7 +93,7 @@ public class MainController {
 		this.connexion.getUserSub().addFocusListener(controllerConnexion);
 		this.connexion.getPassSub().addFocusListener(controllerConnexion);
 		this.connexion.getConfirmPassSub().addFocusListener(controllerConnexion);
-		this.connexion.getDataNameLogSub().addFocusListener(controllerConnexion);
+		this.connexion.getDataNameSub().addFocusListener(controllerConnexion);
 		this.connexion.getSubscribe().addActionListener(controllerConnexion);
 		
 	}
@@ -116,6 +120,7 @@ public class MainController {
 		this.mainPanel.getRename().addActionListener(controllerMainPanel);
 		this.mainPanel.getDisconnect().addActionListener(controllerMainPanel);
 		this.mainPanel.getConsol().addActionListener(controllerMainPanel);
+		this.mainPanel.getRefresh().addActionListener(controllerMainPanel);
 
 	}
 	

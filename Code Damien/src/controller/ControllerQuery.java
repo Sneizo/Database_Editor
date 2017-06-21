@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.ConnexionJDBC;
-import model.JDBCResultat;
+import model.ResultatJDBC;
+import model.ResultatJDBC;
 import view.Connexion;
 import view.Interface;
 import view.PanelQuery;
@@ -47,7 +48,7 @@ public class ControllerQuery implements ActionListener {
 		if(arg0.getSource().equals(panelQuery.getExecute())){
 			try {
 				panelQuery.getQueryResult().replaceRange("",panelQuery.getQueryResult().getSelectionStart(),panelQuery.getQueryResult().getSelectionEnd());
-				new JDBCResultat(con, panelQuery);
+				new ResultatJDBC(con, panelQuery);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

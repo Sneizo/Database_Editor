@@ -7,10 +7,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -46,10 +48,13 @@ public class PanelQuery extends JPanel {
 	private JLabel resultQuery;
 	private JPanel titlePanel;
 	private JPanel executePanel;
-	private JTable table;
+	private JList<String> table;
 	private JScrollPane scrollPane3;
+	private Vector<String> vec;
+	
 
 	public PanelQuery() {
+		
 		initComponent();
 
 	}
@@ -160,18 +165,14 @@ public class PanelQuery extends JPanel {
 		mainPanelText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),
 				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
 
-		// Les données du tableau
-		Object[][] data = { { "Agent" }, { "Client" }, { "Opération" }, { "Agence" } };
 
-		// Les titres des colonnes
-		String title[] = { "Name of table" };
-
-		table = new JTable(data, title);
+		
+		if(this.vec != null) {
+			table = new JList<String>(this.vec);
+		}else{table = new JList<String>();}
 		scrollPane3 = new JScrollPane(table);
-		scrollPane3.setPreferredSize(new Dimension(200,0));
-
-		JPanel tablePan = new JPanel();
-		tablePan.add(scrollPane3);
+		scrollPane3.setPreferredSize(new Dimension(200,50));
+		
 
 		this.setLayout(new BorderLayout());
 		add(scrollPane3,BorderLayout.WEST);
@@ -272,14 +273,14 @@ public class PanelQuery extends JPanel {
 	/**
 	 * @return the table
 	 */
-	public JTable getTable() {
+	public JList getTable() {
 		return table;
 	}
 
 	/**
 	 * @param table the table to set
 	 */
-	public void setTable(JTable table) {
+	public void setTable(JList table) {
 		this.table = table;
 	}
 
@@ -325,6 +326,11 @@ public class PanelQuery extends JPanel {
 		this.executePanel = executePanel;
 	}
 	
+
 	
+	public void setVector(Vector<String> vec) {
+		this.vec = vec;
+		this.table.setListData(vec.toArray(new String[0]));
+	}
 
 }

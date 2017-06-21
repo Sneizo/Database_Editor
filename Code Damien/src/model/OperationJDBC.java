@@ -10,7 +10,7 @@ import view.PanelQuery;
  * 
  * @author Mael & Damien
  */
-public class JDBCOperation {
+public class OperationJDBC {
 
 	private String operation;
 	private ConnexionJDBC co;
@@ -23,7 +23,7 @@ public class JDBCOperation {
 	 * @param co
 	 *            the connection to the database
 	 */
-	public JDBCOperation(ConnexionJDBC co, PanelQuery panelQuery) {
+	public OperationJDBC(ConnexionJDBC co, PanelQuery panelQuery) {
 		if (co != null) {
 			this.co = co;
 		}
@@ -46,8 +46,10 @@ public class JDBCOperation {
 	 */
 	public void operation() throws InterruptedException {
 		this.operation = "";
-		setOperation();				
-		this.operation = panelQuery.getQueryWrite().getText();
+		setOperation();			
+		String op = this.operation;
+		op= panelQuery.getQueryWrite().getText();
+		
 	}
 
 	/**
