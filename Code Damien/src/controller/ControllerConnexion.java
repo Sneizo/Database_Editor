@@ -1,12 +1,16 @@
 package controller;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.ConnexionJDBC;
@@ -19,7 +23,7 @@ import view.MainPanel;
 import view.PanelQuery;
 import view.TitleBar;
 
-public class ControllerConnexion implements FocusListener, ActionListener {
+public class ControllerConnexion implements FocusListener, ActionListener, MouseListener {
 
 	private Connexion connexion;
 	private Interface interf;
@@ -143,20 +147,23 @@ public class ControllerConnexion implements FocusListener, ActionListener {
 							main.add(ib, BorderLayout.SOUTH);
 
 							this.interf.setPanel(main);
+							
 							TableJDBC table = new TableJDBC(con);
-							Vector<String> vec = table.getVector();
-							this.panelQuery.setVector(vec);
-							this.interf.repaint();
-							this.interf.revalidate();
+							if(table.getVector() != null){
+								Vector<String> vec = table.getVector();
+								this.panelQuery.setVector(vec);
+								this.interf.repaint();
+								this.interf.revalidate();
+							}
 						}
 					} else {
-						System.out.println("Incorrect Data Base");
+						connexion.getAttente().setText("Incorrect Data Base");
 					}
 				} else {
-					System.out.println("Incorrect Password");
+					connexion.getAttente().setText("Incorrect Password");
 				}
 			} else {
-				System.out.println("Incorrect login");
+				connexion.getAttente().setText("Incorrect login");
 			}
 
 		}
@@ -166,6 +173,58 @@ public class ControllerConnexion implements FocusListener, ActionListener {
 					this.connexion.getPassSub().getText(), this.connexion.getConfirmPassSub().getText(),
 					this.connexion.getDataNameSub().getText());
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		if(e.getSource().equals(connexion.getConnect())){
+			connexion.getConnect().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+			connexion.getConnect().setBackground(new Color(120,120,120));
+			connexion.getConnect().setForeground(Color.WHITE);
+		
+		}
+		
+		if(e.getSource().equals(connexion.getSubscribe())){
+			connexion.getSubscribe().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+			connexion.getSubscribe().setBackground(new Color(120,120,120));
+			connexion.getSubscribe().setForeground(Color.WHITE);			
+		}
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		if(e.getSource().equals(connexion.getConnect())){
+			connexion.getConnect().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+			connexion.getConnect().setBackground(new Color(80,80,80));
+			connexion.getConnect().setForeground(Color.WHITE);
+		
+		}
+		
+		if(e.getSource().equals(connexion.getSubscribe())){
+			connexion.getSubscribe().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+			connexion.getSubscribe().setBackground(new Color(80,80,80));
+			connexion.getSubscribe().setForeground(Color.WHITE);			
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

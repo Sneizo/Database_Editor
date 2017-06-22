@@ -40,7 +40,7 @@ public class ResultatJDBC {
 
 	private void getResultat() throws InterruptedException {
 
-		JDBCOperation jdbcOperation = new JDBCOperation(con, panelQuery);
+		OperationJDBC jdbcOperation = new OperationJDBC(con, panelQuery);
 		try {
 
 			// Statement str = con.getConn().createStatement();

@@ -77,7 +77,7 @@ public class MainPanel extends JPanel{
 		saveAs.setBorder(null);
 		saveAs.setContentAreaFilled(false);
 		//Button rename 
-		rename = new JButton("Rename");
+		rename = new JButton("Rename	|");
 		rename.setIcon(new ImageIcon(ImageIO.read(new File("data/images/rename.png")).getScaledInstance(20,20,BufferedImage.TYPE_INT_ARGB)));
 		rename.setForeground(Color.WHITE);
 		rename.setBorderPainted(false);
@@ -91,6 +91,11 @@ public class MainPanel extends JPanel{
 		disconnect.setContentAreaFilled(false);
 		//Button refresh
 		refresh = new JButton("Refresh");
+		refresh.setForeground(Color.WHITE);
+		refresh.setIcon(new ImageIcon(ImageIO.read(new File("data/images/refresh.png")).getScaledInstance(20,20,BufferedImage.TYPE_INT_ARGB)));
+		refresh.setBorderPainted(false);
+		refresh.setBorder(null);
+		refresh.setContentAreaFilled(false);
 		
 		//Creation of toolbar and add Button		
 		JPanel east = new JPanel();
@@ -102,10 +107,7 @@ public class MainPanel extends JPanel{
 		east.add(save);		
 		east.add(saveAs);		
 		east.add(rename);
-		east.add(refresh);
-		
-		
-		
+		east.add(refresh);		
 		
 		JPanel west = new JPanel();
 		west.setBackground(new Color(80,80,80));
@@ -200,6 +202,8 @@ public class MainPanel extends JPanel{
 	public JButton getRefresh() {
 		return refresh;
 	}
+	
+	
 	
 	
 }

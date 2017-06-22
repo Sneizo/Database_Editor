@@ -47,7 +47,7 @@ public class TitleBarControler implements ActionListener, MouseListener{
 		
 		if(arg0.getSource().equals(titleB.getExit())){
 			try {
-				titleB.getExit().setIcon(new ImageIcon(ImageIO.read(new File("data/images/close2.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
+				titleB.getExit().setIcon(new ImageIcon(ImageIO.read(new File("data/images/crossRed.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

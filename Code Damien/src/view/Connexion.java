@@ -107,6 +107,7 @@ public class Connexion extends JPanel {
 		
 		
 		this.attente = new JLabel();
+		this.attente.setForeground(Color.red);
 	//	this.attente.setIcon(new ImageIcon(ImageIO.read(new File("data/images/wait.gif")).getScaledInstance(20,20,BufferedImage.TYPE_INT_ARGB)));
 		//this.attente.setText("");
 		this.connect = new JButton();

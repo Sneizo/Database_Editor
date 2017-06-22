@@ -50,19 +50,21 @@ public class ControllerTitleBar implements ActionListener, MouseListener {
 		
 	}
 
-	public void mouseEntered(MouseEvent me) {
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
 		
-		if(me.getSource().equals(titleBar.getExit())){
+		if(arg0.getSource().equals(titleBar.getExit())){
 			try {
-				titleBar.getExit().setIcon(new ImageIcon(ImageIO.read(new File("data/images/close2.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
+				titleBar.getExit().setIcon(new ImageIcon(ImageIO.read(new File("data/images/crossRed.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public void mouseExited(MouseEvent me) {
-		if(me.getSource().equals(titleBar.getExit())){
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		if(arg0.getSource().equals(titleBar.getExit())){
 			try {
 				titleBar.getExit().setIcon(new ImageIcon(ImageIO.read(new File("data/images/close.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
 			} catch (IOException e) {

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import view.Connexion;
+
 /**
  * This class connect to the database
  * 
@@ -58,14 +60,12 @@ public class ConnexionJDBC {
 			// Connexion initialisation
 			try {
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + database, user, pass);
-				Thread.sleep(1000);
+				
 				Statement stmt = conn.createStatement();
 				// Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
 				System.out.println("ERREUR : ConnexionJDBC.connexion() \nUser login or password incorrect.");
-			} catch (InterruptedException ie) {
-				System.out.println("ERREUR : ConnexionJDBC.connexion()");
 			}
 		}
 	}
