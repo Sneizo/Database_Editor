@@ -46,10 +46,8 @@ public class OperationJDBC {
 	 */
 	public void operation() throws InterruptedException {
 		this.operation = "";
-		setOperation();			
-		String op = this.operation;
-		op= panelQuery.getQueryWrite().getText();
-		
+		setOperation();				
+		this.operation = panelQuery.getQueryWrite().getText();
 	}
 
 	/**

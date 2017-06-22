@@ -46,7 +46,7 @@ public class TitleBar extends JPanel {
 		setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE),(BorderFactory.createEmptyBorder(5,5,5,5))));
 		
 		exit = new JButton();
-		exit.setIcon(new ImageIcon(ImageIO.read(new File("data/images/close.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
+		exit.setIcon(new ImageIcon(ImageIO.read(new File("data/images/cross.png")).getScaledInstance(30,30,BufferedImage.TYPE_INT_ARGB)));
 		exit.setBorderPainted(false);
 		exit.setBorder(null);
 		exit.setContentAreaFilled(false);

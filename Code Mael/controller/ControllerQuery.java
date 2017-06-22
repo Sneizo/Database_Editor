@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.ConnexionJDBC;
-import model.JDBCResultat;
+import model.ResultatJDBC;
 import model.ResultatJDBC;
 import view.Connexion;
 import view.Interface;
