@@ -11,9 +11,12 @@ import view.Create;
 import view.InformationBar;
 import view.Interface;
 import view.MainPanel;
+import view.ModifPassword;
 import view.PanelQuery;
 import view.Profil;
+import view.ProfilPanel;
 import view.Rename;
+import view.SetAutoSave;
 import view.TitleBar;
 
 public class MainController {
@@ -24,9 +27,11 @@ public class MainController {
 	private MainPanel mainPanel;
 	private TitleBar titleBar;
 	private PanelQuery panelQuery;
-	private JFrame frame;
 	private Interface interf;
 	private InformationBar informationBar;
+	private ProfilPanel profilPanel;
+	private ModifPassword modifPassword;
+	private SetAutoSave setAutoSave;
 	
 	private MouseListenerJFrame mouseListenerJFrame;
 	private MouseMotionListenner mouseMotionListenner;
@@ -39,6 +44,10 @@ public class MainController {
 	private ControllerPanelQuery controllerPanelQuery;
 	private ControllerProfil controllerProfil;
 	private ControllerQuery controllerQuery;
+	private ControllerAutoSave controllerAutoSave;
+	private ControllerSetAutoSave controllerSetAutoSave;
+	private ControllerProfilPanel controllerProfilPanel;
+	
 	private Profil profil;
 	private SaveFileJDBC saveFile;
 	private ConnexionJDBC con;
@@ -46,7 +55,7 @@ public class MainController {
 	
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
-			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
+			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil, ProfilPanel profilPanel, ModifPassword modifPassword,SetAutoSave setAutoSave) {
 		
 		this.connexion = connexion;
 		this.create = create;
@@ -57,6 +66,10 @@ public class MainController {
 		this.interf = interf;
 		this.informationBar = informationBar;
 		this.profil = profil;
+		this.profilPanel = profilPanel;
+		this.modifPassword = modifPassword;
+		this.setAutoSave = setAutoSave;
+		
 		this.con = new ConnexionJDBC();
 		this.saveFile = new SaveFileJDBC(panelQuery);
 		this.openFile = new OpenFileJDBC(panelQuery);
@@ -79,10 +92,16 @@ public class MainController {
 		initTitleBar();
 		this.controllerPanelQuery = new ControllerPanelQuery(panelQuery,interf);
 		initPanelQuery();
-		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion);
+		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion, profilPanel);
 		initControllerProfil();
 		this.controllerQuery = new ControllerQuery(connexion, interf, titleBar, panelQuery, con);
 		initControllerQuery();
+		this.controllerAutoSave = new ControllerAutoSave(connexion, profil, saveFile, mainPanel, setAutoSave);
+		initControllerAutoSave();
+		this.controllerSetAutoSave = new ControllerSetAutoSave(setAutoSave, connexion, titleBar, mainPanel, panelQuery, informationBar, interf);
+		initControllerSetAutoSave();
+		this.controllerProfilPanel = new ControllerProfilPanel(profilPanel, interf, mainPanel, titleBar, modifPassword, setAutoSave);
+		initControllerProfilPanel();
 		
 		
 	}
@@ -151,6 +170,7 @@ public class MainController {
 		this.profil.getHome().addActionListener(controllerProfil);
 		this.profil.getHome().addMouseListener(controllerProfil);
 		this.profil.getSetting().addMouseListener(controllerProfil);
+		this.profil.getSetting().addActionListener(controllerProfil);
 		this.profil.getDisconnect().addMouseListener(controllerProfil);
 		this.profil.getDisconnect().addActionListener(controllerProfil);
 	}
@@ -159,5 +179,21 @@ public class MainController {
 		this.panelQuery.getExecute().addActionListener(controllerQuery);
 	}
 	
+	public void initControllerAutoSave() {
+		this.connexion.getConnect().addActionListener(controllerAutoSave);
+		this.profil.getDisconnect().addActionListener(controllerAutoSave);
+		this.mainPanel.getSave().addActionListener(controllerAutoSave);
+		this.mainPanel.getSaveAs().addActionListener(controllerAutoSave);
+	}
 	
+	public void initControllerSetAutoSave() {
+		this.setAutoSave.getConfirmer().addActionListener(controllerSetAutoSave);
+		this.setAutoSave.getTmp().addFocusListener(controllerSetAutoSave);
+	}
+	
+	public void initControllerProfilPanel() {
+		this.profilPanel.getMdp().addActionListener(controllerProfilPanel);
+		this.profilPanel.getDroit().addActionListener(controllerProfilPanel);
+		this.profilPanel.getAutoSave().addActionListener(controllerProfilPanel);
+	}
 }

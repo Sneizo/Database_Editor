@@ -106,10 +106,9 @@ public class CreateUserJDBC extends JOptionPane {
 			String grant = "GRANT CONNECT TO " + login;
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(grant);
-			System.out.println("[user] Utilisateur créé");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("[user] Erreur dans la requête SQL.");
+			System.out.println("Erreur dans la requête SQL.");
 		}
 	}
 

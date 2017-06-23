@@ -60,5 +60,9 @@ public class SaveFileJDBC {
 		
 		
 	}
+	
+	public String getPass() {
+		return this.pass;
+	}
 
 }
