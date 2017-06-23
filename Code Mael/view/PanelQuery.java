@@ -72,9 +72,9 @@ public class PanelQuery extends JPanel {
 				(BorderFactory.createEmptyBorder(5, 5, 5, 5))));
 
 		executePanel = new JPanel();
-		GridLayout grid = new GridLayout(1, 1);
+		BorderLayout grid = new BorderLayout();
 		executePanel.setLayout(grid);
-		executePanel.add(execute);
+		executePanel.add(execute, BorderLayout.CENTER);
 		executePanel.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),
 				(BorderFactory.createEmptyBorder(10, 40, 10, 40))));
 
@@ -140,10 +140,11 @@ public class PanelQuery extends JPanel {
 
 		// Creation of queryResult textArea
 		queryResult = new JTextArea(50, 50);
-		//queryResult.setMinimumSize(new Dimension(50, 50));
+		//queryResult.setMinimumSize(new Dimension(500, 500));
 		queryResult.setEditable(false);
 		// Creation of scrollPane2
 		scrollPane2 = new JScrollPane(queryResult);
+		scrollPane2.setPreferredSize(new Dimension(200,50));
 		// Creation of label Result
 		resultQuery = new JLabel("Result");
 		resultQuery.setHorizontalAlignment(SwingConstants.CENTER);

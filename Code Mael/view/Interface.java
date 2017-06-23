@@ -28,6 +28,9 @@ public class Interface extends JFrame {
 	private TitleBar titleBar;
 	private InformationBar informationBar;
 	private Profil profil;
+	private ProfilPanel profilPanel;
+	private ModifPassword modifPassword;
+	private SetAutoSave setAutoSave;
 
 	private MainController mainController;
 
@@ -41,8 +44,11 @@ public class Interface extends JFrame {
 		titleBar = new TitleBar();
 		informationBar = new InformationBar();
 		profil = new Profil();
+		profilPanel = new ProfilPanel();
+		modifPassword = new ModifPassword();
+		setAutoSave = new SetAutoSave();
 
-		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar, profil);
+		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar, profil,profilPanel,modifPassword, setAutoSave);
 		
 		this.setSize(1080, 720);
 		// Recupere la taille de l'ecran et fait en fonction
