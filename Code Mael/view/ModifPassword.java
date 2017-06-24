@@ -1,13 +1,17 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.CompoundBorder;
 
 public class ModifPassword extends JPanel {
 	
@@ -33,22 +37,44 @@ public class ModifPassword extends JPanel {
 		Font fontTitle = new Font("arimo", Font.BOLD, 26);
 		this.changement = new JLabel("Changing your password");
 		this.changement.setFont(fontTitle);
+		this.changement.setForeground(Color.WHITE);
 		
 		Font font = new Font("arimo", Font.PLAIN, 15);
 		this.oldPassword = new JLabel("Old Password :");
 		this.oldPassword.setFont(font);
+		this.oldPassword.setForeground(Color.WHITE);
 		
 		this.newPassword = new JLabel("New Password :");
 		this.newPassword.setFont(font);
+		this.newPassword.setForeground(Color.WHITE);
 		
 		this.confirmNewPassword = new JLabel("Confirm New Password");
 		this.confirmNewPassword.setFont(font);
+		this.confirmNewPassword.setForeground(Color.WHITE);
 		
 		this.oldPasswordF = new JPasswordField();
+		this.oldPasswordF.setBackground(new Color(80,80,80));
+		this.oldPasswordF.setForeground(Color.WHITE);
+		this.oldPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		this.oldPasswordF.setHorizontalAlignment(JTextField.CENTER);
+		this.oldPasswordF.setCaretColor(Color.WHITE);
+		
 		this.newPasswordF = new JPasswordField();
+		this.newPasswordF.setBackground(new Color(80,80,80));
+		this.newPasswordF.setForeground(Color.WHITE);
+		this.newPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		this.newPasswordF.setHorizontalAlignment(JTextField.CENTER);
+		this.newPasswordF.setCaretColor(Color.WHITE);
+		
 		this.confirmNewPasswordF = new JPasswordField();
+		this.confirmNewPasswordF.setBackground(new Color(80,80,80));
+		this.confirmNewPasswordF.setForeground(Color.WHITE);
+		this.confirmNewPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		this.confirmNewPasswordF.setHorizontalAlignment(JTextField.CENTER);
+		this.confirmNewPasswordF.setCaretColor(Color.WHITE);
 		
 		JPanel pane = new JPanel();
+		pane.setBackground(new Color(80,80,80));
 		pane.setLayout(new GridLayout(3,2));
 		pane.add(this.oldPassword);
 		pane.add(this.oldPasswordF);
@@ -56,13 +82,23 @@ public class ModifPassword extends JPanel {
 		pane.add(this.newPasswordF);
 		pane.add(this.confirmNewPassword);
 		pane.add(this.confirmNewPasswordF);
+		pane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(30,30,30,30))));
 		
 		JPanel bot = new JPanel();
-		
+		bot.setBackground(new Color(80,80,80));
 		this.confirmer = new JButton("Confirm");
 		this.confirmer.setFont(font);
+		this.confirmer.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		this.confirmer.setBackground(new Color(80,80,80));
+		this.confirmer.setForeground(Color.WHITE);
+		
 		this.annuler = new JButton("Cancel");
 		this.annuler.setFont(font);
+		this.annuler.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		this.annuler.setBackground(new Color(80,80,80));
+		this.annuler.setForeground(Color.WHITE);
+		
+		bot.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(30,30,30,30))));
 		
 		bot.setLayout(new BorderLayout());
 		bot.add(this.confirmer, BorderLayout.EAST);
@@ -72,6 +108,29 @@ public class ModifPassword extends JPanel {
 		this.add(this.changement, BorderLayout.NORTH);
 		this.add(pane, BorderLayout.CENTER);
 		this.add(bot, BorderLayout.SOUTH);
+		
+		setBackground(new Color(80,80,80));
 	}
 
+	public JPasswordField getOldPasswordF() {
+		return oldPasswordF;
+	}
+
+	public JPasswordField getNewPasswordF() {
+		return newPasswordF;
+	}
+
+	public JPasswordField getConfirmNewPasswordF() {
+		return confirmNewPasswordF;
+	}
+
+	public JButton getConfirmer() {
+		return confirmer;
+	}
+
+	public JButton getAnnuler() {
+		return annuler;
+	}
+
+	
 }

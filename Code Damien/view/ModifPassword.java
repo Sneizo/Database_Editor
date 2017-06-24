@@ -220,12 +220,6 @@ public class ModifPassword extends JPanel {
 		return confirmer;
 	}
 
-	/**
-	 * @param confirmer the confirmer to set
-	 */
-	public void setConfirmer(JButton confirmer) {
-		this.confirmer = confirmer;
-	}
 
 	/**
 	 * @return the annuler
@@ -234,13 +228,6 @@ public class ModifPassword extends JPanel {
 		return annuler;
 	}
 
-	/**
-	 * @param annuler the annuler to set
-	 */
-	public void setAnnuler(JButton annuler) {
-		this.annuler = annuler;
-	}
-	
 	
 	
 

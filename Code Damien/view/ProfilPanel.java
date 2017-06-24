@@ -49,9 +49,6 @@ public class ProfilPanel extends JPanel {
 		return this.mdp;
 	}
 	
-	public JButton getDroit() {
-		return this.droit;
-	}
 	
 	public JButton getAutoSave() {
 		return this.autosave;

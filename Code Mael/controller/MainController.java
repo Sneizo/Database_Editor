@@ -1,13 +1,12 @@
 package controller;
 
-import javax.swing.JFrame;
-
 import model.ConnexionJDBC;
+import model.CreateTableJDBC;
 import model.OpenFileJDBC;
-import model.ResultatJDBC;
 import model.SaveFileJDBC;
 import view.Connexion;
 import view.Create;
+import view.CreateColonne;
 import view.InformationBar;
 import view.Interface;
 import view.MainPanel;
@@ -32,6 +31,7 @@ public class MainController {
 	private ProfilPanel profilPanel;
 	private ModifPassword modifPassword;
 	private SetAutoSave setAutoSave;
+	private CreateColonne createColonne;
 	
 	private MouseListenerJFrame mouseListenerJFrame;
 	private MouseMotionListenner mouseMotionListenner;
@@ -52,10 +52,11 @@ public class MainController {
 	private SaveFileJDBC saveFile;
 	private ConnexionJDBC con;
 	private OpenFileJDBC openFile;
+	private CreateTableJDBC createTable;
 	
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
-			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil, ProfilPanel profilPanel, ModifPassword modifPassword,SetAutoSave setAutoSave) {
+			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil, ProfilPanel profilPanel, ModifPassword modifPassword,SetAutoSave setAutoSave, CreateColonne createColonne) {
 		
 		this.connexion = connexion;
 		this.create = create;
@@ -69,10 +70,12 @@ public class MainController {
 		this.profilPanel = profilPanel;
 		this.modifPassword = modifPassword;
 		this.setAutoSave = setAutoSave;
+		this.createColonne = createColonne;
 		
 		this.con = new ConnexionJDBC();
 		this.saveFile = new SaveFileJDBC(panelQuery);
 		this.openFile = new OpenFileJDBC(panelQuery);
+		this.createTable = new CreateTableJDBC(con);
 		
 		
 		
@@ -82,7 +85,7 @@ public class MainController {
 		
 		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar, con);
 		initConnexion();
-		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar);
+		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar, createColonne, createTable);
 		initCreate();
 		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
 		initRename();
@@ -124,6 +127,7 @@ public class MainController {
 		this.create.getNewTableName().addFocusListener(controllerCreate);
 		this.create.getConfirmer().addActionListener(controllerCreate);
 		this.create.getAnnuler().addActionListener(controllerCreate);
+		this.createColonne.getContinuer().addActionListener(controllerCreate);
 		
 	}
 	
@@ -193,7 +197,10 @@ public class MainController {
 	
 	public void initControllerProfilPanel() {
 		this.profilPanel.getMdp().addActionListener(controllerProfilPanel);
-		this.profilPanel.getDroit().addActionListener(controllerProfilPanel);
 		this.profilPanel.getAutoSave().addActionListener(controllerProfilPanel);
+	}
+	
+	public void setConnexion(ConnexionJDBC con) {
+		this.con = con;
 	}
 }

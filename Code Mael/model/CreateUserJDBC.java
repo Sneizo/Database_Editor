@@ -96,14 +96,14 @@ public class CreateUserJDBC extends JOptionPane {
 	 * This method create the new user with the sql script and the parameter
 	 * 
 	 * @param login
-	 *            the login old the new user
+	 *            the login of the new user
 	 * @param mdp
 	 *            the password of the new user
 	 */
 	private void create(String login, String mdp) {
 		try {
 			String sql = "CREATE USER " + login + " IDENTIFIED BY " + mdp;
-			String grant = "GRANT CONNECT TO " + login;
+			String grant = "GRANT ALL PRIVILEGES TO " + login;
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(grant);
 		} catch (SQLException e) {

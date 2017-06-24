@@ -61,19 +61,6 @@ public class ControllerProfilPanel implements ActionListener{
 			this.interf.setPanel(frame);
 		}
 		
-		if(ae.getSource() == this.profilPanel.getDroit()) {
-			JPanel pane = new JPanel();
-			pane.setLayout(new BorderLayout());
-			pane.add(this.titleBar, BorderLayout.NORTH);
-			pane.add(this.mainPanel, BorderLayout.SOUTH);
-			
-			JPanel frame = new JPanel();
-			frame.setLayout(new BorderLayout());
-			frame.add(pane, BorderLayout.NORTH);
-			//frame.add(this.setAutoSave, BorderLayout.CENTER);
-			this.interf.setPanel(frame);
-		}
-		
 		
 	}
 	
