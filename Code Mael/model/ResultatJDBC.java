@@ -6,6 +6,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 import view.PanelQuery;
 
 /**
@@ -89,8 +91,8 @@ public class ResultatJDBC {
 
 			// System.out.println(resultat);
 		} catch (SQLException e) {
-			// e.printStackTrace();
-			System.out.println("[" + con.getUser() + "] Erreur dans la requête SQL.");
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error in the sql querry", "ERREUR", JOptionPane.ERROR_MESSAGE);
 
 		}
 

@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import view.PanelQuery;
 
@@ -43,7 +44,8 @@ public class OpenFileJDBC {
 				}
 			}
 		} catch (IOException e){
-				e.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error with the file", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 public class TableJDBC {
 
 	private Vector<String> vec;
@@ -37,7 +39,8 @@ public class TableJDBC {
                 }
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error with the recuperation of table", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		if((this.result.length() >= 1) && (this.result != null)) {

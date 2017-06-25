@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import view.Connexion;
 
 /**
@@ -65,7 +67,9 @@ public class ConnexionJDBC {
 				// Change de state of the boolean connect
 				this.connect = true;
 			} catch (SQLException e) {
-				System.out.println("ERREUR : ConnexionJDBC.connexion() \nUser login or password incorrect.");
+				JOptionPane option = new JOptionPane();
+				option.showMessageDialog(null, "Password or login incorect ", "ERREUR", JOptionPane.ERROR_MESSAGE);
+				
 			}
 		}
 	}

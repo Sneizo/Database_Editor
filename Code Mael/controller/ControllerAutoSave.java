@@ -24,7 +24,8 @@ public class ControllerAutoSave implements ActionListener {
 	private MainPanel mainPanel;
 	private Timer timer = new Timer();
 
-	public ControllerAutoSave(Connexion connexion, Profil profil, SaveFileJDBC saveFileJDBC, MainPanel mainPanel, SetAutoSave setAutoSave) {
+	public ControllerAutoSave(Connexion connexion, Profil profil, SaveFileJDBC saveFileJDBC, MainPanel mainPanel,
+			SetAutoSave setAutoSave) {
 		this.connexion = connexion;
 		this.profil = profil;
 		this.saveFileJDBC = saveFileJDBC;
@@ -35,18 +36,18 @@ public class ControllerAutoSave implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == this.mainPanel.getSaveAs() || ae.getSource() == this.mainPanel.getSave()) {
-			if(this.setAutoSave.getAutoSave()) {
-				timer.schedule(new RemindTask(), this.setAutoSave.getBoucle() * 60 * 1000, this.setAutoSave.getBoucle() * 60 * 1000);
+			if (this.setAutoSave.getAutoSave()) {
+				timer.schedule(new RemindTask(), this.setAutoSave.getBoucle() * 60 * 1000,
+						this.setAutoSave.getBoucle() * 60 * 1000);
 			}
 		}
 	}
-	
-	 class RemindTask extends TimerTask {
-		 
 
-			public void run() {
-		      saveFileJDBC.saveFile();
-		    }
-	 }
+	class RemindTask extends TimerTask {
+
+		public void run() {
+			saveFileJDBC.saveFile();
+		}
+	}
 
 }

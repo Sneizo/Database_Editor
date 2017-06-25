@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class CreateTableJDBC {
 	
 	private ConnexionJDBC conn;
@@ -25,7 +27,8 @@ public class CreateTableJDBC {
 			stm.executeUpdate(requette);
 			this.existe = false;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "The Name of the Table is wrong", "ERREUR", JOptionPane.ERROR_MESSAGE);
 			this.existe = true;
 		}
 	}
@@ -37,7 +40,8 @@ public class CreateTableJDBC {
 			stm.executeUpdate(requette);
 			this.execute = true;
 		} catch (SQLException e) {
-			System.out.println("ERREUR : CreateTableJDBC.createColonne()");
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Name of the colomn or type is wrong", "ERREUR", JOptionPane.ERROR_MESSAGE);
 			this.execute = false;
 		}
 	}
