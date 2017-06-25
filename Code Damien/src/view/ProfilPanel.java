@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 public class ProfilPanel extends JPanel {
 	
 	private JButton mdp;
-	private JButton droit;
 	private JButton autosave;
 	
 	

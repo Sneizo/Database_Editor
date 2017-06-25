@@ -25,16 +25,15 @@ public class SetAutoSave extends JPanel {
 	private JButton confirmer;
 	
 	public SetAutoSave() {
-		autoSave = true;
+		this.autoSave = true;
 		this.boucle = 10;
 		initSetAutoSave();
-		
 	}
 	
 	
 	private void initSetAutoSave() {
 		
-		setBackground(new Color(80,80,80));
+		this.setBackground(new Color(80,80,80));
 		
 		Font font = new Font("arimo", Font.PLAIN, 24);
 		this.check = new JCheckBox();
@@ -66,7 +65,6 @@ public class SetAutoSave extends JPanel {
 		this.confirmer.setForeground(Color.WHITE);
 		this.confirmer.setBorder(BorderFactory.createMatteBorder(2, 0,0 , 0, Color.WHITE));
 		
-		
 		JPanel pane = new JPanel();
 		pane.setLayout(new GridLayout(2,2));
 		pane.add(this.question);
@@ -75,7 +73,6 @@ public class SetAutoSave extends JPanel {
 		pane.add(this.tmp);
 		pane.setBackground(new Color(80,80,80));
 		pane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(150,150,150,150))));
-		
 		
 		this.setLayout(new BorderLayout());
 		this.add(pane, BorderLayout.CENTER);

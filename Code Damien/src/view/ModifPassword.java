@@ -20,9 +20,9 @@ public class ModifPassword extends JPanel {
 	private JLabel newPassword;
 	private JLabel confirmNewPassword;
 	
-	private JTextField oldPasswordF;
-	private JTextField newPasswordF; 
-	private JTextField confirmNewPasswordF;
+	private JPasswordField oldPasswordF;
+	private JPasswordField newPasswordF; 
+	private JPasswordField confirmNewPasswordF;
 	
 	private JButton confirmer;
 	private JButton annuler;
@@ -44,7 +44,6 @@ public class ModifPassword extends JPanel {
 		this.oldPassword.setFont(font);
 		this.oldPassword.setForeground(Color.WHITE);
 		
-		
 		this.newPassword = new JLabel("New Password :");
 		this.newPassword.setFont(font);
 		this.newPassword.setForeground(Color.WHITE);
@@ -53,21 +52,21 @@ public class ModifPassword extends JPanel {
 		this.confirmNewPassword.setFont(font);
 		this.confirmNewPassword.setForeground(Color.WHITE);
 		
-		this.oldPasswordF = new JTextField();
+		this.oldPasswordF = new JPasswordField();
 		this.oldPasswordF.setBackground(new Color(80,80,80));
 		this.oldPasswordF.setForeground(Color.WHITE);
 		this.oldPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.oldPasswordF.setHorizontalAlignment(JTextField.CENTER);
 		this.oldPasswordF.setCaretColor(Color.WHITE);
 		
-		this.newPasswordF = new JTextField();
+		this.newPasswordF = new JPasswordField();
 		this.newPasswordF.setBackground(new Color(80,80,80));
 		this.newPasswordF.setForeground(Color.WHITE);
 		this.newPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		this.newPasswordF.setHorizontalAlignment(JTextField.CENTER);
 		this.newPasswordF.setCaretColor(Color.WHITE);
 		
-		this.confirmNewPasswordF = new JTextField();
+		this.confirmNewPasswordF = new JPasswordField();
 		this.confirmNewPasswordF.setBackground(new Color(80,80,80));
 		this.confirmNewPasswordF.setForeground(Color.WHITE);
 		this.confirmNewPasswordF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
@@ -76,8 +75,7 @@ public class ModifPassword extends JPanel {
 		
 		JPanel pane = new JPanel();
 		pane.setBackground(new Color(80,80,80));
-		GridLayout gr = new GridLayout(3,2);
-		pane.setLayout(gr);
+		pane.setLayout(new GridLayout(3,2));
 		pane.add(this.oldPassword);
 		pane.add(this.oldPasswordF);
 		pane.add(this.newPassword);
@@ -85,7 +83,6 @@ public class ModifPassword extends JPanel {
 		pane.add(this.confirmNewPassword);
 		pane.add(this.confirmNewPasswordF);
 		pane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(30,30,30,30))));
-		
 		
 		JPanel bot = new JPanel();
 		bot.setBackground(new Color(80,80,80));
@@ -115,120 +112,25 @@ public class ModifPassword extends JPanel {
 		setBackground(new Color(80,80,80));
 	}
 
-	/**
-	 * @return the changement
-	 */
-	public JLabel getChangement() {
-		return changement;
-	}
-
-	/**
-	 * @param changement the changement to set
-	 */
-	public void setChangement(JLabel changement) {
-		this.changement = changement;
-	}
-
-	/**
-	 * @return the oldPassword
-	 */
-	public JLabel getOldPassword() {
-		return oldPassword;
-	}
-
-	/**
-	 * @param oldPassword the oldPassword to set
-	 */
-	public void setOldPassword(JLabel oldPassword) {
-		this.oldPassword = oldPassword;
-	}
-
-	/**
-	 * @return the newPassword
-	 */
-	public JLabel getNewPassword() {
-		return newPassword;
-	}
-
-	/**
-	 * @param newPassword the newPassword to set
-	 */
-	public void setNewPassword(JLabel newPassword) {
-		this.newPassword = newPassword;
-	}
-
-	/**
-	 * @return the confirmNewPassword
-	 */
-	public JLabel getConfirmNewPassword() {
-		return confirmNewPassword;
-	}
-
-	/**
-	 * @param confirmNewPassword the confirmNewPassword to set
-	 */
-	public void setConfirmNewPassword(JLabel confirmNewPassword) {
-		this.confirmNewPassword = confirmNewPassword;
-	}
-
-	/**
-	 * @return the oldPasswordF
-	 */
-	public JTextField getOldPasswordF() {
+	public JPasswordField getOldPasswordF() {
 		return oldPasswordF;
 	}
 
-	/**
-	 * @param oldPasswordF the oldPasswordF to set
-	 */
-	public void setOldPasswordF(JPasswordField oldPasswordF) {
-		this.oldPasswordF = oldPasswordF;
-	}
-
-	/**
-	 * @return the newPasswordF
-	 */
-	public JTextField getNewPasswordF() {
+	public JPasswordField getNewPasswordF() {
 		return newPasswordF;
 	}
 
-	/**
-	 * @param newPasswordF the newPasswordF to set
-	 */
-	public void setNewPasswordF(JPasswordField newPasswordF) {
-		this.newPasswordF = newPasswordF;
-	}
-
-	/**
-	 * @return the confirmNewPasswordF
-	 */
-	public JTextField getConfirmNewPasswordF() {
+	public JPasswordField getConfirmNewPasswordF() {
 		return confirmNewPasswordF;
 	}
 
-	/**
-	 * @param confirmNewPasswordF the confirmNewPasswordF to set
-	 */
-	public void setConfirmNewPasswordF(JPasswordField confirmNewPasswordF) {
-		this.confirmNewPasswordF = confirmNewPasswordF;
-	}
-
-	/**
-	 * @return the confirmer
-	 */
 	public JButton getConfirmer() {
 		return confirmer;
 	}
 
-
-	/**
-	 * @return the annuler
-	 */
 	public JButton getAnnuler() {
 		return annuler;
 	}
 
 	
-	
-
 }

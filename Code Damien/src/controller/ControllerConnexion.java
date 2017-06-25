@@ -48,18 +48,25 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 
 	public void focusLost(FocusEvent fe) {
 		if (fe.getSource() == this.connexion.getUserLog()) {
-			if (this.connexion.getUserLog().getText().equals(""))
-				this.connexion.setUserLog("Login");
+			if (this.connexion.getUserLog().getText().equals("")) {
+				//this.connexion.setUserLog("Login");
+				this.connexion.setUserLog("SYSTEM");
+			}
 		}
 
 		if (fe.getSource() == this.connexion.getPassLog()) {
-			if (this.connexion.getPassLog().getText().equals(""))
-				this.connexion.setPassLog("Password");
+			if (this.connexion.getPassLog().getText().equals("")) {
+				//this.connexion.setPassLog("Password");
+				this.connexion.setPassLog("L4kjR3Xzo");
+			}
 		}
 
 		if (fe.getSource() == this.connexion.getDataNameLog()) {
-			if (this.connexion.getDataNameLog().getText().equals(""))
+			if (this.connexion.getDataNameLog().getText().equals("")) {
 				this.connexion.setDataNameLog("URL of the data base");
+				this.connexion.setDataNameLog("Database");
+			}
+			
 		}
 
 		if (fe.getSource() == this.connexion.getUserSub()) {
@@ -148,6 +155,7 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 
 							this.interf.setPanel(main);
 							
+							
 							TableJDBC table = new TableJDBC(con);
 							if(table.getVector() != null){
 								Vector<String> vec = table.getVector();
@@ -155,6 +163,9 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 								this.interf.repaint();
 								this.interf.revalidate();
 							}
+							
+							interf.setSize(1600,960);
+							interf.setLocationRelativeTo(null);
 						}
 					} else {
 						connexion.getAttente().setText("Incorrect Data Base");

@@ -1,19 +1,23 @@
 package controller;
 
-import javax.swing.JFrame;
-
+import model.ChangePasswordJDBC;
 import model.ConnexionJDBC;
+import model.CreateTableJDBC;
 import model.OpenFileJDBC;
-import model.ResultatJDBC;
+import model.RenameTableJDBC;
 import model.SaveFileJDBC;
 import view.Connexion;
 import view.Create;
+import view.CreateColonne;
 import view.InformationBar;
 import view.Interface;
 import view.MainPanel;
+import view.ModifPassword;
 import view.PanelQuery;
 import view.Profil;
+import view.ProfilPanel;
 import view.Rename;
+import view.SetAutoSave;
 import view.TitleBar;
 
 public class MainController {
@@ -24,9 +28,12 @@ public class MainController {
 	private MainPanel mainPanel;
 	private TitleBar titleBar;
 	private PanelQuery panelQuery;
-	private JFrame frame;
 	private Interface interf;
 	private InformationBar informationBar;
+	private ProfilPanel profilPanel;
+	private ModifPassword modifPassword;
+	private SetAutoSave setAutoSave;
+	private CreateColonne createColonne;
 	
 	private MouseListenerJFrame mouseListenerJFrame;
 	private MouseMotionListenner mouseMotionListenner;
@@ -39,14 +46,22 @@ public class MainController {
 	private ControllerPanelQuery controllerPanelQuery;
 	private ControllerProfil controllerProfil;
 	private ControllerQuery controllerQuery;
+	private ControllerAutoSave controllerAutoSave;
+	private ControllerSetAutoSave controllerSetAutoSave;
+	private ControllerProfilPanel controllerProfilPanel;
+	private ControllerChangePassword controllerChangePassword;
+	
 	private Profil profil;
 	private SaveFileJDBC saveFile;
 	private ConnexionJDBC con;
 	private OpenFileJDBC openFile;
+	private CreateTableJDBC createTable;
+	private ChangePasswordJDBC changePassword;
+	private RenameTableJDBC renameTableJDBC;
 	
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
-			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil) {
+			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil, ProfilPanel profilPanel, ModifPassword modifPassword,SetAutoSave setAutoSave, CreateColonne createColonne) {
 		
 		this.connexion = connexion;
 		this.create = create;
@@ -57,9 +72,17 @@ public class MainController {
 		this.interf = interf;
 		this.informationBar = informationBar;
 		this.profil = profil;
+		this.profilPanel = profilPanel;
+		this.modifPassword = modifPassword;
+		this.setAutoSave = setAutoSave;
+		this.createColonne = createColonne;
+		
 		this.con = new ConnexionJDBC();
 		this.saveFile = new SaveFileJDBC(panelQuery);
 		this.openFile = new OpenFileJDBC(panelQuery);
+		this.createTable = new CreateTableJDBC(con);
+		this.changePassword = new ChangePasswordJDBC(con, modifPassword);
+		this.renameTableJDBC = new RenameTableJDBC(con, rename);
 		
 		
 		
@@ -69,9 +92,9 @@ public class MainController {
 		
 		this.controllerConnexion = new ControllerConnexion(connexion,interf,titleBar,mainPanel,panelQuery, informationBar, con);
 		initConnexion();
-		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar);
+		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar, createColonne, createTable);
 		initCreate();
-		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
+		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar, renameTableJDBC);
 		initRename();
 		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil, saveFile, con, panelQuery, openFile);
 		initMainPanel();
@@ -79,11 +102,18 @@ public class MainController {
 		initTitleBar();
 		this.controllerPanelQuery = new ControllerPanelQuery(panelQuery,interf);
 		initPanelQuery();
-		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion);
+		this.controllerProfil = new ControllerProfil(mainPanel, interf, titleBar, profil, panelQuery, informationBar, connexion, profilPanel);
 		initControllerProfil();
 		this.controllerQuery = new ControllerQuery(connexion, interf, titleBar, panelQuery, con);
 		initControllerQuery();
-		
+		this.controllerAutoSave = new ControllerAutoSave(connexion, profil, saveFile, mainPanel, setAutoSave);
+		initControllerAutoSave();
+		this.controllerSetAutoSave = new ControllerSetAutoSave(setAutoSave, connexion, titleBar, mainPanel, panelQuery, informationBar, interf);
+		initControllerSetAutoSave();
+		this.controllerProfilPanel = new ControllerProfilPanel(profilPanel, interf, mainPanel, titleBar, modifPassword, setAutoSave);
+		initControllerProfilPanel();
+		this.controllerChangePassword = new ControllerChangePassword(connexion, modifPassword, changePassword);
+		initControllerChangePassword();
 		
 	}
 	
@@ -105,6 +135,7 @@ public class MainController {
 		this.create.getNewTableName().addFocusListener(controllerCreate);
 		this.create.getConfirmer().addActionListener(controllerCreate);
 		this.create.getAnnuler().addActionListener(controllerCreate);
+		this.createColonne.getContinuer().addActionListener(controllerCreate);
 		
 	}
 	
@@ -151,6 +182,7 @@ public class MainController {
 		this.profil.getHome().addActionListener(controllerProfil);
 		this.profil.getHome().addMouseListener(controllerProfil);
 		this.profil.getSetting().addMouseListener(controllerProfil);
+		this.profil.getSetting().addActionListener(controllerProfil);
 		this.profil.getDisconnect().addMouseListener(controllerProfil);
 		this.profil.getDisconnect().addActionListener(controllerProfil);
 	}
@@ -159,5 +191,28 @@ public class MainController {
 		this.panelQuery.getExecute().addActionListener(controllerQuery);
 	}
 	
+	public void initControllerAutoSave() {
+		this.connexion.getConnect().addActionListener(controllerAutoSave);
+		this.profil.getDisconnect().addActionListener(controllerAutoSave);
+		this.mainPanel.getSave().addActionListener(controllerAutoSave);
+		this.mainPanel.getSaveAs().addActionListener(controllerAutoSave);
+	}
 	
+	public void initControllerSetAutoSave() {
+		this.setAutoSave.getConfirmer().addActionListener(controllerSetAutoSave);
+		this.setAutoSave.getTmp().addFocusListener(controllerSetAutoSave);
+	}
+	
+	public void initControllerProfilPanel() {
+		this.profilPanel.getMdp().addActionListener(controllerProfilPanel);
+		this.profilPanel.getAutoSave().addActionListener(controllerProfilPanel);
+	}
+	
+	public void setConnexion(ConnexionJDBC con) {
+		this.con = con;
+	}
+
+	public void initControllerChangePassword(){
+		this.modifPassword.getConfirmer().addActionListener(controllerChangePassword);
+	}
 }

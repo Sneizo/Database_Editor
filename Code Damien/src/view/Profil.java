@@ -1,6 +1,3 @@
-/**
- * 
- */
 package view;
 
 import java.awt.Color;
@@ -62,12 +59,7 @@ public class Profil extends JPanel{
 		return setting;
 	}
 
-	/**
-	 * @param setting the setting to set
-	 */
-	public void setSetting(JButton setting) {
-		this.setting = setting;
-	}
+
 
 	/**
 	 * @return the disconnect
@@ -76,12 +68,7 @@ public class Profil extends JPanel{
 		return disconnect;
 	}
 
-	/**
-	 * @param disconnect the disconnect to set
-	 */
-	public void setDisconnect(JButton disconnect) {
-		this.disconnect = disconnect;
-	}
+
 
 	/**
 	 * @return the home
@@ -90,12 +77,6 @@ public class Profil extends JPanel{
 		return home;
 	}
 
-	/**
-	 * @param home the home to set
-	 */
-	public void setHome(JButton home) {
-		this.home = home;
-	}
 	
 	
 }

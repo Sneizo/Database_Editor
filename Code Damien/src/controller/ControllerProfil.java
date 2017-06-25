@@ -15,9 +15,11 @@ import javax.swing.JPanel;
 import view.Connexion;
 import view.InformationBar;
 import view.Interface;
+import view.Launcher;
 import view.MainPanel;
 import view.PanelQuery;
 import view.Profil;
+import view.ProfilPanel;
 import view.TitleBar;
 
 /**
@@ -33,8 +35,9 @@ public class ControllerProfil implements ActionListener, MouseListener{
 	private PanelQuery panelQuery;
 	private InformationBar informationBar;
 	private Connexion connexion;
+	private ProfilPanel profilPanel;
 	
-	public ControllerProfil(MainPanel mainPanel, Interface interf, TitleBar titleBar, Profil profil, PanelQuery panelQuery, InformationBar informationBar, Connexion connexion){
+	public ControllerProfil(MainPanel mainPanel, Interface interf, TitleBar titleBar, Profil profil, PanelQuery panelQuery, InformationBar informationBar, Connexion connexion, ProfilPanel profilPanel){
 		this.mainPanel = mainPanel;
 		this.interf = interf;
 		this.titleBar = titleBar;
@@ -42,6 +45,7 @@ public class ControllerProfil implements ActionListener, MouseListener{
 		this.panelQuery = panelQuery;
 		this.informationBar = informationBar;
 		this.connexion = connexion;
+		this.profilPanel = profilPanel;
 	}
 	
 	@Override
@@ -69,19 +73,46 @@ public class ControllerProfil implements ActionListener, MouseListener{
 		}
 		
 		if(arg0.getSource().equals(profil.getDisconnect())){
-			JPanel frame = new JPanel();
-			frame.setLayout(new BorderLayout());
-			frame.add(titleBar, BorderLayout.NORTH);
-			frame.add(connexion, BorderLayout.SOUTH);
-			interf.setPanel(frame);
-			this.connexion.setUserLog("Login");
-			this.connexion.setPassLog("Password");
-			this.connexion.setDataNameLog("URL of the data base");
-			this.connexion.setUserSub("Name of the new user");
-			this.connexion.setPassSub("Password");
-			this.connexion.setConfirmPassSub("Password");
-			this.connexion.setDataNameSub("URL of the data base");
+//			JPanel frame = new JPanel();
+//			frame.setLayout(new BorderLayout());
+//			frame.add(titleBar, BorderLayout.NORTH);
+//			frame.add(connexion, BorderLayout.SOUTH);
+//			this.connexion.setUserLog("Login");
+//			this.connexion.setPassLog("Password");
+//			this.connexion.setDataNameLog("URL of the data base");
+//			this.connexion.setUserSub("Name of the new user");
+//			this.connexion.setPassSub("Password");
+//			this.connexion.setConfirmPassSub("Password");
+//			this.connexion.setDataNameSub("URL of the data base");
+//			interf.setPanel(frame);
+			interf.dispose();
+			
+			try {
+				new Interface().setVisible(true);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 		
+		}
+		
+		if(arg0.getSource() == this.profil.getSetting()) {
+			JPanel frame = new JPanel();
+			JPanel toolBar = new JPanel();
+			BorderLayout cr = new BorderLayout();
+			toolBar.setLayout(cr);
+			
+			frame.setLayout(new BorderLayout());
+			frame.add(profilPanel, BorderLayout.CENTER);
+			
+			toolBar.add(titleBar, BorderLayout.NORTH);
+			toolBar.add(mainPanel, BorderLayout.SOUTH);
+			
+			JPanel principal = new JPanel();
+			principal.setLayout(new BorderLayout());
+			principal.add(toolBar, BorderLayout.NORTH);
+			principal.add(frame, BorderLayout.CENTER);
+			interf.setPanel(principal);
 		}
 		
 	}

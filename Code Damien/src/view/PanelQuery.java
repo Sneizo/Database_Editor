@@ -68,13 +68,16 @@ public class PanelQuery extends JPanel {
 		queryWrite.setOpaque(true);
 		// Creation of JButton execute
 		execute = new JButton("Execute query");
+		this.execute.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		this.execute.setBackground(new Color(80,80,80));
+		this.execute.setForeground(Color.WHITE);
 		execute.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),
 				(BorderFactory.createEmptyBorder(5, 5, 5, 5))));
 
 		executePanel = new JPanel();
-		GridLayout grid = new GridLayout(1, 1);
+		BorderLayout grid = new BorderLayout();
 		executePanel.setLayout(grid);
-		executePanel.add(execute);
+		executePanel.add(execute, BorderLayout.CENTER);
 		executePanel.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),
 				(BorderFactory.createEmptyBorder(10, 40, 10, 40))));
 
@@ -139,34 +142,36 @@ public class PanelQuery extends JPanel {
 				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
 
 		// Creation of queryResult textArea
-		queryResult = new JTextArea(16, 20);
+		queryResult = new JTextArea(50, 50);
+		//queryResult.setMinimumSize(new Dimension(500, 500));
 		queryResult.setEditable(false);
 		// Creation of scrollPane2
 		scrollPane2 = new JScrollPane(queryResult);
+		scrollPane2.setPreferredSize(new Dimension(200,50));
 		// Creation of label Result
 		resultQuery = new JLabel("Result");
 		resultQuery.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// Creation of resultQuery Panel
 		panelResult = new JPanel();
-		GridLayout gp = new GridLayout(2, 1);
+		BorderLayout gp = new BorderLayout();
 		panelResult.setLayout(gp);
-		panelResult.add(resultQuery);
-		panelResult.add(scrollPane2);
+		panelResult.add(resultQuery, BorderLayout.NORTH);
+		panelResult.add(scrollPane2, BorderLayout.CENTER);
 		panelResult.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),
 				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
 
 		// Creation of mainPanelText
 		mainPanelText = new JPanel();
-		GridLayout gr = new GridLayout(3, 1);
+		BorderLayout gr = new BorderLayout();
 		mainPanelText.setLayout(gr);
-		mainPanelText.add(panelInputText);
-		mainPanelText.add(panelResult);
+		mainPanelText.add(panelInputText, BorderLayout.NORTH);
+		mainPanelText.add(panelResult, BorderLayout.CENTER);
 		mainPanelText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),
 				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
 
-
-		
+		this.vec = new Vector<String>();
+		this.vec.add("TABLE : ");
 		if(this.vec != null) {
 			table = new JList<String>(this.vec);
 		}else{table = new JList<String>();}

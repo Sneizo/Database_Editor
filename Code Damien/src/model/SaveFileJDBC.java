@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import view.PanelQuery;
 
@@ -37,7 +38,8 @@ public class SaveFileJDBC {
 			}
 
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error with saving file as", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -55,10 +57,15 @@ public class SaveFileJDBC {
 			} else { saveFileAs() ; }
 
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error with saving file", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
+	}
+	
+	public String getPass() {
+		return this.pass;
 	}
 
 }

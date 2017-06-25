@@ -47,6 +47,7 @@ public class ControllerQuery implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource().equals(panelQuery.getExecute())){
 			try {
+				panelQuery.getQueryResult().setText("");
 				panelQuery.getQueryResult().replaceRange("",panelQuery.getQueryResult().getSelectionStart(),panelQuery.getQueryResult().getSelectionEnd());
 				new ResultatJDBC(con, panelQuery);
 			} catch (InterruptedException e) {

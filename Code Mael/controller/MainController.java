@@ -53,6 +53,7 @@ public class MainController {
 	private ConnexionJDBC con;
 	private OpenFileJDBC openFile;
 	private CreateTableJDBC createTable;
+	private ChangePasswordJDBC changePassword;
 	
 	
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
@@ -76,6 +77,7 @@ public class MainController {
 		this.saveFile = new SaveFileJDBC(panelQuery);
 		this.openFile = new OpenFileJDBC(panelQuery);
 		this.createTable = new CreateTableJDBC(con);
+		this.changePassword = new ChangePasswordJDBC(con, modifPassword);
 		
 		
 		
@@ -105,7 +107,8 @@ public class MainController {
 		initControllerSetAutoSave();
 		this.controllerProfilPanel = new ControllerProfilPanel(profilPanel, interf, mainPanel, titleBar, modifPassword, setAutoSave);
 		initControllerProfilPanel();
-		
+		this.controllerChangePassword = new ControllerChangePassword(connexion, modifPassword, changePassword);
+		initControllerChangePassword();
 		
 	}
 	
@@ -202,5 +205,9 @@ public class MainController {
 	
 	public void setConnexion(ConnexionJDBC con) {
 		this.con = con;
+	}
+
+	public void initControllerChangePassword(){
+		this.modifPassword.getConfirmer().addActionListener(controllerChangePassword);
 	}
 }

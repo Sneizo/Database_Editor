@@ -8,6 +8,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JPanel;
 
+import model.RenameTableJDBC;
 import view.InformationBar;
 import view.Interface;
 import view.MainPanel;
@@ -23,14 +24,16 @@ public class ControllerRename implements FocusListener, ActionListener{
 	private InformationBar informationBar;
 	private MainPanel mainPanel;
 	private TitleBar titleBar;
+	private RenameTableJDBC renameTableJDBC;
 	
-	public ControllerRename(Rename rename, Interface interf, PanelQuery panelQuery, InformationBar informationBar, MainPanel mainPanel, TitleBar titleBar) {
+	public ControllerRename(Rename rename, Interface interf, PanelQuery panelQuery, InformationBar informationBar, MainPanel mainPanel, TitleBar titleBar, RenameTableJDBC renameTableJDBC) {
 		this.rename = rename;
 		this.interf = interf;
 		this.informationBar = informationBar;
 		this.panelQuery = panelQuery;
 		this.titleBar = titleBar;
 		this.mainPanel = mainPanel;
+		this.renameTableJDBC = renameTableJDBC;
 		
 	}
 	
@@ -38,6 +41,9 @@ public class ControllerRename implements FocusListener, ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == this.rename.getConfirmer()) {
+			
+			renameTableJDBC.renameTable();
+			
 			JPanel frame = new JPanel();
 			BorderLayout br = new BorderLayout();
 			JPanel toolBar = new JPanel();

@@ -31,7 +31,7 @@ public class CreateUserJDBC extends JOptionPane {
 	public CreateUserJDBC(String login, String pass, String confirm, String database) {
 
 		JPanel pane = new JPanel();
-		lab1 = new JLabel("Login");
+		lab1 = new JLabel("Login of the Administrator");
 		lab2 = new JLabel("Password");
 
 		field1 = new JTextField();
@@ -88,7 +88,8 @@ public class CreateUserJDBC extends JOptionPane {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + dataBase,log,pass);
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
-			System.out.println("[user] User login or password incorrect.");
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Password or login incorect ", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -96,20 +97,19 @@ public class CreateUserJDBC extends JOptionPane {
 	 * This method create the new user with the sql script and the parameter
 	 * 
 	 * @param login
-	 *            the login old the new user
+	 *            the login of the new user
 	 * @param mdp
 	 *            the password of the new user
 	 */
 	private void create(String login, String mdp) {
 		try {
 			String sql = "CREATE USER " + login + " IDENTIFIED BY " + mdp;
-			String grant = "GRANT CONNECT TO " + login;
+			String grant = "GRANT ALL PRIVILEGES TO " + login;
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(grant);
-			System.out.println("[user] Utilisateur créé");
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("[user] Erreur dans la requête SQL.");
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error in the query ", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -120,7 +120,8 @@ public class CreateUserJDBC extends JOptionPane {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null, "Error with the log off", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
