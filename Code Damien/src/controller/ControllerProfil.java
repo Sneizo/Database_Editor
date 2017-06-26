@@ -37,6 +37,17 @@ public class ControllerProfil implements ActionListener, MouseListener{
 	private Connexion connexion;
 	private ProfilPanel profilPanel;
 	
+	/**
+	 * 
+	 * @param mainPanel
+	 * @param interf
+	 * @param titleBar
+	 * @param profil
+	 * @param panelQuery
+	 * @param informationBar
+	 * @param connexion
+	 * @param profilPanel
+	 */
 	public ControllerProfil(MainPanel mainPanel, Interface interf, TitleBar titleBar, Profil profil, PanelQuery panelQuery, InformationBar informationBar, Connexion connexion, ProfilPanel profilPanel){
 		this.mainPanel = mainPanel;
 		this.interf = interf;
@@ -85,6 +96,7 @@ public class ControllerProfil implements ActionListener, MouseListener{
 //			this.connexion.setConfirmPassSub("Password");
 //			this.connexion.setDataNameSub("URL of the data base");
 //			interf.setPanel(frame);
+			
 			interf.dispose();
 			
 			try {

@@ -139,7 +139,7 @@ public class PanelQuery extends JPanel {
 		panelInputText.add(scrollPane1, BorderLayout.CENTER);
 		panelInputText.add(titlePanel, BorderLayout.NORTH);
 		panelInputText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),
-				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
+				(BorderFactory.createEmptyBorder(10, 10, 10, 10))));
 
 		// Creation of queryResult textArea
 		queryResult = new JTextArea(50, 50);
@@ -176,7 +176,7 @@ public class PanelQuery extends JPanel {
 			table = new JList<String>(this.vec);
 		}else{table = new JList<String>();}
 		scrollPane3 = new JScrollPane(table);
-		scrollPane3.setPreferredSize(new Dimension(200,50));
+		scrollPane3.setPreferredSize(new Dimension(200,60));
 		
 
 		this.setLayout(new BorderLayout());

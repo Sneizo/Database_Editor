@@ -39,7 +39,8 @@ public class OpenFileJDBC {
 				BufferedReader in = new BufferedReader(readFile);
 				String s = in.readLine();
 				while (s != null) {
-					panelQuery.getQueryWrite().setText(s);
+					panelQuery.getQueryWrite().append(s);
+					panelQuery.getQueryWrite().append("\n");
 					s = in.readLine();					
 				}
 			}
