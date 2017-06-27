@@ -1,0 +1,6 @@
+[0612/081517.552:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Junemike\Reports\Dump: Le chemin d’accès spécifié est introuvable. (0x3)
+[0612/081517.552:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0612/081517.552:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Junemike\Reports\Dump: Le chemin d’accès spécifié est introuvable. (0x3)
+[0627/102026.085:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Junemike\Reports\Dump: Le chemin d’accès spécifié est introuvable. (0x3)
+[0627/102026.097:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0627/102026.098:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Junemike\Reports\Dump: Le chemin d’accès spécifié est introuvable. (0x3)
