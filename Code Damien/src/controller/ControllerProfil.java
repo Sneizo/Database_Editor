@@ -8,14 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import view.Connexion;
 import view.InformationBar;
 import view.Interface;
-import view.Launcher;
 import view.MainPanel;
 import view.PanelQuery;
 import view.Profil;
@@ -23,7 +20,8 @@ import view.ProfilPanel;
 import view.TitleBar;
 
 /**
- * @author Damien
+ * This class allows to manage the graphical components located in the profile panel
+ * @author Mael and Damien
  *
  */
 public class ControllerProfil implements ActionListener, MouseListener{
@@ -38,15 +36,15 @@ public class ControllerProfil implements ActionListener, MouseListener{
 	private ProfilPanel profilPanel;
 	
 	/**
-	 * 
-	 * @param mainPanel
-	 * @param interf
-	 * @param titleBar
-	 * @param profil
-	 * @param panelQuery
-	 * @param informationBar
-	 * @param connexion
-	 * @param profilPanel
+	 * The constructor of the ControllerProfil class.
+	 * @param mainPanel The mainPanel class.
+	 * @param interf The main frame.
+	 * @param titleBar The titleBar class.
+	 * @param profil The profil class.
+	 * @param panelQuery The panelQuery class.
+	 * @param informationBar The informationBar class.
+	 * @param connexion The connexion class.
+	 * @param profilPanel The profilPanel class.
 	 */
 	public ControllerProfil(MainPanel mainPanel, Interface interf, TitleBar titleBar, Profil profil, PanelQuery panelQuery, InformationBar informationBar, Connexion connexion, ProfilPanel profilPanel){
 		this.mainPanel = mainPanel;
@@ -59,7 +57,10 @@ public class ControllerProfil implements ActionListener, MouseListener{
 		this.profilPanel = profilPanel;
 	}
 	
-	@Override
+
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource().equals(profil.getHome())){
 			JPanel frame = new JPanel();
@@ -135,7 +136,9 @@ public class ControllerProfil implements ActionListener, MouseListener{
 		
 	}
 
-	@Override
+	/**
+	 * Generate an action when the smile passes on the component.
+	 */
 	public void mouseEntered(MouseEvent arg0) {
 		if(arg0.getSource().equals(profil.getHome())){
 			profil.getHome().setIcon(new ImageIcon("data/images/home2.png"));
@@ -151,7 +154,9 @@ public class ControllerProfil implements ActionListener, MouseListener{
 		
 	}
 
-	@Override
+	/**
+	 * Generate an action when the smile leave the component.
+	 */
 	public void mouseExited(MouseEvent arg0) {
 		if(arg0.getSource().equals(profil.getHome())){
 			profil.getHome().setIcon(new ImageIcon("data/images/home.png"));

@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * This class create a user
  * Create a connection, create the user with the parameter and disconnect
- * @author Mael & Damien
+ * @author Mael and Damien
  */
 public class CreateUser {
 

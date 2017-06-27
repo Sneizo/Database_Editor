@@ -7,7 +7,7 @@ import view.Rename;
 
 /**
  * This class delete an user
- * @author Mael & Damien
+ * @author Mael and Damien
  */
 public class RenameTableJDBC {
 	
@@ -17,20 +17,17 @@ public class RenameTableJDBC {
 	private Rename rename;
 	
 	/**
-	 * The constructor of the class
-	 * connect to the database, delete the user and disconnect to the database
-	 * @param login the login of the user 
-	 */	
+	 * The constructor of the class.
+	 * @param connexion The connexionJDBC class.
+	 * @param rename The rename class.
+	 */
 	public RenameTableJDBC(ConnexionJDBC connexion, Rename rename) {
 		this.connexion = connexion;
 		this.rename = rename;
 	}
 
-	
-
 	/**
-	 * This method delete the user of the database
-	 * @param login the login of the user to delete
+	 * This method rename a table.
 	 */
 	public void renameTable() {
 		try {

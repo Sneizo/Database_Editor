@@ -9,10 +9,8 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
 import model.ConnexionJDBC;
 import model.CreateUserJDBC;
 import model.TableJDBC;
@@ -23,6 +21,11 @@ import view.MainPanel;
 import view.PanelQuery;
 import view.TitleBar;
 
+/**
+ * This class manages control of the connection to the application.
+ * @author Mael and Damien
+ *
+ */
 public class ControllerConnexion implements FocusListener, ActionListener, MouseListener {
 
 	private Connexion connexion;
@@ -33,6 +36,17 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 	private InformationBar ib;
 	private ConnexionJDBC con;
 
+	
+	/**
+	 * The constructor of the ControllerConnexion class.
+	 * @param connexion The connexion class.
+	 * @param interf The main frame.
+	 * @param titleBar The titleBar class.
+	 * @param mainPanel The mainPanel class.
+	 * @param panelQuery The panelQuery class.
+	 * @param ib The InformationBar class.
+	 * @param con The connexionJDBC class.
+	 */
 	public ControllerConnexion(Connexion connexion, Interface interf, TitleBar titleBar, MainPanel mainPanel,
 			PanelQuery panelQuery, InformationBar ib, ConnexionJDBC con) {
 
@@ -46,6 +60,9 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 
 	}
 
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusLost(FocusEvent fe) {
 		if (fe.getSource() == this.connexion.getUserLog()) {
 			if (this.connexion.getUserLog().getText().equals("")) {
@@ -90,7 +107,10 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 		}
 
 	}
-
+	
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusGained(FocusEvent fe) {
 		if (fe.getSource() == this.connexion.getUserLog()) {
 			if (this.connexion.getUserLog().getText().equals("Login"))
@@ -128,6 +148,9 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 		}
 	}
 
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == this.connexion.getConnect()) {
 
@@ -192,7 +215,9 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 		
 	}
 
-	@Override
+	/**
+	 * Performs the action when the cursor clicks the component.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if(e.getSource().equals(connexion.getConnect())){
 			connexion.getConnect().setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -209,7 +234,9 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 		
 	}
 
-	@Override
+	/**
+	 * Perform the action when the cursor leaves the component.
+	 */
 	public void mouseExited(MouseEvent e) {
 		if(e.getSource().equals(connexion.getConnect())){
 			connexion.getConnect().setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -226,15 +253,17 @@ public class ControllerConnexion implements FocusListener, ActionListener, Mouse
 		
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * Perform the action when the cursor pressed the component.
+	 */
+	public void mousePressed(MouseEvent e) {		
 	}
 
-	@Override
+	/**
+	 * Perform the action when the cursor release the component.
+	 */
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

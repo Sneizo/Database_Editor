@@ -5,9 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.JPanel;
-
 import model.CreateTableJDBC;
 import view.Create;
 import view.CreateColonne;
@@ -17,6 +15,12 @@ import view.MainPanel;
 import view.PanelQuery;
 import view.TitleBar;
 
+
+/**
+ * This class manages the control of the creation of tables.
+ * @author Mael and Damien
+ *
+ */
 public class ControllerCreate implements FocusListener, ActionListener {
 
 	private Create create;
@@ -31,6 +35,17 @@ public class ControllerCreate implements FocusListener, ActionListener {
 	private int val;
 	private String nomTable;
 
+	/**
+	 * The constructor of the class.
+	 * @param create The create class.
+	 * @param interf The main frame.
+	 * @param panelQuery The panelQuery class.
+	 * @param informationBar The InformationBar class.
+	 * @param mainPanel The mainPanel class.
+	 * @param titleBar The titleBar class.
+	 * @param createColonne The createColonne class.
+	 * @param createTable The createTable class.
+	 */
 	public ControllerCreate(Create create, Interface interf, PanelQuery panelQuery, InformationBar informationBar,
 			MainPanel mainPanel, TitleBar titleBar, CreateColonne createColonne, CreateTableJDBC createTable) {
 		this.create = create;
@@ -43,16 +58,25 @@ public class ControllerCreate implements FocusListener, ActionListener {
 		this.createTable = createTable;
 	}
 
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusLost(FocusEvent fe) {
 
 	}
 
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusGained(FocusEvent fe) {
 		if (fe.getSource() == this.create.getNewTableName()) {
 
 		}
 	}
 
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == this.create.getConfirmer()) {

@@ -9,8 +9,8 @@ import java.util.Scanner;
 import view.ModifPassword;
 
 /**
- * This class delete an user
- * @author Mael & Damien
+ * This class change de password of an user
+ * @author Mael and Damien
  */
 public class ChangePasswordJDBC {
 	
@@ -21,9 +21,9 @@ public class ChangePasswordJDBC {
 	
 	/**
 	 * The constructor of the class
-	 * connect to the database, delete the user and disconnect to the database
-	 * @param login the login of the user 
-	 */	
+	 * @param connexion The connexionJDBC class.
+	 * @param pass THe ModifPassword class.
+	 */
 	public ChangePasswordJDBC(ConnexionJDBC connexion, ModifPassword pass) {
 		this.connexion = connexion;
 		this.pass = pass;
@@ -32,8 +32,7 @@ public class ChangePasswordJDBC {
 	
 
 	/**
-	 * This method delete the user of the database
-	 * @param login the login of the user to delete
+	 * This method change the user password.
 	 */
 	public void changePassword() {
 		try {

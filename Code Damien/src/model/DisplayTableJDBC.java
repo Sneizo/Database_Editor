@@ -1,23 +1,27 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
-
 import view.PanelQuery;
-
+/**
+ * 
+ * @author Mael and Damien
+ *
+ */
 public class DisplayTableJDBC {
-
 	
 	private Statement stmt;
 	private ResultSet resultat;
 	private ConnexionJDBC connexion;
 	private PanelQuery panelQuery;
 
+	/**
+	 * The constructor of DisplayTableJDBC
+	 * @param panelQuery The panelQuery class.
+	 * @param connexion The connexionJDBC class.
+	 */
 	public DisplayTableJDBC(PanelQuery panelQuery, ConnexionJDBC connexion) {
 
 		this.panelQuery = panelQuery;
@@ -25,12 +29,7 @@ public class DisplayTableJDBC {
 	}
 
 	/**
-	 * This method create the new user with the sql script and the parameter
-	 * 
-	 * @param login
-	 *            the login od the new user
-	 * @param mdp
-	 *            the password of the new user
+	 * This method diplay the table.
 	 */
 	public void display() {
 		try {

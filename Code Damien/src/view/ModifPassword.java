@@ -13,6 +13,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 
+/**
+ * This class is the interface for changing the password.
+ * @author Mael and Damien
+ *
+ */
 public class ModifPassword extends JPanel {
 	
 	private JLabel changement;
@@ -27,11 +32,16 @@ public class ModifPassword extends JPanel {
 	private JButton confirmer;
 	private JButton annuler;
 	
-	
+	/**
+	 * The constructor of the ModifPassword class.
+	 */
 	public ModifPassword() {
 		initModifPassword();
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 */
 	private void initModifPassword() {
 		
 		Font fontTitle = new Font("arimo", Font.BOLD, 26);
@@ -112,22 +122,42 @@ public class ModifPassword extends JPanel {
 		setBackground(new Color(80,80,80));
 	}
 
+	/**
+	 * 
+	 * @return The oldPasswordF
+	 */
 	public JPasswordField getOldPasswordF() {
 		return oldPasswordF;
 	}
 
+	/**
+	 * 
+	 * @return The newPasswordF
+	 */
 	public JPasswordField getNewPasswordF() {
 		return newPasswordF;
 	}
 
+	/**
+	 * 
+	 * @return The confirmNewPasswordF
+	 */
 	public JPasswordField getConfirmNewPasswordF() {
 		return confirmNewPasswordF;
 	}
 
+	/**
+	 * 
+	 * @return The confirmer
+	 */
 	public JButton getConfirmer() {
 		return confirmer;
 	}
 
+	/**
+	 *
+	 * @return The cancel button.
+	 */
 	public JButton getAnnuler() {
 		return annuler;
 	}

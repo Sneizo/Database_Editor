@@ -13,7 +13,7 @@ import view.PanelQuery;
 /**
  * This class get the SQL request and execute it for display the result
  * 
- * @author Mael & &Damien
+ * @author Mael and Damien
  */
 public class ResultatJDBC {
 
@@ -27,9 +27,9 @@ public class ResultatJDBC {
 	/**
 	 * the constructor of the class set the variable jdbcOperation
 	 * 
-	 * @param con
-	 *            the connection to the database
-	 * @throws InterruptedException
+	 * @param con The connection to the database
+	 * @param panelQuery The panelQuery class.
+	 * @throws InterruptedException Error.
 	 */
 	public ResultatJDBC(ConnexionJDBC con, PanelQuery panelQuery) throws InterruptedException {
 

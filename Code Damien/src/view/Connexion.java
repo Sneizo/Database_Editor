@@ -1,11 +1,11 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +15,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 
+
+/**
+ * This class allows you to connect to a database from a java application
+ * @author Mael and Damien
+ *
+ */
 public class Connexion extends JPanel {
 
 	private JPanel conPane;
@@ -36,6 +42,10 @@ public class Connexion extends JPanel {
 	private JLabel user2;
 	private JLabel attente;
 
+	
+	/**
+	 * The constructor of the connexion class.
+	 */
 	public Connexion() {
 		try {
 		this.initConponent();
@@ -47,6 +57,9 @@ public class Connexion extends JPanel {
 
 	}
 
+	/**
+	 * Creating different panels.
+	 */
 	private void initClass() {
 		setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(16,16,16,16))));
 		this.setLayout(new BorderLayout());
@@ -56,6 +69,10 @@ public class Connexion extends JPanel {
 		this.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(50,200,50,200))));
 	}
 
+	/**
+	 * Initializes the graphical components of the class.
+	 * @throws IOException
+	 */
 	private void initConponent() throws IOException {
 
 		// premier panneau
@@ -101,15 +118,9 @@ public class Connexion extends JPanel {
 		this.dataNameLog.setHorizontalAlignment(JTextField.CENTER);
 		this.dataNameLog.setCaretColor(Color.WHITE);
 		
-		
-		
-
-		
-		
 		this.attente = new JLabel();
 		this.attente.setForeground(Color.red);
-	//	this.attente.setIcon(new ImageIcon(ImageIO.read(new File("data/images/wait.gif")).getScaledInstance(20,20,BufferedImage.TYPE_INT_ARGB)));
-		//this.attente.setText("");
+		
 		this.connect = new JButton();
 		this.connect.setText("CONNECT");
 		this.connect.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -122,8 +133,6 @@ public class Connexion extends JPanel {
 		this.conPane.add(this.dataNameLog);
 		this.conPane.add(this.attente);
 		this.conPane.add(this.connect);
-
-		//this.conPane.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),(BorderFactory.createEmptyBorder(16,16,16,200))));
 		
 		// second panneau
 		this.user2 = new JLabel(image);
@@ -185,71 +194,134 @@ public class Connexion extends JPanel {
 		this.subPane.add(this.subscribe);
 	}
 
-
+	/**
+	 * Return the user log
+	 * @return userLog
+	 */
 	public JTextField getUserLog() {
 		return userLog;
 	}
 
+	/**
+	 * Return passLog
+	 * @return The JTextField passLog.
+	 */
 	public JTextField getPassLog() {
 		return passLog;
 	}
 
+	/**
+	 * @return the dataNameLog
+	 */
 	public JTextField getDataNameLog() {
 		return dataNameLog;
 	}
 
+	/**
+	 * @return the button connect
+	 */
 	public JButton getConnect() {
 		return connect;
 	}
 
+	/**
+	 * @return the getUserSub
+	 */
 	public JTextField getUserSub() {
 		return userSub;
 	}
 
+	/**
+	 * @return the passSub
+	 */
 	public JTextField getPassSub() {
 		return passSub;
 	}
 
+	/**
+	 * 
+	 * @return the confirmPassSub
+	 */
 	public JTextField getConfirmPassSub() {
 		return confirmPassSub;
 	}
-
+ 
+	/**
+	 * 
+	 * @return the dataNameSub
+	 */
 	public JTextField getDataNameSub() {
 		return dataNameSub;
 	}
 
+	/**
+	 * 
+	 * @return the suscribe button
+	 */
 	public JButton getSubscribe() {
 		return subscribe;
 	}
 
+	/**
+	 * 
+	 * @return the Label attente
+	 */
 	public JLabel getAttente() {
 		return attente;
 	}
 	
+	/**
+	 * 
+	 * @param userLog the userLog to set
+	 */
 	public void setUserLog(String userLog) {
 		this.userLog.setText(userLog);
 	}
 
+	/**
+	 * 
+	 * @param passLog the passLog to set
+	 */
 	public void setPassLog(String passLog) {
 		this.passLog.setText(passLog);
 	}
 
+	/**
+	 * 
+	 * @param dataNameLog the dataNameLog to set
+	 */
 	public void setDataNameLog(String dataNameLog) {
 		this.dataNameLog.setText(dataNameLog);
 	}
 
+	/**
+	 * 
+	 * @param userSub the userSub to set
+	 */
 	public void setUserSub(String userSub) {
 		this.userSub.setText(userSub);
 	}
 
+	/**
+	 * 
+	 * @param passSub the passSub to set
+	 */
 	public void setPassSub(String passSub) {
 		this.passSub.setText(passSub);
 	}
 
+	/**
+	 * 
+	 * @param confirmPassSub the confirm pass to set
+	 */
 	public void setConfirmPassSub(String confirmPassSub) {
 		this.confirmPassSub.setText(confirmPassSub);
 	}
 
+	/**
+	 * 
+	 * @param dataNameSub the dataNameSub to set
+	 */
 	public void setDataNameSub(String dataNameSub) {
 		this.dataNameSub.setText(dataNameSub);
 	}

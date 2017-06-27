@@ -14,19 +14,25 @@ import javax.swing.JOptionPane;
 import view.PanelQuery;
 
 /**
- * @author Damien
+ * This class allows you to open files by reading 
+ * @author Mael and Damien
  *
  */
-public class OpenFileJDBC {
-
+public class OpenFileJDBC {	
 	
-	private PanelQuery panelQuery;
+	private PanelQuery panelQuery;	
 	
-	
+	/**
+	 * The constructor of the class
+	 * @param panelQuery the panelQuery
+	 */
 	public OpenFileJDBC(PanelQuery panelQuery){
 		this.panelQuery = panelQuery;
 	}
 	
+	/**
+	 * This void read in file selected.
+	 */
 	public void readFile(){
 		
 		try{

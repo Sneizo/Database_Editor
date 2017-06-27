@@ -5,9 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.JPanel;
-
 import model.RenameTableJDBC;
 import view.InformationBar;
 import view.Interface;
@@ -16,6 +14,11 @@ import view.PanelQuery;
 import view.Rename;
 import view.TitleBar;
 
+/**
+ * This class allows the application to rename a table in the database.
+ * @author Mael and Damien
+ *
+ */
 public class ControllerRename implements FocusListener, ActionListener{
 	
 	private Rename rename;
@@ -26,6 +29,16 @@ public class ControllerRename implements FocusListener, ActionListener{
 	private TitleBar titleBar;
 	private RenameTableJDBC renameTableJDBC;
 	
+	/**
+	 * The constructor of the ControllerRename class.
+	 * @param rename The rename class.
+	 * @param interf The main frame.
+	 * @param panelQuery The panelQuery class.
+	 * @param informationBar The informationBar class.
+	 * @param mainPanel The mainPanel class.
+	 * @param titleBar The titleBar class.
+	 * @param renameTableJDBC The renameTableJDBC class.
+	 */
 	public ControllerRename(Rename rename, Interface interf, PanelQuery panelQuery, InformationBar informationBar, MainPanel mainPanel, TitleBar titleBar, RenameTableJDBC renameTableJDBC) {
 		this.rename = rename;
 		this.interf = interf;
@@ -38,7 +51,9 @@ public class ControllerRename implements FocusListener, ActionListener{
 	}
 	
 
-	
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == this.rename.getConfirmer()) {
 			
@@ -88,6 +103,9 @@ public class ControllerRename implements FocusListener, ActionListener{
 	}
 
 	
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusGained(FocusEvent fe) {
 		if(fe.getSource() == this.rename.getOldTableName()) {
 			
@@ -98,6 +116,9 @@ public class ControllerRename implements FocusListener, ActionListener{
 		
 	}
 
+	/**
+	 * Manage focus on graphical components.
+	 */
 	public void focusLost(FocusEvent fe) {
 		
 	}
