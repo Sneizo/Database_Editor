@@ -7,23 +7,34 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
 import view.Interface;
 import view.TitleBar;
 
+/**
+ * This class allows to control the highest bar of the software, notably by adding the action to frame the window or even that to unlace it.
+ * @author Mael and Damien
+ *
+ */
 public class ControllerTitleBar implements ActionListener, MouseListener {
 
 	private TitleBar titleBar;
 	private Interface interf;
 
+	/**
+	 * The constructor of the ControllerTitleBar class.
+	 * @param titleBar The titleBar class.
+	 * @param interf The main frame.
+	 */
 	public ControllerTitleBar(TitleBar titleBar, Interface interf) {
 		this.titleBar = titleBar;
 		this.interf = interf;
 	}
 
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == titleBar.getExit()) {
 			System.exit(0);
@@ -45,12 +56,16 @@ public class ControllerTitleBar implements ActionListener, MouseListener {
 
 	}
 	
-	
+	/**
+	 * Generate an action when the smile click on the component.
+	 */
 	public void mouseClicked(MouseEvent me) {
 		
 	}
 
-	@Override
+	/**
+	 * Generate an action when the smile passes on the component.
+	 */
 	public void mouseEntered(MouseEvent arg0) {
 		
 		if(arg0.getSource().equals(titleBar.getExit())){
@@ -62,7 +77,9 @@ public class ControllerTitleBar implements ActionListener, MouseListener {
 		}
 	}
 
-	@Override
+	/**
+	 * Generate an action when the smile leave the component.
+	 */
 	public void mouseExited(MouseEvent arg0) {
 		if(arg0.getSource().equals(titleBar.getExit())){
 			try {
@@ -74,6 +91,9 @@ public class ControllerTitleBar implements ActionListener, MouseListener {
 		
 	}
 
+	/**
+	 * Generate an action when the smile press the component.
+	 */
 	public void mousePressed(MouseEvent me) {
 		
 		

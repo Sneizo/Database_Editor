@@ -5,6 +5,11 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
+/**
+ * This class creates the panel for rename a table.
+ * @author Mael and Damien
+ *
+ */
 public class Rename extends JPanel{
 	
 	private JTextField oldTableName;
@@ -22,10 +27,16 @@ public class Rename extends JPanel{
 	private JButton confirmer;
 	private JButton annuler;
 	
+	/**
+	 * The constructor of the Rename class.
+	 */
 	public Rename() {
 		init();
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 */
 	public void init() {
 		this.pane = new JPanel();
 		this.pane.setLayout(new GridLayout(2,2,0,50));
@@ -104,19 +115,34 @@ public class Rename extends JPanel{
 		
 	}
 
-
+	/**
+	 * 
+	 * @return The oldTableName
+	 */
 	public JTextField getOldTableName() {
 		return oldTableName;
 	}
-
+	
+	/**
+	 * 
+	 * @return The newTableName
+	 */
 	public JTextField getNewTableName() {
 		return newTableName;
 	}
 
+	/**
+	 * 
+	 * @return The button validate.
+	 */
 	public JButton getConfirmer() {
 		return confirmer;
 	}
 
+	/**
+	 * 
+	 * @return The cancel button.
+	 */
 	public JButton getAnnuler() {
 		return annuler;
 	}

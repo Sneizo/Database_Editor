@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -15,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.border.CompoundBorder;
 
-
+/**
+ * This class create the main panel.
+ * @author Mael and Damien
+ *
+ */
 public class MainPanel extends JPanel{
 	
 	//Toolbar component
@@ -26,17 +29,19 @@ public class MainPanel extends JPanel{
 	private JButton saveAs;
 	private JButton rename;
 	private JButton disconnect;	
-	private JButton refresh;
-	
+	private JButton refresh;	
 	private JButton consol;
 	
-	
-	
-	
+	/**
+	 * The constructor of MainPanel class.
+	 */
 	public MainPanel() {
 		initComponent();
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 */
 	private void initComponent(){
 		try {
 		//Buton consol
@@ -199,6 +204,10 @@ public class MainPanel extends JPanel{
 		return consol;
 	}
 
+	/**
+	 * 
+	 * @return the refresh
+	 */
 	public JButton getRefresh() {
 		return refresh;
 	}

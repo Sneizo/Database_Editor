@@ -1,6 +1,3 @@
-/**
- * 
- */
 package view;
 
 import java.awt.BorderLayout;
@@ -11,14 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 
 /**
- * @author Damien
+ * Create the information bar containing the date and user name
+ * @author Mael and Damien
  *
  */
 public class InformationBar extends JPanel{

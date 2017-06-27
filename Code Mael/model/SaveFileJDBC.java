@@ -5,21 +5,31 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
 import view.PanelQuery;
 
+/**
+ * This class write in a file to save the query sql.
+ * @author Mael and Damien
+ *
+ */
 public class SaveFileJDBC {
 
 	private String pass;
 	private PanelQuery pq;
 
+	/**
+	 * The constructor of the SaveFileJDBC class.
+	 * @param pq the panelQuery
+	 */
 	public SaveFileJDBC(PanelQuery pq) {
 		this.pq = pq;
 	}
 
+	/**
+	 * This void write in a file to save the sql query.
+	 */
 	public void saveFileAs() {
 
 		try {
@@ -44,6 +54,9 @@ public class SaveFileJDBC {
 
 	}
 	
+	/**
+	 * This void write in a file to save the sql query.
+	 */
 	public void saveFile(){
 		
 		try {			
@@ -64,6 +77,10 @@ public class SaveFileJDBC {
 		
 	}
 	
+	/**
+	 * 
+	 * @return this pass.
+	 */
 	public String getPass() {
 		return this.pass;
 	}

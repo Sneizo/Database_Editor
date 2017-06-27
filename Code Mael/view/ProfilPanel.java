@@ -8,16 +8,26 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * The profil panel class.
+ * @author Mael and Damien
+ *
+ */
 public class ProfilPanel extends JPanel {
 	
 	private JButton mdp;
 	private JButton autosave;
 	
-	
+	/** 
+	 * The constructor of the profilPanel class.
+	 */
 	public ProfilPanel() {
 		initPane();
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 */
 	private void initPane() {
 		
 		setBackground(new Color(80,80,80));
@@ -44,11 +54,18 @@ public class ProfilPanel extends JPanel {
 		this.add(this.autosave);
 	}
 	
+	/**
+	 * 
+	 * @return the password
+	 */
 	public JButton getMdp() {
 		return this.mdp;
 	}
 	
-	
+	/**
+	 * 
+	 * @return the autoSaveButton
+	 */
 	public JButton getAutoSave() {
 		return this.autosave;
 	}

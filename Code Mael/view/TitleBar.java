@@ -3,34 +3,32 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 import javax.swing.border.CompoundBorder;
 
 
-
-
-
+/**
+ * Create the main task bar containing the logo and the cross to exit the application
+ * @author Mael and Damien
+ *
+ */
 public class TitleBar extends JPanel {
-
-	
 	private JButton exit;
 	private JButton extend;
 	private JButton reduce;
 	private JLabel logo;
 	
+	/**
+	 * The constructor of the titleBar class.
+	 */
 	public TitleBar() {
 		try {
 			initComponent();
@@ -39,6 +37,10 @@ public class TitleBar extends JPanel {
 		}
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 * @throws IOException
+	 */
 	private void initComponent() throws IOException{
 		
 	

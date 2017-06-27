@@ -1,6 +1,3 @@
-/**
- * 
- */
 package view;
 
 import java.awt.BorderLayout;
@@ -8,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Vector;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,7 +12,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
@@ -25,7 +20,8 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.Element;
 
 /**
- * @author Damien
+ * This class creates the panel for sending requests to the database.
+ * @author Mael and Damien
  *
  */
 public class PanelQuery extends JPanel {
@@ -53,12 +49,18 @@ public class PanelQuery extends JPanel {
 	private Vector<String> vec;
 	
 
+	/**
+	 * The constructor of the panelQuery class.
+	 */
 	public PanelQuery() {
 		
 		initComponent();
 
 	}
 
+	/**
+	 * Initializes the graphical components.
+	 */
 	private void initComponent() {
 
 		// Creation of JTextArea
@@ -68,6 +70,9 @@ public class PanelQuery extends JPanel {
 		queryWrite.setOpaque(true);
 		// Creation of JButton execute
 		execute = new JButton("Execute query");
+		this.execute.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		this.execute.setBackground(new Color(80,80,80));
+		this.execute.setForeground(Color.WHITE);
 		execute.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY),
 				(BorderFactory.createEmptyBorder(5, 5, 5, 5))));
 
@@ -136,7 +141,7 @@ public class PanelQuery extends JPanel {
 		panelInputText.add(scrollPane1, BorderLayout.CENTER);
 		panelInputText.add(titlePanel, BorderLayout.NORTH);
 		panelInputText.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY),
-				(BorderFactory.createEmptyBorder(16, 16, 16, 16))));
+				(BorderFactory.createEmptyBorder(10, 10, 10, 10))));
 
 		// Creation of queryResult textArea
 		queryResult = new JTextArea(50, 50);
@@ -173,7 +178,7 @@ public class PanelQuery extends JPanel {
 			table = new JList<String>(this.vec);
 		}else{table = new JList<String>();}
 		scrollPane3 = new JScrollPane(table);
-		scrollPane3.setPreferredSize(new Dimension(200,50));
+		scrollPane3.setPreferredSize(new Dimension(200,60));
 		
 
 		this.setLayout(new BorderLayout());
@@ -329,7 +334,10 @@ public class PanelQuery extends JPanel {
 	}
 	
 
-	
+	/**
+	 * 
+	 * @param vec The vector to set.
+	 */
 	public void setVector(Vector<String> vec) {
 		this.vec = vec;
 		this.table.setListData(vec.toArray(new String[0]));

@@ -76,6 +76,7 @@ public class ConnexionJDBC {
 	 */
 	public void deconnexion() throws SQLException {
 		conn.close();
+		this.connect = false;
 		if (conn.isClosed()) {
 			// We try to reset the connection
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + database, user, pass);

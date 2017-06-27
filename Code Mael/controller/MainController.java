@@ -1,8 +1,10 @@
 package controller;
 
+import model.ChangePasswordJDBC;
 import model.ConnexionJDBC;
 import model.CreateTableJDBC;
 import model.OpenFileJDBC;
+import model.RenameTableJDBC;
 import model.SaveFileJDBC;
 import view.Connexion;
 import view.Create;
@@ -18,6 +20,11 @@ import view.Rename;
 import view.SetAutoSave;
 import view.TitleBar;
 
+/**
+ * This class allows to manage all the other classes of controller by offering them in attribute of each classes of this project.
+ * @author Mael and Damien
+ *
+ */
 public class MainController {
 	
 	private Connexion connexion;
@@ -47,6 +54,7 @@ public class MainController {
 	private ControllerAutoSave controllerAutoSave;
 	private ControllerSetAutoSave controllerSetAutoSave;
 	private ControllerProfilPanel controllerProfilPanel;
+	private ControllerChangePassword controllerChangePassword;
 	
 	private Profil profil;
 	private SaveFileJDBC saveFile;
@@ -54,8 +62,24 @@ public class MainController {
 	private OpenFileJDBC openFile;
 	private CreateTableJDBC createTable;
 	private ChangePasswordJDBC changePassword;
+	private RenameTableJDBC renameTableJDBC;
 	
-	
+	/**
+	 * The main controller class.
+	 * @param connexion The connexion class.
+	 * @param create The create class.
+	 * @param rename The rename class.
+	 * @param mainPanel The mainPanel class.
+	 * @param titleBar The titleBar class.
+	 * @param panelQuery The panelQuery class.
+	 * @param interf The main frame.
+	 * @param informationBar The informationBar class.
+	 * @param profil The profil class.
+	 * @param profilPanel The profilPanel class.
+	 * @param modifPassword The modifPassword class.
+	 * @param setAutoSave The setAutoSave class.
+	 * @param createColonne The create colonne class.
+	 */
 	public MainController(Connexion connexion, Create create, Rename rename, MainPanel mainPanel, 
 			TitleBar titleBar, PanelQuery panelQuery, Interface interf, InformationBar informationBar, Profil profil, ProfilPanel profilPanel, ModifPassword modifPassword,SetAutoSave setAutoSave, CreateColonne createColonne) {
 		
@@ -78,6 +102,7 @@ public class MainController {
 		this.openFile = new OpenFileJDBC(panelQuery);
 		this.createTable = new CreateTableJDBC(con);
 		this.changePassword = new ChangePasswordJDBC(con, modifPassword);
+		this.renameTableJDBC = new RenameTableJDBC(con, rename);
 		
 		
 		
@@ -89,7 +114,7 @@ public class MainController {
 		initConnexion();
 		this.controllerCreate = new ControllerCreate(create,interf, panelQuery, informationBar, mainPanel, titleBar, createColonne, createTable);
 		initCreate();
-		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar);
+		this.controllerRename = new ControllerRename(rename,interf, panelQuery, informationBar, mainPanel, titleBar, renameTableJDBC);
 		initRename();
 		this.controllerMainPanel = new ControllerMainPanel(mainPanel,interf,create,titleBar,rename, profil, saveFile, con, panelQuery, openFile);
 		initMainPanel();
@@ -112,6 +137,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * This method initializes all the controllers of the connection class.
+	 */
 	public void initConnexion() {
 		this.connexion.getUserLog().addFocusListener(controllerConnexion);
 		this.connexion.getPassLog().addFocusListener(controllerConnexion);
@@ -126,6 +154,10 @@ public class MainController {
 		this.connexion.getSubscribe().addActionListener(controllerConnexion);
 		
 	}
+	
+	/**
+	 * This method initializes all the controlers of the create class.
+	 */
 	public void initCreate() {
 		this.create.getNewTableName().addFocusListener(controllerCreate);
 		this.create.getConfirmer().addActionListener(controllerCreate);
@@ -134,6 +166,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * This method initializes all the controlers of the rename class.
+	 */
 	public void initRename() {
 		this.rename.getOldTableName().addFocusListener(controllerRename);
 		this.rename.getNewTableName().addFocusListener(controllerRename);
@@ -141,6 +176,9 @@ public class MainController {
 		this.rename.getAnnuler().addActionListener(controllerRename);
 	}
 	
+	/**
+	 * This method initializes all controlers of the mainPanel class.
+	 */
 	public void initMainPanel() {
 		this.mainPanel.getCreate().addActionListener(controllerMainPanel);
 		this.mainPanel.getOpen().addActionListener(controllerMainPanel);
@@ -157,6 +195,9 @@ public class MainController {
 
 	}
 	
+	/**
+	 * This method initializes all the controlers of the initTitleBar class.
+	 */
 	public void initTitleBar() {
 		this.titleBar.getExit().addActionListener(controllerTitleBar);
 		this.titleBar.getExtend().addActionListener(controllerTitleBar);
@@ -164,15 +205,24 @@ public class MainController {
 		this.titleBar.getExit().addMouseListener(controllerTitleBar);
 	}
 	
+	/**
+	 * This method initializes all the controlers of the panelQuery class.
+	 */
 	public void initPanelQuery() {
 		this.panelQuery.getExecute().addActionListener(controllerPanelQuery);
 	}
 	
+	/**
+	 * This method initializes all the controlers of the class iniFrame
+	 */
 	public void iniJFrame() {
 		this.titleBar.addMouseListener(mouseListenerJFrame);
 		this.titleBar.addMouseMotionListener(mouseMotionListenner);
 	}
 	
+	/**
+	 * This method initializes all the controlers of the profile class.
+	 */
 	public void initControllerProfil(){
 		this.profil.getHome().addActionListener(controllerProfil);
 		this.profil.getHome().addMouseListener(controllerProfil);
@@ -182,10 +232,16 @@ public class MainController {
 		this.profil.getDisconnect().addActionListener(controllerProfil);
 	}
 	
+	/**
+	 * This method initializes all the controlers of the query class.
+	 */
 	public void initControllerQuery(){
 		this.panelQuery.getExecute().addActionListener(controllerQuery);
 	}
 	
+	/**
+	 * This method initializes all controlers of the autoSave class.
+	 */
 	public void initControllerAutoSave() {
 		this.connexion.getConnect().addActionListener(controllerAutoSave);
 		this.profil.getDisconnect().addActionListener(controllerAutoSave);
@@ -193,20 +249,33 @@ public class MainController {
 		this.mainPanel.getSaveAs().addActionListener(controllerAutoSave);
 	}
 	
+	/**
+	 * This method initializes all controlers of the save class
+	 */
 	public void initControllerSetAutoSave() {
 		this.setAutoSave.getConfirmer().addActionListener(controllerSetAutoSave);
 		this.setAutoSave.getTmp().addFocusListener(controllerSetAutoSave);
 	}
 	
+	/**
+	 * This method initializes all controlers of the profilePanel class
+	 */
 	public void initControllerProfilPanel() {
 		this.profilPanel.getMdp().addActionListener(controllerProfilPanel);
 		this.profilPanel.getAutoSave().addActionListener(controllerProfilPanel);
 	}
 	
+	/**
+	 * This method sets the connection.
+	 * @param con The connexionJDBC class.
+	 */
 	public void setConnexion(ConnexionJDBC con) {
 		this.con = con;
 	}
 
+	/**
+	 * This method initializes all the controlers of the class changePassword
+	 */
 	public void initControllerChangePassword(){
 		this.modifPassword.getConfirmer().addActionListener(controllerChangePassword);
 	}

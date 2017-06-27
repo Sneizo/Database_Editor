@@ -8,7 +8,11 @@ import java.sql.Statement;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * @author Mael and Damien
+ *
+ */
 public class TableJDBC {
 
 	private Vector<String> vec;

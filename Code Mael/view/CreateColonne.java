@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 
+/**
+ * This class creates the different button of the create class.
+ * @author Mael and Damien
+ *
+ */
 public class CreateColonne extends JPanel {
 
 	private JTextField nameF;
@@ -26,10 +30,16 @@ public class CreateColonne extends JPanel {
 
 	private JButton continuer;
 
+	/**
+	 * The contructor of the class.
+	 */
 	public CreateColonne() {
 		init();
 	}
 
+	/**
+	 * This method resets the graphical components
+	 */
 	public void init() {
 
 		setBackground(new Color(80, 80, 80));
@@ -92,14 +102,26 @@ public class CreateColonne extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return Return the name.
+	 */
 	public JTextField getNameF() {
 		return nameF;
 	}
 
+	/**
+	 * 
+	 * @return Return the type.
+	 */
 	public JTextField getTypeF() {
 		return typeF;
 	}
 
+	/**
+	 * Return the validate button.
+	 * @return The JButton continue.
+	 */
 	public JButton getContinuer() {
 		return continuer;
 	}

@@ -14,6 +14,11 @@ import view.ModifPassword;
 import view.PanelQuery;
 import view.TitleBar;
 
+/**
+ * This class manages the change of password control.
+ * @author Mael and Damien
+ *
+ */
 public class ControllerModifPassword implements ActionListener {
 
 	private ModifPassword modifPassword;
@@ -23,9 +28,19 @@ public class ControllerModifPassword implements ActionListener {
 	private Connexion connexion;
 	private PanelQuery panelQuery;
 	private InformationBar ib;
-
+	
+	/**
+	 * The constructor of the ControllerModifPassword class.
+	 * @param modifPassword The modifPassword class.
+	 * @param mainPanel The mainPanel class.
+	 * @param titleBar The titleBar class.
+	 * @param interf The main frame.
+	 * @param connexion The connexion class.
+	 * @param panelQuery The panelquery class.
+	 * @param ib The informationBar class.
+	 */
 	public ControllerModifPassword(ModifPassword modifPassword, MainPanel mainPanel, TitleBar titleBar,
-			Interface interf, Connexion conneion, PanelQuery panelQuery, InformationBar ib) {
+			Interface interf, Connexion connexion, PanelQuery panelQuery, InformationBar ib) {
 		this.modifPassword = modifPassword;
 		this.mainPanel = mainPanel;
 		this.titleBar = titleBar;
@@ -36,6 +51,9 @@ public class ControllerModifPassword implements ActionListener {
 
 	}
 
+	/**
+	 * Performs an action if the button pressed is the reference button.
+	 */
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == this.modifPassword.getConfirmer()) {

@@ -1,10 +1,23 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 
+/**
+ * This class is used to create users
+ * @author Mael and Damien
+ *
+ */
 public class Create extends JPanel{
 	
 	private JTextField newTableName;
@@ -21,11 +34,16 @@ public class Create extends JPanel{
 	private JButton confirmer;
 	private JButton annuler;
 
-	
+	/**
+	 * Constructor of the create class
+	 */
 	public Create() {
 		init();
 	}
 	
+	/**
+	 * Initializes graphical components
+	 */
 	public void init() {
 		
 		setBackground(new Color(80,80,80));
@@ -106,20 +124,34 @@ public class Create extends JPanel{
 		
 	}
 	
-
+	/**
+	 * 
+	 * @return The confirm button.
+	 */
 	public JButton getConfirmer() {
 		return confirmer;
 	}
 
+	/**
+	 * 
+	 * @return The cancel button.
+	 */
 	public JButton getAnnuler() {
 		return annuler;
 	}
 	
+	/**
+	 * 
+	 * @return The newTableName.
+	 */
 	public JTextField getNewTableName() {
 		return newTableName;
-	}
+	}	
 	
-	
+	/**
+	 * 
+	 * @return The number of column in the table.
+	 */
 	public JTextField getNbCol() {
 		return this.nbCol;
 	}

@@ -14,22 +14,32 @@ import javax.swing.JOptionPane;
 import view.PanelQuery;
 
 /**
- * @author Damien
+ * This class allows you to open files by reading 
+ * @author Mael and Damien
  *
  */
-public class OpenFileJDBC {
-
+public class OpenFileJDBC {	
 	
-	private PanelQuery panelQuery;
+	private PanelQuery panelQuery;	
 	
+	private boolean open;
 	
+	/**
+	 * The constructor of the class
+	 * @param panelQuery the panelQuery
+	 */
 	public OpenFileJDBC(PanelQuery panelQuery){
 		this.panelQuery = panelQuery;
+		this.open = false;
 	}
 	
+	/**
+	 * This void read in file selected.
+	 */
 	public void readFile(){
 		
 		try{
+			this.open = false;
 			JFileChooser chooser = new JFileChooser();
 			chooser.setCurrentDirectory(new File("C:/Users/Damien/workspace/Database_Editor_Graphical"));
 			int reponse = chooser.showDialog(chooser, "Open");
@@ -39,10 +49,12 @@ public class OpenFileJDBC {
 				BufferedReader in = new BufferedReader(readFile);
 				String s = in.readLine();
 				while (s != null) {
-					panelQuery.getQueryWrite().setText(s);
+					panelQuery.getQueryWrite().append(s);
+					panelQuery.getQueryWrite().append("\n");
 					s = in.readLine();					
 				}
 			}
+			this.open = true;
 		} catch (IOException e){
 			JOptionPane option = new JOptionPane();
 			option.showMessageDialog(null, "Error with the file", "ERREUR", JOptionPane.ERROR_MESSAGE);
@@ -50,7 +62,17 @@ public class OpenFileJDBC {
 		
 		
 	}
+	
+	
+	/**
+	 * This method return the open boolean
+	 * @return open
+	 */
+	public boolean getOpen() {
+		return this.open;
+	}
 }
+	
 	
 	
 

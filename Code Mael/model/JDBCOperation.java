@@ -8,9 +8,9 @@ import view.PanelQuery;
  * This class create an object JDBCOperation who get the SQL script. This class
  * can also set a default SQL script like SELECT(*).
  * 
- * @author Mael and Damien
+ * @author Mael & Damien
  */
-public class OperationJDBC {
+public class JDBCOperation {
 
 	private String operation;
 	private ConnexionJDBC co;
@@ -20,10 +20,10 @@ public class OperationJDBC {
 	/**
 	 * The constructor of the class set the connection
 	 * 
-	 * @param co The connection to the database
-	 * @param panelQuery The panelQuery class.
+	 * @param co
+	 *            the connection to the database
 	 */
-	public OperationJDBC(ConnexionJDBC co, PanelQuery panelQuery) {
+	public JDBCOperation(ConnexionJDBC co, PanelQuery panelQuery) {
 		if (co != null) {
 			this.co = co;
 		}
@@ -32,6 +32,9 @@ public class OperationJDBC {
 
 	/**
 	 * This class set the operation
+	 * 
+	 * @param str
+	 *            the string to set
 	 */
 	public void setOperation() {
 	}
@@ -39,7 +42,7 @@ public class OperationJDBC {
 	/**
 	 * this methode get the sql script you write and set it in operation
 	 * 
-	 * @throws InterruptedException Error
+	 * @throws InterruptedException
 	 */
 	public void operation() throws InterruptedException {
 		this.operation = "";
@@ -48,8 +51,10 @@ public class OperationJDBC {
 	}
 
 	/**
-	 * This void get the operation.
-	 * @return operation T	he operation
+	 * this methode get the operation
+	 * 
+	 * @return
+	 * @return the operation
 	 */
 	public String getOperation() {
 		return this.operation;

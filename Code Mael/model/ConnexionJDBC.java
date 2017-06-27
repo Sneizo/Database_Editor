@@ -7,16 +7,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
-
-import view.Connexion;
 
 /**
  * This class connect to the database
  * 
- * @author Damien
+ * @author Mael and Damien
  *
  */
 public class ConnexionJDBC {
@@ -36,10 +32,10 @@ public class ConnexionJDBC {
 	}
 
 	/**
-	 * crate a connection from the database
-	 * 
-	 * @throws InterruptedException
-	 * 
+	 * Create a connection from the database.
+	 * @param user The user connexion.
+	 * @param password The password of user.
+	 * @param dataBase The databaseName.
 	 */
 	public void connexion(String user, String password, String dataBase) {
 		if (connect == false) {		
@@ -76,11 +72,11 @@ public class ConnexionJDBC {
 
 	/**
 	 * Disconnect from the database
-	 * 
-	 * @throws SQLException
+	 * @throws SQLException Error
 	 */
 	public void deconnexion() throws SQLException {
 		conn.close();
+		this.connect = false;
 		if (conn.isClosed()) {
 			// We try to reset the connection
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + database, user, pass);
@@ -92,7 +88,7 @@ public class ConnexionJDBC {
 	/**
 	 * return connect
 	 * 
-	 * @return connect
+	 * @return connect The boolean connect
 	 */
 	public Boolean getConnect() {
 		return this.connect;
@@ -101,7 +97,7 @@ public class ConnexionJDBC {
 	/**
 	 * return conn
 	 * 
-	 * @return conn
+	 * @return conn The connexion.
 	 */
 	public Connection getConn() {
 		return this.conn;
@@ -110,7 +106,7 @@ public class ConnexionJDBC {
 	/**
 	 * return user
 	 * 
-	 * @return the user
+	 * @return user the user
 	 */
 	public String getUser() {
 		return user;

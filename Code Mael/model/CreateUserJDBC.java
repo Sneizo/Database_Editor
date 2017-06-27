@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  * This class create a user Create a connection, create the user with the
  * parameter and disconnect
  * 
- * @author Mael & Damien
+ * @author Mael and Damien
  */
 public class CreateUserJDBC extends JOptionPane {
 
@@ -27,9 +27,14 @@ public class CreateUserJDBC extends JOptionPane {
 	private JTextField field1, field2;
 
 	private String dataBase;
+	
+	private boolean create;
+	private boolean connect;
 
 	public CreateUserJDBC(String login, String pass, String confirm, String database) {
 
+		this.create = false;
+		this.connect = false;
 		JPanel pane = new JPanel();
 		lab1 = new JLabel("Login of the Administrator");
 		lab2 = new JLabel("Password");
@@ -56,10 +61,13 @@ public class CreateUserJDBC extends JOptionPane {
 
 								connexion(this.field1.getText(), this.field2.getText());
 
-								create(login, pass);
+								if (this.connect = true) {
+									
+									create(login, pass);
 
-								disconect();
+									disconect();
 
+								}
 							}else {
 								System.out.println("ERREUR : password Admin incorrect");
 							}
@@ -87,6 +95,7 @@ public class CreateUserJDBC extends JOptionPane {
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + dataBase,log,pass);
 			stmt = conn.createStatement();
+			this.connect = true;
 		} catch (SQLException e) {
 			JOptionPane option = new JOptionPane();
 			option.showMessageDialog(null, "Password or login incorect ", "ERREUR", JOptionPane.ERROR_MESSAGE);
@@ -107,9 +116,11 @@ public class CreateUserJDBC extends JOptionPane {
 			String grant = "GRANT ALL PRIVILEGES TO " + login;
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(grant);
+				this.create = true;
 		} catch (SQLException e) {
 			JOptionPane option = new JOptionPane();
 			option.showMessageDialog(null, "Error in the query ", "ERREUR", JOptionPane.ERROR_MESSAGE);
+			this.create = false;
 		}
 	}
 
@@ -119,9 +130,27 @@ public class CreateUserJDBC extends JOptionPane {
 	private void disconect() {
 		try {
 			conn.close();
+			this.connect = false;
 		} catch (SQLException e) {
 			JOptionPane option = new JOptionPane();
 			option.showMessageDialog(null, "Error with the log off", "ERREUR", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	
+	
+	/**
+	 * This method return the connect boolean
+	 * @return connect
+	 */
+	public boolean getConnect() {
+		return this.connect;
+	}
+	
+	/**
+	 * This method return the create boolean
+	 * @return create
+	 */
+	public boolean getCreate() {
+		return this.create;
 	}
 }

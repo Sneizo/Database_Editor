@@ -22,12 +22,15 @@ public class OpenFileJDBC {
 	
 	private PanelQuery panelQuery;	
 	
+	private boolean open;
+	
 	/**
 	 * The constructor of the class
 	 * @param panelQuery the panelQuery
 	 */
 	public OpenFileJDBC(PanelQuery panelQuery){
 		this.panelQuery = panelQuery;
+		this.open = false;
 	}
 	
 	/**
@@ -36,6 +39,7 @@ public class OpenFileJDBC {
 	public void readFile(){
 		
 		try{
+			this.open = false;
 			JFileChooser chooser = new JFileChooser();
 			chooser.setCurrentDirectory(new File("C:/Users/Damien/workspace/Database_Editor_Graphical"));
 			int reponse = chooser.showDialog(chooser, "Open");
@@ -50,6 +54,7 @@ public class OpenFileJDBC {
 					s = in.readLine();					
 				}
 			}
+			this.open = true;
 		} catch (IOException e){
 			JOptionPane option = new JOptionPane();
 			option.showMessageDialog(null, "Error with the file", "ERREUR", JOptionPane.ERROR_MESSAGE);
@@ -57,7 +62,17 @@ public class OpenFileJDBC {
 		
 		
 	}
+	
+	
+	/**
+	 * This method return the open boolean
+	 * @return open
+	 */
+	public boolean getOpen() {
+		return this.open;
+	}
 }
+	
 	
 	
 

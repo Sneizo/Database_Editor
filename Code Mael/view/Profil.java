@@ -2,15 +2,14 @@ package view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * @author Damien
+ * This class creates the user profile panel.
+ * @author Mael and Damien
  *
  */
 public class Profil extends JPanel{
@@ -20,10 +19,16 @@ public class Profil extends JPanel{
 	private JButton disconnect;
 	private JButton home;
 	
+	/**
+	 * The constructor of the profil class.
+	 */
 	public Profil(){
 		initComponent();
 	}
 	
+	/**
+	 * Initializes the graphical components.
+	 */
 	public void initComponent(){
 	
 		setBackground(new Color(80,80,80));
@@ -59,8 +64,6 @@ public class Profil extends JPanel{
 		return setting;
 	}
 
-
-
 	/**
 	 * @return the disconnect
 	 */
@@ -75,8 +78,6 @@ public class Profil extends JPanel{
 	 */
 	public JButton getHome() {
 		return home;
-	}
-
-	
+	}	
 	
 }

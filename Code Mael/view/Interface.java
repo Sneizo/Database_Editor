@@ -1,18 +1,17 @@
-/**
- * 
- */
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.MainController;
 
 /**
- * @author Damien
+ * Create the main window
+ * @author Mael and Damien
  *
  */
 public class Interface extends JFrame {
@@ -32,9 +31,12 @@ public class Interface extends JFrame {
 	private ModifPassword modifPassword;
 	private SetAutoSave setAutoSave;
 	private CreateColonne createColonne;
-
 	private MainController mainController;
 
+	/**
+	 * The constructor of the Interface class
+	 * @throws InterruptedException Exception.
+	 */
 	public Interface() throws InterruptedException {
 		init();
 		connexion = new Connexion();
@@ -49,6 +51,9 @@ public class Interface extends JFrame {
 		modifPassword = new ModifPassword();
 		setAutoSave = new SetAutoSave();
 		createColonne = new CreateColonne();
+		
+		setIconImage(new ImageIcon("data/images/logo.png").getImage());
+		setTitle("MDSql Database Editor");
 
 		mainController = new MainController(connexion, create, rename, mainPanel, titleBar, panelQuery, this, informationBar, profil,profilPanel,modifPassword, setAutoSave, createColonne);
 		
@@ -66,30 +71,34 @@ public class Interface extends JFrame {
 		
 	}
 
+	/**
+	 * This method sets the window settings
+	 */
 	public void init() {
 		setUndecorated(true);
 		setResizable(false);
 		setBackground(Color.WHITE);
 	}
 	
-	public void setPanel(JPanel pane) {
-		
+	/**
+	 * This method initializes the different panel of the window
+	 * @param pane The panel
+	 */
+	public void setPanel(JPanel pane) {		
 		this.setContentPane(pane);
 		this.repaint();
 		this.revalidate();
 	}
 
 	/**
-	 * @param posX
-	 *            the posX to set
+	 * @param posX The posX to set
 	 */
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
 	/**
-	 * @param posY
-	 *            the posY to set
+	 * @param posY The posY to set
 	 */
 	public void setPosY(int posY) {
 		this.posY = posY;
